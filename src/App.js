@@ -1,9 +1,7 @@
 
 function App() {
   return (
-    <div >
-      inTheMoney
-    </div>
+<div>inthemoney</div>
   );
 }
 
