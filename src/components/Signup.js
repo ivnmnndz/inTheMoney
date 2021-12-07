@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import React, { useContext } from "react";
-=======
 import React, { useState, useContext } from "react";
->>>>>>> 870d27aa91c7e8f5db09f17a8060a9ccae662a00
 import { GlobalContext } from "../context/GlobalState";
 
 const Signup = () => {
