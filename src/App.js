@@ -1,8 +1,9 @@
+import SignUp from "./SignUp";
 
 function App() {
   return (
     <div >
-      inTheMoney
+      <SignUp/>
     </div>
   );
 }

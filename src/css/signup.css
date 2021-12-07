@@ -1,0 +1,19 @@
+
+*{
+    border: 1px solid red;
+}
+
+.signUp-container{
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+
+.signUp-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    height: 100vh;
+}
