@@ -1,0 +1,16 @@
+.navBar {
+    display: flex;
+    justify-content:space-evenly;
+background-color: lightblue;
+
+
+}
+.NavBarDiv{
+    display: flex;
+   gap: 10%;
+}
+
+.LogInSignUpDiv{
+display: flex;
+gap: 10%;
+}
