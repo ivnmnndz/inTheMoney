@@ -1,11 +1,12 @@
 import Signup from "../src/components/Signup";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
-  <div>
- 
-    <Signup />
-  </div>
+    <div>
+      <Navbar />
+      <Signup />
+    </div>
   );
 }
 

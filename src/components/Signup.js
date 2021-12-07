@@ -1,41 +1,50 @@
 import React, { useState, useContext } from "react";
 import { GlobalContext } from "../context/GlobalState";
-import background from "../images/background.png"
-
-import "../css/signup.css"
+import background from "../images/background.png";
+import "../css/signup.css";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 const Signup = () => {
-  const { setState, state } = useContext(GlobalContext);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const auth = getAuth();
 
-  const [values] = useState({
-    email: "",
-    password: "",
-  });
+  const { setState, state } = useContext(GlobalContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setState(values);
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log(user);
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // ..
+      });
   };
 
   return (
     <>
       <div className="signup-container" src={background}>
         <form onSubmit={handleSubmit} className="signup-form">
-        <label>
+          {/* <label>
             Full Name
             <input className="signup-name" name="email" />
-          </label>
+          </label> */}
           <label>
             Email
-            <input className="signup-email" name="email" />
+            <input className="signup-email" name="email" onChange={(e)=>setEmail(e.target.value)} />
           </label>
-
           <label>
             Password
-            <input name="password" className="signup-password" />
+            <input name="password" className="signup-password" onChange={(e)=>setPassword(e.target.value)} />
           </label>
+        <button type="submit">Submit</button>
         </form>
-        <div>{state}</div>
       </div>
     </>
   );
