@@ -1,7 +1,11 @@
+import Signup from "../src/components/Signup";
 
 function App() {
   return (
-<div>inthemoney</div>
+  <div>
+  hello
+    <Signup />
+  </div>
   );
 }
 
