@@ -20,6 +20,7 @@ const registerWithEmail = (email, password) =>
 			// Signed in Success
 			const user = userCredential.user;
 			return user;
+			// ...
 		})
 		.catch(error => {
 			// Sign Failure
