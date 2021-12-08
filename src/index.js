@@ -1,7 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Layout from './Layout';
+import React from "react";
+import ReactDOM from "react-dom";
+import Layout from "./Layout";
+import { GlobalProvider } from "./context/GlobalState"
 
-ReactDOM.render(<Layout />,
-  document.getElementById('root')
+ReactDOM.render(
+  <GlobalProvider>
+    <Layout />
+  </GlobalProvider>,
+  document.getElementById("root")
 );

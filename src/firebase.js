@@ -19,7 +19,6 @@ const registerWithEmail = (email, password) =>
 		.then(userCredential => {
 			// Signed in Success
 			const user = userCredential.user;
-      console.log("user", user);
 			return user;
 		})
 		.catch(error => {

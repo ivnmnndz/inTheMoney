@@ -23,7 +23,7 @@ const Dashboard = () => {
   const handleChange = (e) => {
     setSearch(e.target.value);
   };
-  console.log(coins);
+
   const filteredCoins = coins.filter((coin) =>
     coin.name.toLowerCase().includes(search.toLowerCase())
   );
