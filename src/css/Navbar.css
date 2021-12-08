@@ -1,35 +1,35 @@
 .navbar {
   display: block;
   overflow: hidden;
- background-color: black;
-  position: fixed; 
-  top:0;
+  background-color: black;
+  position: fixed;
+  top: 0;
   width: 100%;
   background: black;
- padding: 10px;
-  
+  padding: 10px;
 }
-#nav-link{
-
+.nav-link {
+  text-decoration: none;
   text-align: center;
   padding: 14px 16px;
-  text-decoration: none;
   background-color: black;
- 
-  
 }
-.nav-links{
+
+#nav-logo {
+  text-decoration: none;
+  text-align: center;
+  padding: 14px 16px;
+  background-color: black;
+}
+.nav-links {
   float: left;
 }
 
-.navbar  #nav-link:hover {
+.navbar .nav-link:hover {
   background: #ddd;
   color: black;
-  
 }
 
 .login-signup {
-  
   float: right;
 }
-
