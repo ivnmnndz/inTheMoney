@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { signInWithEmail } from "../../firebase"
+import { signInWithEmail } from "../../firebase";
+import "../../css/signin.css";
+
 
 const Signin = () => {
   const [email, setEmail] = useState("");
@@ -7,33 +9,30 @@ const Signin = () => {
 
   const handleSignin = (e) => {
     e.preventDefault();
-    signInWithEmail( email, password );
-  }
+    signInWithEmail(email, password);
+  };
 
   return (
     <div className="signup-container">
-      <form
-        onSubmit={handleSignin}
-        className="signup-form"
-      >
-        <h1>Welcome Back</h1>
-        <label>
-          Email
-          <input
-            className="signup-email"
-            name="email"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </label>
-        <label>
-          Password
-          <input
-            name="password"
-            className="signup-password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </label>
-        <button type="submit">Submit</button>
+      <div className="blockchain"></div>
+      <form onSubmit={handleSignin} className="signup-form">
+        <h1>Sign in</h1>
+
+        <input
+          className="signup-email"
+          name="email"
+          placeholder="E-mail"
+          onChange={(e) => setEmail(e.target.value)}
+        />
+
+        <input
+          name="password"
+          className="signup-password"
+          placeholder="Password"
+          onChange={(e) => setPassword(e.target.value)}
+        />
+
+        <button className="signin-btn" type="submit">Sign in</button>
         <a href="/">Forgot your password?</a>
       </form>
     </div>
