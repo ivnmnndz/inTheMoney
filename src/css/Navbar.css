@@ -1,14 +1,35 @@
 .navbar {
-  display: flex;
-  justify-content: space-evenly;
-  background-color: lightblue;
+  display: block;
+  overflow: hidden;
+ background-color: black;
+  position: fixed; 
+  top:0;
+  width: 100%;
+  background: black;
+ padding: 10px;
+  
 }
-.nav-links {
-  display: flex;
-  gap: 10%;
+#nav-link{
+
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  background-color: black;
+ 
+  
+}
+.nav-links{
+  float: left;
+}
+
+.navbar  #nav-link:hover {
+  background: #ddd;
+  color: black;
+  
 }
 
 .login-signup {
-  display: flex;
-  gap: 10%;
+  
+  float: right;
 }
+
