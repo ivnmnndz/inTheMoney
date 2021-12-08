@@ -1,32 +1,19 @@
-import React, { useState, useContext } from "react";
-import { GlobalContext } from "../../context/GlobalState";
-
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import React, { useState } from "react";
+import { signInWithEmail } from "../../firebase"
 
 const Signin = () => {
-  const { setState, state } = useContext(GlobalContext);
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const auth = getAuth();
-  signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // Signed in
-      const user = userCredential.user;
-      setState(user);
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-    });
+  const handleSignin = (e) => {
+    e.preventDefault();
+    signInWithEmail( email, password );
+  }
 
   return (
     <div className="signup-container">
       <form
-        onSubmit={(e) => {
-          e.preventDefault();
-        }}
+        onSubmit={handleSignin}
         className="signup-form"
       >
         <h1>Welcome Back</h1>
@@ -47,8 +34,8 @@ const Signin = () => {
           />
         </label>
         <button type="submit">Submit</button>
+        <a href="/">Forgot your password?</a>
       </form>
-      <a href="/">Forgot your password?</a>
     </div>
   );
 };
