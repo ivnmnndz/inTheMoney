@@ -11,6 +11,10 @@
 #nav-link {
   text-align: center;
   padding: 14px 16px;
+  background-color: black;
+}
+
+#nav-logo {
   text-decoration: none;
   background-color: rgb(27, 21, 57);
   color: white;
@@ -26,7 +30,6 @@
 .navbar #nav-link:hover {
   background-color: rgb(12, 231, 168);
   color: black;
-  
 }
 
 .login-signup {
