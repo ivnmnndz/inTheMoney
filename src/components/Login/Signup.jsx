@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
-import { GlobalContext } from "../context/GlobalState";
-import background from "../images/background.png";
-import "../css/signup.css";
+import { GlobalContext } from "../../context/GlobalState";
+import background from "../../images/background.png";
+import "../../css/signup.css";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 const Signup = () => {
@@ -17,7 +17,7 @@ const Signup = () => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        console.log(user);
+        console.log("user", user);
         // ...
       })
       .catch((error) => {
@@ -35,6 +35,7 @@ const Signup = () => {
             Full Name
             <input className="signup-name" name="email" />
           </label> */}
+          <h1>Create an Account</h1>
           <label>
             Email
             <input className="signup-email" name="email" onChange={(e)=>setEmail(e.target.value)} />
