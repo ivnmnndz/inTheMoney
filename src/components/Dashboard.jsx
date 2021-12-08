@@ -1,5 +1,7 @@
 import React from 'react'
 import"../css/dashboard.css"
+import Coin from './Coin';
+
 
 const dashboard = () => {
     const [coins, setCoins] = useState([]);
