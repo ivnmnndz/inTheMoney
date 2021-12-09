@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
+.HomePage-container {
+  align-items: center;
+  display: inline-block;
+  height: 100vh;
+  justify-content: center;
+  width: 100%;
+  background-color: rgb(27, 21, 57);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+h1 {
+  text-align: center;
+  color: white;
+  font-size: 6em;
+  font-family: 'Fredoka One', cursive;
+}
+
+#Create-User-btn {
+  background-color: #f00606;
+  border-radius: 25px;
+  color: white;
+  width: 250px;
+  height: 50px;
+}
+
+small {
+  color: white;
+}
+
+#signup-login-container {
+  justify-content: center;
+}

@@ -14,7 +14,7 @@ const Navbar = () => {
           💰
         </Link>
       </div>
-      <div className="login-signup">
+      <div className="loggedIn-container">
         <Link className="nav-link" to="/login">
           Log In
         </Link>
