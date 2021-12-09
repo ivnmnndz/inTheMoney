@@ -1,9 +1,9 @@
 import React from "react";
 import Dashboard from "../components/Dashboard";
-import LoggedOutHome from "../components/LoggedOutHome";
+import LoggedOutHome from "../components/Home/LoggedOutHome";
 
 const Home = () => {
-  return <Dashboard />;
+  return <LoggedOutHome />;
 };
 
 export default Home;

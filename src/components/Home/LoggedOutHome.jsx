@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/LoggedOutHome.css";
+import "../../css/LoggedOutHome.css"
 import { Link } from "react-router-dom";
 
 function LoggedOutHome() {
