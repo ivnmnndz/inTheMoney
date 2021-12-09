@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import { signInWithEmail } from "../../firebase";
 import "../../css/signin.css";
-
+import { useNavigate } from "react-router-dom";
 
 const Signin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  
+  let navigate = useNavigate();
 
   const handleSignin = (e) => {
     e.preventDefault();
     signInWithEmail(email, password);
+    navigate("/")
   };
 
   return (

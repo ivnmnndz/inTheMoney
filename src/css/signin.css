@@ -8,11 +8,10 @@
 
 .blockchain {
   background-image: url("../images/blockchain.svg");
-width: 125px;
-height: 125px;
-position: absolute;
-top: 60px;
- 
+  width: 125px;
+  height: 125px;
+  position: absolute;
+  top: 60px;
   background-size: cover;
 }
 
@@ -22,7 +21,6 @@ top: 60px;
   height: 100vh;
   justify-content: center;
   width: 100%;
-
   background-color: rgb(27, 21, 57);
   background-size: cover;
   background-repeat: no-repeat;
@@ -36,10 +34,10 @@ top: 60px;
   height: 50%;
   padding: 50px;
   color: rgb(254, 254, 254);
-
   justify-content: flex-start;
   align-items: center;
 }
+
 .signup-form h1 {
   text-align: center;
 }
@@ -86,5 +84,3 @@ top: 60px;
   margin: 50px 0;
   cursor: pointer;
 }
-
-

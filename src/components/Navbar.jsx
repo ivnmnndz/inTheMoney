@@ -6,29 +6,47 @@ import { logout } from "../firebase";
 
 const Navbar = () => {
   const { currentUser } = useContext(GlobalContext);
-
+  
   return (
     <nav className="navbar">
-      <div className="nav-links">
-        <Link id="nav-logo" to="/" className="logo">
-          💰
-        </Link>
+      <div className="nav-spacing-left">
+        <div id="nav-logo">
+          <Link to="/">💰</Link>
+        </div>
+        {/* inline style here, expecting to replace with an svg? */}
+        <div style={{ color: "white", padding: "0 10px" }}>
+          <span>In The Money</span>
+        </div>
       </div>
-      <div className="loggedIn-container">
-        <Link className="nav-link" to="/login">
-          Log In
-        </Link>
-        <Link className="nav-link" to="/signup">
-          Sign Up
-        </Link>
-      </div>
-
       {currentUser ? (
-        <>
-          <div>{currentUser.email}</div>
-          <button onClick={logout}>LOGOUT</button>
-        </>
-      ) : null}
+        <div className="nav-spacing-right">
+        <Link className="nav-link" to="/">
+            Dashboard
+          </Link>
+
+          {/* icon for a potential dropdown menu */}
+          {/* <div className="nav-link">
+            <i className="far fa-user-circle fa-lg"></i>
+          </div> */}
+
+
+          <Link className="nav-link" to="/profile">
+            {currentUser.email}
+          </Link>
+          <Link className="nav-link" to="/" onClick={logout}>
+            <span>Logout</span>
+          </Link>
+        </div>
+      ) : (
+        <div className="nav-spacing-right">
+          <Link className="nav-link" to="/login">
+            <span>Log In</span>
+          </Link>
+          <Link className="nav-link" to="/signup">
+            <span>Sign Up</span>
+          </Link>
+        </div>
+      )}
     </nav>
   );
 };

@@ -7,7 +7,7 @@ import Signin from './components/Login/Signin';
 import Signup from './components/Login/Signup';
 import Profile from './views/Profile';
 
-const Layout = () => {
+const App = () => {
 
 	return (
 			<BrowserRouter>
@@ -22,4 +22,4 @@ const Layout = () => {
 	);
 };
 
-export default Layout;
+export default App;
