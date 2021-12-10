@@ -2,7 +2,7 @@ import React from "react";
 import "../../css/HomePageNull.css";
 import { Link } from "react-router-dom";
 
-function LoggedOutHome() {
+function HomePageNull() {
   return (
     <div className="homePage-container">
       <h1 className="solgan">
@@ -24,4 +24,4 @@ function LoggedOutHome() {
   );
 }
 
-export default LoggedOutHome;
+export default HomePageNull;
