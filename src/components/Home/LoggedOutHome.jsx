@@ -5,9 +5,7 @@ import { Link } from "react-router-dom";
 function LoggedOutHome() {
   return (
     <div className="HomePage-container">
-      <h1 className="inTheMoney-logo">
-        In the Money
-      </h1>
+      <h1 className="inTheMoney-logo">In the Money</h1>
 
       <div className="signup-login-container">
         <Link to="/signup">

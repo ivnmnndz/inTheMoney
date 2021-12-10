@@ -10,7 +10,6 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-
 }
 
 .inTheMoney-logo {
@@ -18,9 +17,8 @@
   color: white;
   font-size: 6em;
   font-family: "Fredoka One", cursive;
-margin-top: 20vh;
+  margin-top: 20vh;
   margin-bottom: 0%;
-  
 }
 .signup-login-container {
   margin: auto;
