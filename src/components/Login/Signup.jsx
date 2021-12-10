@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import { registerWithEmail } from "../../firebase";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  let navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     registerWithEmail(email, password);
+    navigate("/");
   };
 
   return (

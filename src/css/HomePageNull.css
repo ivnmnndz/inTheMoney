@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
+
+.homePage-container {
+  align-items: center;
+  display: inline-block;
+  height: 100vh;
+  z-index: -1;
+  justify-content: center;
+  width: 100%;
+  background: url(../images/sajad-nori-i09DzZkwnuY-unsplash.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: fixed;
+  top: 0;
+}
+
+.solgan {
+  text-align: center;
+  color: var(--color-white);
+  font-size: 6em;
+  font-family: "Fredoka One", cursive;
+  margin-top: 30vh;
+  margin-bottom: 0.5em;
+}
+.signup-login-container {
+  margin: auto;
+  width: 50%;
+  display: flex;
+  gap: 10%;
+}
+
+#create-User-btn {
+  background-color: var(--color-red);
+  border-radius: 25px;
+  color: var(--color-white);
+  width: 250px;
+  height: 50px;
+  transition-duration: 0.5s;
+}
+
+#create-User-btn:hover {
+  background-color: var(--color-white);
+}
+
+#logIn-link {
+  text-align: center;
+  color: var(--color-white);
+}
