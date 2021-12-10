@@ -5,7 +5,7 @@
   align-items: center;
   width: 100%;
   height: 60px;
-  background-color: rgb(85, 66, 177);
+  background: transparent;
 }
 
 .nav-spacing-left {
