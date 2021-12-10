@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
 
-.HomePage-container {
+.homePage-container {
   align-items: center;
   display: inline-block;
   height: 100vh;
@@ -15,7 +15,7 @@
   top: 0;
 }
 
-.inTheMoney-logo {
+.solgan {
   text-align: center;
   color: white;
   font-size: 6em;
@@ -30,24 +30,20 @@
   gap: 10%;
 }
 
-#Create-User-btn {
+#create-User-btn {
   background-color: #f00606;
   border-radius: 25px;
   color: white;
   width: 250px;
   height: 50px;
-  transition-duration: .5s
+  transition-duration: 0.5s;
 }
 
-#Create-User-btn:hover{
-  background-color:white; 
+#create-User-btn:hover {
+  background-color: white;
 }
 
-small {
-  color: white;
-}
-
-p {
+#logIn-link {
   text-align: center;
   color: white;
 }
