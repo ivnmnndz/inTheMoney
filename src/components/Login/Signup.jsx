@@ -15,7 +15,7 @@ const Signup = () => {
       <div className="signup-container">
         <div className="blockchain"></div>
         <form onSubmit={handleSubmit} className="signup-form">
-          <h1>Create an Account</h1>
+        <h1>Create an Account</h1>
           <input
             className="signup-email"
             name="email"

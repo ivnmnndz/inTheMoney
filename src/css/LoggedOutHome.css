@@ -1,35 +1,44 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
 
 .HomePage-container {
   align-items: center;
-  display: inline-block;
-  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
   justify-content: center;
-  width: 100%;
-  background-color: rgb(27, 21, 57);
-  background-size: cover;
-  background-repeat: no-repeat;
+  width: 50%;
+  margin: auto;
 }
 
 h1 {
   text-align: center;
   color: white;
-  font-size: 6em;
-  font-family: 'Fredoka One', cursive;
+  font-size: 5em;
+  font-family: "Fredoka One", cursive;
 }
 
-#Create-User-btn {
-  background-color: #f00606;
+.Create-User-btn {
+  background-color: rgb(12, 231, 168);
   border-radius: 25px;
-  color: white;
+  border: none;
   width: 250px;
   height: 50px;
+  cursor: pointer;
+  transition: .2s;
+  font-weight: 700;
 }
 
-small {
+.Create-User-btn:hover{
+  background-color: rgb(10, 185, 136);
+  color: rgb(215, 81, 121);
+}
+
+
+
+
+.login-link {
   color: white;
-}
-
-#signup-login-container {
-  justify-content: center;
+  text-decoration: none;
+  margin-top: 20px;
+  
 }

@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import { signInWithEmail } from "../../firebase";
 import "../../css/signin.css";
-<<<<<<< HEAD
-=======
 import { useNavigate } from "react-router-dom";
->>>>>>> c9d5765ae2a0bf0f252424d3083399436d512b91
 
 const Signin = () => {
   const [email, setEmail] = useState("");

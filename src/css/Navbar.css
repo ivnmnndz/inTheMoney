@@ -1,73 +1,32 @@
 .navbar {
   display: flex;
-<<<<<<< HEAD
   width: 100%;
   align-items: center;
+  justify-content: space-between;
 }
 
-.nav-link {
-  text-align: center;
-  padding: 14px 16px;
-}
+.sign
 
-.logo {
-  width: fit-content;
+.nav-logo {
+  margin: 0 10px;
 }
-
-.login-signup {
-  display: flex;
-  justify-content: flex-end;
-  width: 100%;
-  transition: 1s;
-}
-
-.nav-link {
+.nav-logo span {
+  margin-left: 20px;
   color: white;
+}
+
+.nav-right {
+  display: flex;
+}
+
+.nav-link {
+  padding: 14px 16px;
   text-decoration: none;
-  transition: 0.3s;
+  color: white;
+  transition: 0.5s;
 }
 
 .nav-link:hover {
   background-color: rgb(12, 231, 168);
   color: black;
-=======
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 60px;
-  background-color: rgb(85, 66, 177);
-}
-
-.nav-spacing-left {
-  display: flex;
-  justify-content: flex-start;
-  width: 20%;
-}
-.nav-spacing-right {
-  display: flex;
-  justify-content: flex-end;
-  width: 20%;
-}
-
-.nav-logo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 10px;
-}
-
-.nav-link {
-  display: inline-block;
-  line-height: 60px;
-  padding: 0 10px;
-  text-decoration: none;
-  color: white;
-  transition: 0.5s;
->>>>>>> c9d5765ae2a0bf0f252424d3083399436d512b91
-}
-
-.navbar .nav-link:hover {
-  color: rgb(27, 21, 57);
-  background-color: rgb(12, 231, 168);
 }

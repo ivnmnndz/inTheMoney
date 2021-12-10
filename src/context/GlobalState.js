@@ -11,15 +11,9 @@ export const GlobalProvider = ({ children }) => {
 
   useEffect(() => {
     // turn listener on
-<<<<<<< HEAD
-    const unsubscribe = onAuthStateChanged(auth, (user) =>
-      setCurrentUser(user)
-    );
-=======
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
     });
->>>>>>> c9d5765ae2a0bf0f252424d3083399436d512b91
     // turn listener off
     return () => {
       unsubscribe();

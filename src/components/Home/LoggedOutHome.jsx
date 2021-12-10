@@ -1,5 +1,5 @@
 import React from "react";
-import "../../css/LoggedOutHome.css"
+import "../../css/LoggedOutHome.css";
 import { Link } from "react-router-dom";
 
 function LoggedOutHome() {
@@ -9,16 +9,13 @@ function LoggedOutHome() {
         In the Money<small>₿</small>
       </h1>
 
-      <div className="signup-login-container">
-        <div>
-          <Link to="/signup">
-            <button id="Create-User-btn">Create Your Account</button>
-          </Link>
-        </div>
-        <Link to="/login">
-          <small>Already have an account? Log in here!</small>
-        </Link>
-      </div>
+      <Link to="/signup">
+        <button className="Create-User-btn">Create Your Account</button>
+      </Link>
+
+      <Link className="login-link" to="/login">
+        <span >Already have an account? Log in here!</span>
+      </Link>
     </div>
   );
 }

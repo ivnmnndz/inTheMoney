@@ -8,19 +8,11 @@
 
 .blockchain {
   background-image: url("../images/blockchain.svg");
-<<<<<<< HEAD
-width: 150px;
-height: 150px;
-position: absolute;
-top: 90px;
-background-size: cover;
-=======
-  width: 125px;
-  height: 125px;
+  width: 175px;
+  height: 175px;
   position: absolute;
-  top: 60px;
+  top: 80px;
   background-size: cover;
->>>>>>> c9d5765ae2a0bf0f252424d3083399436d512b91
 }
 
 .signup-container {
@@ -29,12 +21,11 @@ background-size: cover;
   height: 100vh;
   justify-content: center;
   width: 100%;
-<<<<<<< HEAD
-=======
-  background-color: rgb(27, 21, 57);
-  background-size: cover;
-  background-repeat: no-repeat;
->>>>>>> c9d5765ae2a0bf0f252424d3083399436d512b91
+}
+.signup-container h1{
+ font-size: 70px;
+ margin-bottom: 10px;
+ margin-top: 0;
 }
 
 .signup-form {
@@ -44,30 +35,22 @@ background-size: cover;
   width: 50%;
   height: 50%;
   color: rgb(254, 254, 254);
-<<<<<<< HEAD
-=======
-  justify-content: flex-start;
->>>>>>> c9d5765ae2a0bf0f252424d3083399436d512b91
   align-items: center;
-}
-
-.signup-form h1 {
-  text-align: center;
 }
 
 .signup-form input {
   padding: 10px;
-  margin-bottom: 30px;
+  margin: 30px 0;
   border: 3px solid rgb(12, 231, 168);
   background-color: transparent;
   border-radius: 5px;
   outline: none;
-  width: 400px;
+  width:70%;
   color: rgb(215, 81, 121);
-  transition: .3s;
+  transition: 0.3s;
 }
 
-.signup-form input:hover{
+.signup-form input:hover {
   border: 3px solid rgb(215, 81, 121);
 }
 
@@ -85,10 +68,10 @@ background-size: cover;
   padding: 20px;
   margin: 50px 0;
   cursor: pointer;
-  transition: .2s;
+  transition: 0.2s;
 }
 
-.signin-btn:hover{
+.signin-btn:hover {
   background-color: rgb(10, 185, 136);
   color: rgb(215, 81, 121);
 }
@@ -108,8 +91,10 @@ background-size: cover;
   padding: 20px;
   margin: 50px 0;
   cursor: pointer;
+  transition: 0.2s;
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> c9d5765ae2a0bf0f252424d3083399436d512b91
+.signup-form button:hover {
+  background-color: rgb(10, 185, 136);
+  color: rgb(215, 81, 121);
+}
