@@ -1,21 +1,32 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
 
 .HomePage-container {
   align-items: center;
   display: inline-block;
-  height: 100vh;
+  height: 90vh;
   justify-content: center;
   width: 100%;
-  background-color: rgb(27, 21, 57);
+  background: url(https://librehash.org/content/images/2021/04/bitcoincoding.gif);
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
+
 }
 
-h1 {
+.inTheMoney-logo {
   text-align: center;
   color: white;
   font-size: 6em;
-  font-family: 'Fredoka One', cursive;
+  font-family: "Fredoka One", cursive;
+margin-top: 20vh;
+  margin-bottom: 0%;
+  
+}
+.signup-login-container {
+  margin: auto;
+  width: 50%;
+  display: flex;
+  gap: 10%;
 }
 
 #Create-User-btn {
@@ -30,6 +41,7 @@ small {
   color: white;
 }
 
-#signup-login-container {
-  justify-content: center;
+p {
+  text-align: center;
+  color: white;
 }
