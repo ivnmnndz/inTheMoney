@@ -1,19 +1,18 @@
 .container {
   display: flex;
   justify-content: center;
- 
+
   align-items: center;
   height: 90vh;
-  color: white;
+  color: var(--color-white);
   text-align: center;
 }
 
 .user-data {
   display: flex;
   flex-direction: column;
-
 }
 .user-stats {
   display: flex;
   flex-direction: column;
- }
+}
