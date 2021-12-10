@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import "../css/Navbar.css";
 import { Link } from "react-router-dom";
 import { GlobalContext } from "../context/GlobalState";
-import { logout } from "../firebase";
+import { logout } from "../firebase/auth";
 
 const Navbar = () => {
   const { currentUser } = useContext(GlobalContext);
@@ -18,11 +18,12 @@ const Navbar = () => {
 
       {currentUser ? (
         <div className="nav-right">
-          <input type="checkbox" class="checkbox" id="chk" />
-          <label class="label" for="chk">
-            <i class="fas fa-moon"></i>
-            <i class="fas fa-sun"></i>
-            <div class="ball"></div>
+
+          <input type="checkbox" className="checkbox" id="chk" />
+          <label className="label" htmlFor="chk">
+            <i className="fas fa-moon"></i>
+            <i className="fas fa-sun"></i>
+            <div className="ball"></div>
           </label>
           <Link className="nav-link" to="/">
             Dashboard
@@ -42,11 +43,11 @@ const Navbar = () => {
         </div>
       ) : (
         <div className="nav-right">
-          <input type="checkbox" class="checkbox" id="chk" />
-          <label class="label" for="chk">
-            <i class="fas fa-moon"></i>
-            <i class="fas fa-sun"></i>
-            <div class="ball"></div>
+          <input type="checkbox" className="checkbox" id="chk" />
+          <label className="label" htmlFor="chk">
+            <i className="fas fa-moon"></i>
+            <i className="fas fa-sun"></i>
+            <div className="ball"></div>
           </label>
           <Link className="nav-link" to="/login">
             <span>Log In</span>
