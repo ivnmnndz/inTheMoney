@@ -6,7 +6,7 @@ function LoggedOutHome() {
   return (
     <div className="HomePage-container">
       <h1 className="inTheMoney-logo">
-        In the Money<i className="fab fa-bitcoin"></i>
+        Buy & Sell <i className="fab fa-bitcoin"></i> Today!
       </h1>
 
       <div className="signup-login-container">
