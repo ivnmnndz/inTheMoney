@@ -58,10 +58,10 @@
   width: 80px;
 }
 
-.red {
-  color: rgb(255,89,134);
+.orange {
+  color: var(--color-orange);
 }
 
-.green {
-  color: rgb(12, 231, 168);
+.teal {
+  color: let(--color-teal);
 }

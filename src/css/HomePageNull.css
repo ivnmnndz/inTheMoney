@@ -17,7 +17,7 @@
 
 .solgan {
   text-align: center;
-  color: white;
+  color: var(--color-white);
   font-size: 6em;
   font-family: "Fredoka One", cursive;
   margin-top: 30vh;
@@ -31,19 +31,19 @@
 }
 
 #create-User-btn {
-  background-color: #f00606;
+  background-color: var(--color-orange);
   border-radius: 25px;
-  color: white;
+  color: var(--color-white);
   width: 250px;
   height: 50px;
   transition-duration: 0.5s;
 }
 
 #create-User-btn:hover {
-  background-color: white;
+  background-color: var(--color-white);
 }
 
 #logIn-link {
   text-align: center;
-  color: white;
+  color: var(--color-white);
 }

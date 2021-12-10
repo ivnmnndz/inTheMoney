@@ -31,11 +31,11 @@
   line-height: 60px;
   padding: 0 10px;
   text-decoration: none;
-  color: white;
+  color: var(--color-white);
   transition: 0.5s;
 }
 
 .navbar .nav-link:hover {
-  color: rgb(27, 21, 57);
-  background-color: rgb(12, 231, 168);
+  color: var(--color-purple);
+  background-color: var(--color-teal);
 }

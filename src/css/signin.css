@@ -13,7 +13,7 @@
   height: 100vh;
   justify-content: center;
   width: 100%;
-  background-color: rgb(27, 21, 57);
+  background-color: var(--color-purple);
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -25,7 +25,7 @@
   width: 50%;
   height: 50%;
   padding: 50px;
-  color: rgb(254, 254, 254);
+  color: var(--color-white);
   justify-content: flex-start;
   align-items: center;
 }
@@ -37,7 +37,7 @@
 .signup-form input {
   padding: 10px;
   margin-bottom: 30px;
-  border: 3px solid rgb(12, 231, 168);
+  border: 3px solid var(--color-teal);
   background-color: transparent;
   border-radius: 5px;
   outline: none;
@@ -45,11 +45,11 @@
 }
 
 .signup-form ::placeholder {
-  color: white;
+  color: var(--color-white);
 }
 
 .signin-btn {
-  background-color: rgb(12, 231, 168);
+  background-color: var(--color-teal);
   border: none;
   letter-spacing: 0.5px;
   font-weight: 700;
@@ -62,11 +62,11 @@
 
 .signup-form a {
   text-decoration: none;
-  color: white;
+  color: var(--color-white);
 }
 
 .signup-form button {
-  background-color: rgb(12, 231, 168);
+  background-color: var(--color-teal);
   border: none;
   letter-spacing: 0.5px;
   font-weight: 700;
