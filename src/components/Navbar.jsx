@@ -15,7 +15,7 @@ const Navbar = () => {
         </div>
         {/* inline style here, expecting to replace with an svg? */}
         <div style={{ color: "white", padding: "0 10px" }}>
-          <span>In The Money</span>
+          <span>In the Money<i className="fab fa-bitcoin"></i></span>
         </div>
       </div>
       {currentUser ? (
