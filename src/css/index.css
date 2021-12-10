@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body {
   margin: 0;
   padding: 0;
@@ -48,3 +49,11 @@ body {
   border-radius: 50%;
   transition: transform 0.2s linear;
 }
+=======
+body{
+    margin: 0;
+    padding: 0;
+    background: rgb(27, 21, 57);
+    box-sizing: border-box;
+}
+>>>>>>> c9d5765ae2a0bf0f252424d3083399436d512b91

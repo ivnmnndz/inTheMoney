@@ -8,11 +8,19 @@
 
 .blockchain {
   background-image: url("../images/blockchain.svg");
+<<<<<<< HEAD
 width: 150px;
 height: 150px;
 position: absolute;
 top: 90px;
 background-size: cover;
+=======
+  width: 125px;
+  height: 125px;
+  position: absolute;
+  top: 60px;
+  background-size: cover;
+>>>>>>> c9d5765ae2a0bf0f252424d3083399436d512b91
 }
 
 .signup-container {
@@ -21,6 +29,12 @@ background-size: cover;
   height: 100vh;
   justify-content: center;
   width: 100%;
+<<<<<<< HEAD
+=======
+  background-color: rgb(27, 21, 57);
+  background-size: cover;
+  background-repeat: no-repeat;
+>>>>>>> c9d5765ae2a0bf0f252424d3083399436d512b91
 }
 
 .signup-form {
@@ -30,8 +44,13 @@ background-size: cover;
   width: 50%;
   height: 50%;
   color: rgb(254, 254, 254);
+<<<<<<< HEAD
+=======
+  justify-content: flex-start;
+>>>>>>> c9d5765ae2a0bf0f252424d3083399436d512b91
   align-items: center;
 }
+
 .signup-form h1 {
   text-align: center;
 }
@@ -90,4 +109,7 @@ background-size: cover;
   margin: 50px 0;
   cursor: pointer;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> c9d5765ae2a0bf0f252424d3083399436d512b91

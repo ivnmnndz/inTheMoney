@@ -7,6 +7,7 @@ import { logout } from "../firebase";
 
 const Navbar = () => {
   const { currentUser } = useContext(GlobalContext);
+<<<<<<< HEAD
 
 
   
@@ -45,6 +46,50 @@ const Navbar = () => {
         ) : null}
       </nav>
     </div>
+=======
+  
+  return (
+    <nav className="navbar">
+      <div className="nav-spacing-left">
+        <div id="nav-logo">
+          <Link to="/">💰</Link>
+        </div>
+        {/* inline style here, expecting to replace with an svg? */}
+        <div style={{ color: "white", padding: "0 10px" }}>
+          <span>In The Money</span>
+        </div>
+      </div>
+      {currentUser ? (
+        <div className="nav-spacing-right">
+        <Link className="nav-link" to="/">
+            Dashboard
+          </Link>
+
+          {/* icon for a potential dropdown menu */}
+          {/* <div className="nav-link">
+            <i className="far fa-user-circle fa-lg"></i>
+          </div> */}
+
+
+          <Link className="nav-link" to="/profile">
+            {currentUser.email}
+          </Link>
+          <Link className="nav-link" to="/" onClick={logout}>
+            <span>Logout</span>
+          </Link>
+        </div>
+      ) : (
+        <div className="nav-spacing-right">
+          <Link className="nav-link" to="/login">
+            <span>Log In</span>
+          </Link>
+          <Link className="nav-link" to="/signup">
+            <span>Sign Up</span>
+          </Link>
+        </div>
+      )}
+    </nav>
+>>>>>>> c9d5765ae2a0bf0f252424d3083399436d512b91
   );
 };
 

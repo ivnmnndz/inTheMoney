@@ -20,6 +20,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 
 const registerWithEmail = (email, password) =>
+<<<<<<< HEAD
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed in Success
@@ -32,6 +33,21 @@ const registerWithEmail = (email, password) =>
       const errorMessage = error.message;
       return error;
     });
+=======
+	createUserWithEmailAndPassword(auth, email, password)
+		.then(userCredential => {
+			// Signed in Success
+			const user = userCredential.user;
+			return user;
+			// ...
+		})
+		.catch(error => {
+			// Sign Failure
+			const errorCode = error.code;
+			const errorMessage = error.message;
+			return error;
+		});
+>>>>>>> c9d5765ae2a0bf0f252424d3083399436d512b91
 
 const signInWithEmail = (email, password) =>
   signInWithEmailAndPassword(auth, email, password)
