@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
 
 .homePage-container {
   align-items: center;
@@ -15,9 +14,9 @@
   top: 0;
 }
 
-.solgan {
+.slogan {
   text-align: center;
-  color: var(--color-white);
+  color:white;
   font-size: 6em;
   font-family: "Fredoka One", cursive;
   margin-top: 30vh;

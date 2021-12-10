@@ -18,13 +18,14 @@
  font-size: 70px;
  margin-bottom: 10px;
  margin-top: 0;
+ text-align: center;
 }
 
 .signup-form {
   display: flex;
   flex-direction: column;
   border-radius: 10px;
-  width: 50%;
+  width: 90%;
   height: 50%;
   color: rgb(254, 254, 254);
   align-items: center;
@@ -37,7 +38,7 @@
   background-color: transparent;
   border-radius: 5px;
   outline: none;
-  width:70%;
+  width:50%;
   color: rgb(215, 81, 121);
   transition: 0.3s;
 }
@@ -51,7 +52,8 @@
 }
 
 .signin-btn {
-  background-color: var(--color-teal);
+  background-color:rgb(12, 231, 168);
+  
   border: none;
   letter-spacing: 0.5px;
   font-weight: 700;
@@ -73,8 +75,10 @@
   color: var(--color-white);
 }
 
+
 .signup-form button {
-  background-color: var(--color-teal);
+  background-color:rgb(12, 231, 168);
+  
   border: none;
   letter-spacing: 0.5px;
   font-weight: 700;

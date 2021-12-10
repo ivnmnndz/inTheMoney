@@ -1,12 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Outfit&family=Poppins:wght@400;600;700;900&display=swap');
+
 body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
   background-color: rgb(27, 21, 57);
+  font-family: 'Montserrat', sans-serif;
+  font-family: 'Outfit', sans-serif;
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
 }
 * {
   box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  font-family: 'Outfit', sans-serif;
+  font-family: 'Poppins', sans-serif;
+
 }
+
 
 
 .label {
@@ -19,8 +29,10 @@ body {
   justify-content: space-between;
   padding: 5px;
   position: relative;
-  top: 15px;
-  right: 20px;
+  top: 12px;
+  right: 10px;
+  
+ 
 }
 .checkbox {
   opacity: 0;

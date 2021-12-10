@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 function HomePageNull() {
   return (
     <div className="homePage-container">
-      <h1 className="solgan">
+      <h1 className="slogan">
         Buy & Sell <i className="fab fa-bitcoin"></i> Today!
       </h1>
 
