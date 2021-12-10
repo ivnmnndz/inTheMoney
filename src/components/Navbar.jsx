@@ -6,21 +6,24 @@ import { logout } from "../firebase";
 
 const Navbar = () => {
   const { currentUser } = useContext(GlobalContext);
-  
+
   return (
     <nav className="navbar">
       <div className="nav-spacing-left">
         <div id="nav-logo">
-          <Link to="/">💰</Link>
-        </div>
-        {/* inline style here, expecting to replace with an svg? */}
-        <div style={{ color: "white", padding: "0 10px" }}>
-          <span>In The Money</span>
+          <Link to="/">
+            {/* inline style here, expecting to replace with an svg? */}
+            <div style={{ color: "white", padding: "0 10px" }}>
+              <span>
+                In the Money<i className="fab fa-bitcoin"></i>
+              </span>
+            </div>
+          </Link>
         </div>
       </div>
       {currentUser ? (
         <div className="nav-spacing-right">
-        <Link className="nav-link" to="/">
+          <Link className="nav-link" to="/">
             Dashboard
           </Link>
 
@@ -28,7 +31,6 @@ const Navbar = () => {
           {/* <div className="nav-link">
             <i className="far fa-user-circle fa-lg"></i>
           </div> */}
-
 
           <Link className="nav-link" to="/profile">
             {currentUser.email}
