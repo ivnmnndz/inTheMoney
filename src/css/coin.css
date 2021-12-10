@@ -1,74 +1,117 @@
-.coin-container{
-    display: flex;
-    justify-content: center;
+.coin-container {
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  color: black;
 }
 
-.coin-row{
-    display: flex;
-    flex-direction: row;
-    justify-items: start;
-    align-items: center;
-    height: 80px;
-    border-bottom: 1px solid #d7d7d7;
-    width: 1000px;
+.coin-row {
+  align-items: center;
+  color: white;
+  margin: 10px;
+  cursor: pointer;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100px;
+  border-bottom: 1px solid rgb(160, 160, 160);
+  justify-content: space-evenly;
 }
 
-.coin{
-    display: flex;
-    align-items: center;
-    padding-right: 24px;
-    min-width: 300px;
+.coin-row img {
+  width: 40px;
 }
 
-.coin h1{
+.coin-row h1 {
   font-size: 16px;
-  width: 150px;
-
-
 }
 
-.coin img{
-    height: 30px;
-    width: 30px;
-    margin-right: 10px;
-}
-
-.coin-symbol{
-    text-transform: uppercase;
-
-}
-
-.coin-data{
-text-align: center;
-justify-content: space-between;
-width: 100%;
-    display: flex;
-}
-
-.coin-price{
-    width: 110px;
-
+.coin-symbol {
+  text-transform: uppercase;
 }
 
 
-.coin-volume{
-    width: 230px;
+
+.red {
+  color: #f00606;
 }
 
-
-.coin-marketcap{
-    width: 240px;
+.green {
+  color: #11d811;
 }
 
-.coin-percent{
-    width: 80px;
-
+.modal {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.red{
-    color: #f00606;
+body.active-modal {
+  overflow-y: hidden;
 }
 
-.green{
-    color: #11d811;
+.btn-modal {
+  padding: 10px 20px;
+  display: block;
+  margin: 100px auto 0;
+  font-size: 18px;
+  background-color: rgb(12, 231, 168);
+}
+
+.modal,
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+}
+
+.overlay {
+  background: rgba(49, 49, 49, 0.8);
+}
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 1.4;
+  text-align: center;
+  background: rgb(16, 10, 31);
+  border-radius: 10px;
+  padding: 50px;
+  color: white;
+}
+
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 10px 14px;
+  background-color: rgb(12, 231, 168);
+
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+}
+
+.coin-btn button {
+  margin: 20px;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 35px;
+  color: black;
+  cursor: pointer;
+}
+
+.btn-buy {
+  background-color: rgb(12, 231, 168);
+}
+
+.btn-sell {
+  background-color: rgb(215, 81, 121);
 }

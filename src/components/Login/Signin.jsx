@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { signInWithEmail } from "../../firebase";
 import "../../css/signin.css";
 
-
 const Signin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -32,7 +31,9 @@ const Signin = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <button className="signin-btn" type="submit">Sign in</button>
+        <button className="signin-btn" type="submit">
+          Sign in
+        </button>
         <a href="/">Forgot your password?</a>
       </form>
     </div>

@@ -12,7 +12,7 @@ export const GlobalProvider = ({ children }) => {
     // turn listener on
     const unsubscribe = onAuthStateChanged(auth, (user) =>
       setCurrentUser(user)
-      );
+    );
     // turn listener off
     return () => {
       unsubscribe();
