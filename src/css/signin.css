@@ -34,7 +34,7 @@
 .signup-form input {
   padding: 10px;
   margin: 30px 0;
-  border: 3px solid rgb(12, 231, 168);
+  border: 3px solid var(--color-teal);
   background-color: transparent;
   border-radius: 5px;
   outline: none;
@@ -52,7 +52,7 @@
 }
 
 .signin-btn {
-  background-color:rgb(12, 231, 168);
+  background-color:var(--color-teal);
   
   border: none;
   letter-spacing: 0.5px;
@@ -66,7 +66,7 @@
 }
 
 .signin-btn:hover {
-  background-color: rgb(10, 185, 136);
+  background-color: var(--color-teal);
   color: rgb(215, 81, 121);
 }
 
@@ -77,7 +77,7 @@
 
 
 .signup-form button {
-  background-color:rgb(12, 231, 168);
+  background-color:var(--color-teal);
   
   border: none;
   letter-spacing: 0.5px;
@@ -91,6 +91,6 @@
 }
 
 .signup-form button:hover {
-  background-color: rgb(10, 185, 136);
+  background-color: var(--color-teal);
   color: rgb(215, 81, 121);
 }

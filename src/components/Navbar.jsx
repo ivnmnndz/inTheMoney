@@ -10,14 +10,15 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="nav-logo">
-        <Link to="/">💰</Link>
-        <span>In The Money</span>
+        {/* inline style here, expecting to replace with an svg? */}
+        <Link to="/">
+          <span>In the Money</span>
+        </Link>
       </div>
-      {/* inline style here, expecting to replace with an svg? */}
 
       {currentUser ? (
         <div className="nav-right">
-           <input type="checkbox" class="checkbox" id="chk" />
+          <input type="checkbox" class="checkbox" id="chk" />
           <label class="label" for="chk">
             <i class="fas fa-moon"></i>
             <i class="fas fa-sun"></i>
