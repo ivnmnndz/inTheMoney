@@ -4,11 +4,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Outfit&display=swap");
 
 * {
+  /* border: 1px dashed red; */
   /* font-family: 'JetBrains Mono', monospace; */
   font-family: "Montserrat", sans-serif;
   font-family: "Outfit", sans-serif;
   font-family: "Poppins", sans-serif;
-  /* Color-Pallet */
+  /* color-pallet */
   --color-purple: rgb(27, 21, 57);
   --color-teal: rgb(12, 231, 168);
   --color-red: #f00606;

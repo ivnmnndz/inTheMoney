@@ -13,18 +13,25 @@ const Navbar = () => {
         {/* inline style here, expecting to replace with an svg? */}
         <Link to="/">
           <span>In the Money</span>
-        </Link>
+        </Link>{" "}
+        {/* Theme toggler  */}
+        {/* <input type="checkbox" className="checkbox" id="chk" />
+        <label className="label" htmlFor="chk">
+          <i className="fas fa-moon"></i>
+          <i className="fas fa-sun"></i>
+          <div className="ball"></div>
+        </label> */}
       </div>
+      {/* Hambuger toggler- (only shows under 600px) */}
+      <input id="toggle1" type="checkbox" />
+      <label className="hamburger1" htmlFor="toggle1">
+        <div className="top"></div>
+        <div className="meat"></div>
+        <div className="bottom"></div>
+      </label>
 
       {currentUser ? (
         <div className="nav-right">
-
-          <input type="checkbox" className="checkbox" id="chk" />
-          <label className="label" htmlFor="chk">
-            <i className="fas fa-moon"></i>
-            <i className="fas fa-sun"></i>
-            <div className="ball"></div>
-          </label>
           <Link className="nav-link" to="/">
             Dashboard
           </Link>
@@ -43,12 +50,6 @@ const Navbar = () => {
         </div>
       ) : (
         <div className="nav-right">
-          <input type="checkbox" className="checkbox" id="chk" />
-          <label className="label" htmlFor="chk">
-            <i className="fas fa-moon"></i>
-            <i className="fas fa-sun"></i>
-            <div className="ball"></div>
-          </label>
           <Link className="nav-link" to="/login">
             <span>Log In</span>
           </Link>
