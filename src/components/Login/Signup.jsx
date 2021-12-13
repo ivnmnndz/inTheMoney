@@ -1,20 +1,24 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { registerWithEmail } from "../../firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { addUserDoc } from "../../firebase/db";
+import { documentId } from "@firebase/firestore";
+import { GlobalContext } from "../../context/GlobalState";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { currentUser } = useContext(GlobalContext);
 
   let navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     registerWithEmail(email, password);
-    addUserDoc(email);
+    currentUser && addUserDoc(email, currentUser.uid);
     navigate("/");
   };
+  currentUser && console.log(currentUser.uid);
 
   return (
     <>
