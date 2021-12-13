@@ -23,9 +23,8 @@
 .solgan {
   width: fit-content;
   text-align: center;
-  color: var(--color-white);
   font-size: 6.1em;
-  font-family: "Fredoka One", cursive;
+  /* font-family: "Fredoka One", cursive; */
   margin: auto;
   padding-top: 18%;
   padding-bottom: 2%;
@@ -39,7 +38,6 @@
 #create-User-btn {
   background-color: var(--color-red);
   border-radius: 25px;
-  color: var(--color-white);
   width: 250px;
   height: 50px;
   transition-duration: 0.5s;
@@ -52,7 +50,6 @@
 }
 
 #logIn-link {
-  color: var(--color-white);
   display: list-item;
   text-align: center;
   list-style-type: none;
