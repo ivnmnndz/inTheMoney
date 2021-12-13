@@ -1,13 +1,16 @@
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, setDoc, doc } from "firebase/firestore";
 
 import { db } from "./firebaseConfig";
 
-export const addUserDoc = async (email) => {
+export const addUserDoc = async (email, documentId) => {
   try {
-    const docRef = await addDoc(collection(db, "users"), {
-      email: email,
-    });
-    console.log("docunent written with id:", docRef.id);
+   await setDoc(
+      doc(db, "users", documentId, {
+        email: email,
+      })
+    );
+
+    console.log("docunent written with id:",documentId);
   } catch (error) {
     console.error("error", error);
   }
