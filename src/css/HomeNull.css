@@ -1,7 +1,6 @@
-
 .homePage-container {
   align-items: center;
-  display: inline-block;
+  display: table;
   height: 100vh;
   z-index: -1;
   justify-content: center;
@@ -10,23 +9,31 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  position: fixed;
   top: 0;
+  overflow: scroll;
+  /* position: fixed; */
 }
 
-.slogan {
+@media screen and (min-width: 600px) {
+  .homePage-container  {
+    position: fixed;
+  }
+}
+
+.solgan {
+  width: fit-content;
   text-align: center;
-  color:white;
-  font-size: 6em;
+  color: var(--color-white);
+  font-size: 6.1em;
   font-family: "Fredoka One", cursive;
-  margin-top: 30vh;
-  margin-bottom: 0.5em;
+  margin: auto;
+  padding-top: 18%;
+  padding-bottom: 2%;
 }
 .signup-login-container {
   margin: auto;
-  width: 50%;
-  display: flex;
-  gap: 10%;
+  width: fit-content;
+  display: table;
 }
 
 #create-User-btn {
@@ -36,13 +43,19 @@
   width: 250px;
   height: 50px;
   transition-duration: 0.5s;
+  margin: auto;
+  display: list-item;
 }
 
 #create-User-btn:hover {
-  background-color: var(--color-white);
+  background-color: var(--color-black);
 }
 
 #logIn-link {
-  text-align: center;
   color: var(--color-white);
+  display: list-item;
+  text-align: center;
+  list-style-type: none;
+  font-size: 75%;
+  margin-top: 10px;
 }
