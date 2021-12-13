@@ -13,7 +13,7 @@
 }
 .nav-logo span {
   margin-left: 20px;
-  color: var(--color-white);
+
   position: fixed;
   top: 15px;
 }
@@ -25,7 +25,6 @@
 .nav-link {
   padding: 14px 16px;
   text-decoration: none;
-  color: var(--color-white);
   transition: 0.5s;
 }
 
@@ -37,30 +36,6 @@
   display: none;
 }
 
-/* Response Menu Icon */
-@media screen and (max-width: 600px) {
-  .nav-right {
-    display: none;
-  }
-  .nav-right .nav-link {
-    margin-top: 50px;
-  }
-  .navbar .hamburger1 {
-    height: 45px;
-    margin: 10px;
-    grid-template-rows: repeat(3, 1fr);
-    float: right;
-    display: block;
-    top: 0;
-    position: fixed;
-    right: 0;
-  }
-}
-@media screen and (min-width: 600px) {
-  .nav-right {
-    display: flex!important;
-  }
-}
 /*Hamburger Menu */
 .hamburger1 {
   display: none;

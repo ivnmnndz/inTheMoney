@@ -48,12 +48,10 @@
 }
 
 .signup-form ::placeholder {
-  color: var(--color-white);
 }
 
 .signin-btn {
   background-color:var(--color-teal);
-  
   border: none;
   letter-spacing: 0.5px;
   font-weight: 700;
@@ -72,13 +70,11 @@
 
 .signup-form a {
   text-decoration: none;
-  color: var(--color-white);
 }
 
 
 .signup-form button {
   background-color:var(--color-teal);
-  
   border: none;
   letter-spacing: 0.5px;
   font-weight: 700;
