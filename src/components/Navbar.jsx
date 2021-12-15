@@ -1,16 +1,23 @@
 import React, { useContext } from "react";
 import "../css/Navbar.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { GlobalContext } from "../context/GlobalState";
 import { logout } from "../firebase/auth";
 
 const Navbar = () => {
-  const { currentUser } = useContext(GlobalContext);
+  const { currentUser, setCurrentUser } = useContext(GlobalContext);
+  
+  let navigate = useNavigate();
+  
+  const handleLogOut = () => {
+    logout();
+    setCurrentUser(null);
+    navigate("/");
+  };
 
   return (
     <nav className="navbar">
       <div className="nav-logo">
-        {/* inline style here, expecting to replace with an svg? */}
         <Link to="/">
           <span>In the Money</span>
         </Link>{" "}
@@ -44,7 +51,7 @@ const Navbar = () => {
           <Link className="nav-link" to="/profile">
             {currentUser.email}
           </Link>
-          <Link className="nav-link" to="/" onClick={logout}>
+          <Link className="nav-link" to="/" onClick={handleLogOut}>
             <span>Logout</span>
           </Link>
         </div>
