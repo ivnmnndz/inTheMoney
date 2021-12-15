@@ -19,7 +19,7 @@ export const GlobalProvider = ({ children }) => {
       unsubscribe();
     };
   }, []);
-  currentUser && console.log(currentUser.uid)
+  currentUser && console.log("auth'd user uid: ", currentUser.uid)
   return (
     <GlobalContext.Provider
       value={{

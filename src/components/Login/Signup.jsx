@@ -1,24 +1,21 @@
-import React, { useContext, useState } from "react";
-import { registerWithEmail } from "../../firebase/auth";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { registerWithEmail } from "../../firebase/auth";
 import { addUserDoc } from "../../firebase/db";
-import { documentId } from "@firebase/firestore";
-import { GlobalContext } from "../../context/GlobalState";
 
 const Signup = () => {
+  const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { currentUser } = useContext(GlobalContext);
 
   let navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    registerWithEmail(email, password);
-    currentUser && addUserDoc(email, currentUser.uid);
+    const user = await registerWithEmail(email, password);
+    await addUserDoc( user.uid, { displayName: userName, email: email, uid: user.uid } );
     navigate("/");
   };
-  currentUser && console.log(currentUser.uid);
 
   return (
     <>
@@ -26,6 +23,14 @@ const Signup = () => {
         <div className="blockchain"></div>
         <form onSubmit={handleSubmit} className="signup-form">
           <h1>Create an Account</h1>
+          <input
+            className="signup-input"
+            name="userName"
+            placeholder="User Name"
+            value={userName}
+            onChange={(e) => setUserName(e.target.value)}
+          />
+          
           <input
             className="signup-email"
             name="email"
