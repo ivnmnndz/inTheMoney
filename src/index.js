@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-import { GlobalProvider } from "./context/GlobalState"
+import { AuthProvider } from "./context/AuthState"
 import "./css/index.css"
 
 ReactDOM.render(
-  <GlobalProvider>
+  <AuthProvider>
     <App />
-  </GlobalProvider>,
+  </AuthProvider>,
   document.getElementById("root")
 );

@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import "../css/Navbar.css";
 import { Link, useNavigate } from "react-router-dom";
-import { GlobalContext } from "../context/GlobalState";
+import { AuthContext } from "../context/AuthState";
 import { logout } from "../firebase/auth";
 
 const Navbar = () => {
-  const { currentUser, setCurrentUser } = useContext(GlobalContext);
+  const { currentUser, setCurrentUser } = useContext(AuthContext);
   
   let navigate = useNavigate();
   
@@ -29,7 +29,7 @@ const Navbar = () => {
           <div className="ball"></div>
         </label> */}
       </div>
-      {/* Hambuger toggler- (only shows under 600px) */}
+      {/* Hamburger toggler- (only shows under 600px) */}
       <input id="toggle1" type="checkbox" />
       <label className="hamburger1" htmlFor="toggle1">
         <div className="top"></div>
@@ -42,14 +42,8 @@ const Navbar = () => {
           <Link className="nav-link" to="/">
             Dashboard
           </Link>
-
-          {/* icon for a potential dropdown menu */}
-          {/* <div className="nav-link">
-            <i className="far fa-user-circle fa-lg"></i>
-          </div> */}
-
           <Link className="nav-link" to="/profile">
-            {currentUser.email}
+            {currentUser.displayName}
           </Link>
           <Link className="nav-link" to="/" onClick={handleLogOut}>
             <span>Logout</span>

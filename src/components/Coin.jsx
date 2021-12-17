@@ -46,13 +46,13 @@ const Coin = ({
           <div className="modal-content">
             <h2>{name}</h2>
             <p>{price.toLocaleString()}</p>
-            <p>
+            <div>
               {priceChange < 0 ? (
                 <p className="coin-percent red">{priceChange.toFixed(2)}%</p>
               ) : (
                 <p className="coin-percent green">{priceChange.toFixed(2)}%</p>
               )}
-            </p>
+            </div>
             <div className="coin-btn">
               <button className="btn-buy">Buy</button>
               <button className="btn-sell">Sell</button>

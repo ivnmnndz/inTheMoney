@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import { GlobalContext } from "../context/GlobalState";
+import { AuthContext } from "../context/AuthState";
 import "../css/Profile.css";
 
 const Profile = () => {
-  const { currentUser } = useContext(GlobalContext);
+  const { currentUser } = useContext(AuthContext);
 
   //   const [users, setUsers] = useState([])
   //   const usersCollectionRef = collection(db,"users")
@@ -35,20 +35,10 @@ const Profile = () => {
     <div className="container">
       <div className="user-data">
         <div>
-          Name:
-          {currentUser.displayName ? (
-            <h3>{currentUser.displayName}</h3>
-          ) : (
-            <h1>{currentUser.email}</h1>
-          )}
-          <div>
-            Avatar:
-            {currentUser.photoURL ? (
-              <img src={currentUser.photoURL} alt="avatar" />
-            ) : (
-              <i className="far fa-user-circle fa-lg"></i>
-            )}
-          </div>
+          <span>Name:</span>
+          <h3>{currentUser.displayName}</h3>
+          <span>Email: </span>
+          <div>{currentUser.email}</div>
           <button>Edit Profile</button>
         </div>
         <div className="user-stats">

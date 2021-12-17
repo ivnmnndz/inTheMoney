@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { registerWithEmail } from "../../firebase/auth";
+import { registerWithEmail, updateAuthProfile } from "../../firebase/auth";
 import { addUserDoc } from "../../firebase/db";
 
 const Signup = () => {
@@ -13,7 +13,9 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const user = await registerWithEmail(email, password);
-    await addUserDoc( user.uid, { displayName: userName, email: email, uid: user.uid } );
+    updateAuthProfile({ displayName: userName });
+    const data = { displayName: userName, email: email, uid: user.uid };
+    await addUserDoc(user.uid, data);
     navigate("/");
   };
 
@@ -30,7 +32,7 @@ const Signup = () => {
             value={userName}
             onChange={(e) => setUserName(e.target.value)}
           />
-          
+
           <input
             className="signup-email"
             name="email"
@@ -46,6 +48,14 @@ const Signup = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
+
+          {/* <input
+            name="confirmPassword"
+            className="confirm-password"
+            placeholder="Confirm Password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+          /> */}
           <button type="submit">Submit</button>
         </form>
       </div>

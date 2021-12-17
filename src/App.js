@@ -6,39 +6,26 @@ import Signin from "./components/Login/Signin";
 import Signup from "./components/Login/Signup";
 import Profile from "./views/Profile";
 import { getUserDoc } from "./firebase/db";
-import { GlobalContext } from "./context/GlobalState";
+import { AuthContext } from "./context/AuthState";
 
 const App = () => {
-  const { currentUser } = useContext(GlobalContext);
-  const [userDetails, setUserDetails] = useState({});
+  const { currentUser } = useContext(AuthContext);
+  const [userDetails, setUserDetails] = useState(null);
 
-	// this works, how should it really look?
-  const get = async () => {
-		if (currentUser) {
-			const user = await getUserDoc(currentUser.uid);
-			console.log(user);
-		} else {
-			console.log('no user yet')
-		}
-  };
-  get();
+  useEffect(() => {
+    const fetchSingleUser = async () => {
+      if (currentUser) {
+        const user = await getUserDoc(currentUser.uid);
+        console.log(user);
+        setUserDetails(user);
+      } else {
+        console.log("no user yet");
+      }
+    };
+    fetchSingleUser();
+  }, []);
 
-//infinite loop below
-
-// 	async function fetch() {
-// 		if (currentUser) {
-// 			const user = await getUserDoc(currentUser.uid);
-// 			console.log(user);
-// 			setUserDetails(user)
-// 		} else {
-// 			console.log('no user yet')
-// 		}
-// 	}
-// 	useEffect(() => {
-// 		fetch();
-// 	})
-//
-// console.log("user details state: ",userDetails);
+  console.log("user details state: ", userDetails);
 
   return (
     <BrowserRouter>
