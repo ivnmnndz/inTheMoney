@@ -4,17 +4,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Outfit&display=swap");
 
 @media screen and (min-width: 600px) {
-  .homePage-container  {
-    position: fixed;
-  }
 }
 /* Response Menu Icon */
 @media screen and (max-width: 600px) {
+  .navbar {
+    padding: 20px 0;
+  }
+
   .nav-right {
     display: none;
   }
-  .nav-right .nav-link {
-    margin-top: 50px;
+  .nav-link {
+    width: fit-content;
   }
   .navbar .hamburger1 {
     height: 45px;
@@ -25,11 +26,12 @@
     top: 0;
     position: fixed;
     right: 0;
+    cursor: pointer;
   }
 }
 @media screen and (min-width: 600px) {
   .nav-right {
-    display: flex!important;
+    display: flex !important;
   }
 }
 
@@ -39,7 +41,7 @@
   --color-teal: rgb(12, 231, 168);
   --color-red: #f00606;
   --color-white: white;
-  --color-black:black;
+  --color-black: black;
 }
 .red {
   color: #f00606;
@@ -50,11 +52,12 @@
 }
 
 * {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
   /* font-family: "Montserrat", sans-serif;
   font-family: "Outfit", sans-serif;
   font-family: "Poppins", sans-serif; */
-  color: var(--color-white)
+  color: var(--color-white);
+  text-decoration: none;
 }
 
 body {
@@ -62,4 +65,10 @@ body {
   padding: 0;
   background: var(--color-purple);
   /* box-sizing: border-box; */
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
