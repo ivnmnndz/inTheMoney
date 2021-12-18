@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../context/GlobalState";
 import "../css/Profile.css";
+import { getUserDoc } from "../firebase/db";
 
 const Profile = () => {
   const { currentUser } = useContext(GlobalContext);

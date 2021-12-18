@@ -12,33 +12,33 @@ const App = () => {
   const { currentUser } = useContext(GlobalContext);
   const [userDetails, setUserDetails] = useState({});
 
-	// this works, how should it really look?
+  // this works, how should it really look?
   const get = async () => {
-		if (currentUser) {
-			const user = await getUserDoc(currentUser.uid);
-			console.log(user);
-		} else {
-			console.log('no user yet')
-		}
+    if (currentUser) {
+      const user = await getUserDoc(currentUser.uid);
+      console.log(user);
+    } else {
+      console.log("no user yet");
+    }
   };
   get();
 
-//infinite loop below
+  //infinite loop below
 
-// 	async function fetch() {
-// 		if (currentUser) {
-// 			const user = await getUserDoc(currentUser.uid);
-// 			console.log(user);
-// 			setUserDetails(user)
-// 		} else {
-// 			console.log('no user yet')
-// 		}
-// 	}
-// 	useEffect(() => {
-// 		fetch();
-// 	})
-//
-// console.log("user details state: ",userDetails);
+  // 	async function fetch() {
+  // 		if (currentUser) {
+  // 			const user = await getUserDoc(currentUser.uid);
+  // 			console.log(user);
+  // 			setUserDetails(user)
+  // 		} else {
+  // 			console.log('no user yet')
+  // 		}
+  // 	}
+  // 	useEffect(() => {
+  // 		fetch();
+  // 	})
+  //
+  // console.log("user details state: ",userDetails);
 
   return (
     <BrowserRouter>

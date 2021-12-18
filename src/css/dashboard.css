@@ -1,9 +1,12 @@
 .coin-app {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  margin-top: 50px;
+  top: 100px;
+  position: relative;
   color: white;
+  z-index: 1;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .coin-search {
@@ -12,6 +15,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .coin-text {
