@@ -1,6 +1,7 @@
-import React, { useContext } from "react";
-import { AuthContext } from "../context/AuthState";
+import React, { useContext, useEffect } from "react";
 import "../css/Profile.css";
+import { AuthContext } from "../context/AuthState";
+import { getMyTrades } from "../firebase/db";
 
 const Profile = () => {
   const { currentUser } = useContext(AuthContext);
@@ -30,7 +31,18 @@ const Profile = () => {
   //     })}
   //   </div>
   // )
-
+  useEffect(() => {
+    // getMyTrades(currentUser.uid)
+  }, []);
+  const getTrades = async () => {
+    if (currentUser) {
+      await getMyTrades(currentUser.uid);
+    } else {
+      console.log("error");
+    }
+  };
+  getTrades();
+  
   return currentUser ? (
     <div className="container">
       <div className="user-data">
@@ -49,6 +61,9 @@ const Profile = () => {
           <span>avg trade length: 30 days</span>
         </div>
         <button>Make a trade</button>
+      </div>
+      <div>
+        <h2>My Trades</h2>
       </div>
     </div>
   ) : (
