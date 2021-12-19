@@ -17,7 +17,7 @@ const App = () => {
     if (currentUser) {
       const user = await getUserDoc(currentUser.uid);
       console.log(user);
-      setIsLoading(false);
+       setIsLoading(false);
     } else {
       console.log("no user yet");
     }

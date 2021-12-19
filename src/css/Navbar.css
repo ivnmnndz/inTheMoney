@@ -1,25 +1,33 @@
 /* navbar general styles */
 
-
 .navbar {
   display: flex;
   width: 100%;
   align-items: center;
   justify-content: space-between;
+  position: fixed;
+  z-index: 2;
+  background-color: black;
 }
 
 .sign .nav-logo {
   margin: 0 10px;
 }
-.nav-logo span {
+.nav-logo div {
   margin-left: 20px;
-
-  position: fixed;
-  top: 15px;
+  display: flex;
 }
 
 .nav-right {
   display: flex;
+}
+
+.nav-link span {
+  transition: 0.5s;
+}
+
+.nav-link span:hover {
+  color: black;
 }
 
 .nav-link {
