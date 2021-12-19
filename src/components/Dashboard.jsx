@@ -8,7 +8,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     fetch(
-      "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=1&sparkline=false"
+      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=1&sparkline=false`
     )
       .then((res) => {
         if (!res.ok) {
@@ -23,9 +23,39 @@ const Dashboard = () => {
     setSearch(e.target.value);
   };
 
-  const filteredCoins = coins.filter((coin) =>
-    coin.name.toLowerCase().includes(search.toLowerCase())
+  const filteredCoins = coins.filter(
+    (coin) =>
+      coin.name.toLowerCase().includes(search.toLowerCase()) ||
+      coin.symbol.toLowerCase().includes(search.toLowerCase())
   );
+  // Sort By Value
+  const SortByValue = () => {
+    console.log(
+      coins.sort((a, b) => {
+        return a.current_price - b.current_price;
+      })
+    );
+  };
+
+  // Sort By Name
+  const SortbyName = () => {
+   console.log(
+      coins.sort(function (a, b) {
+        let nameA = a.name.toUpperCase();
+        let nameB = b.name.toUpperCase();
+        if (nameA < nameB) {
+          return -1;
+        }
+        if (nameA > nameB) {
+          return 1;
+        }
+        // names must be equal
+        return 0;
+      })
+     
+    ); 
+    
+  };
 
   return (
     <div className="coin-app">
@@ -39,6 +69,9 @@ const Dashboard = () => {
             onChange={handleChange}
           />
         </form>
+
+        <button onClick={SortbyName}>Sort via Name</button>
+        <button onClick={SortByValue}>Sort via Value</button>
       </div>
       {filteredCoins.map((coin) => {
         return (

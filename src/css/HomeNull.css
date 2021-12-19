@@ -11,7 +11,7 @@
   background-position: center;
   top: 0;
   overflow: scroll;
-  /* position: fixed; */
+  position: fixed;
 }
 
 @media screen and (min-width: 600px) {

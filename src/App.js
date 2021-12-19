@@ -9,7 +9,7 @@ import { getUserDoc } from "./firebase/db";
 import { GlobalContext } from "./context/GlobalState";
 
 const App = () => {
-  const { currentUser } = useContext(GlobalContext);
+  const { currentUser, setIsLoading } = useContext(GlobalContext);
   const [userDetails, setUserDetails] = useState({});
 
   // this works, how should it really look?
@@ -17,6 +17,7 @@ const App = () => {
     if (currentUser) {
       const user = await getUserDoc(currentUser.uid);
       console.log(user);
+       setIsLoading(false);
     } else {
       console.log("no user yet");
     }
