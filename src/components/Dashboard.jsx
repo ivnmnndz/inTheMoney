@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, nextID } from "react";
 import "../css/dashboard.css";
 import Coin from "./Coin";
 
-const Dashboard = () => {
+const Dashboard = (index) => {
   const [coins, setCoins] = useState([]);
   const [search, setSearch] = useState("");
+  const [sortBy, setSortBy] = useState();
 
   useEffect(() => {
     fetch(
@@ -30,31 +31,28 @@ const Dashboard = () => {
   );
   // Sort By Value
   const SortByValue = () => {
-    console.log(
-      coins.sort((a, b) => {
-        return a.current_price - b.current_price;
-      })
-    );
+    const sortedCoins = coins.sort((a, b) => {
+      return b.current_price - a.current_price;
+    });
+    setCoins([...coins], !sortedCoins);
   };
 
   // Sort By Name
   const SortbyName = () => {
-   console.log(
-      coins.sort(function (a, b) {
-        let nameA = a.name.toUpperCase();
-        let nameB = b.name.toUpperCase();
-        if (nameA < nameB) {
-          return -1;
-        }
-        if (nameA > nameB) {
-          return 1;
-        }
-        // names must be equal
-        return 0;
-      })
-     
-    ); 
-    
+    const sortedCoins = coins.sort(function (a, b) {
+      let nameA = a.name.toUpperCase();
+      let nameB = b.name.toUpperCase();
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+      // names must be equal
+      return 0;
+    });
+
+    setCoins([...coins], !sortedCoins);
   };
 
   return (
@@ -69,9 +67,12 @@ const Dashboard = () => {
             onChange={handleChange}
           />
         </form>
-
-        <button onClick={SortbyName}>Sort via Name</button>
-        <button onClick={SortByValue}>Sort via Value</button>
+        <button className="sort" onClick={SortbyName}>
+          Sort via Name
+        </button>
+        <button className="sort" onClick={SortByValue}>
+          Sort via Value
+        </button>
       </div>
       {filteredCoins.map((coin) => {
         return (
