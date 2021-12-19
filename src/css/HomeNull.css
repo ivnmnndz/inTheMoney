@@ -14,12 +14,6 @@
   position: fixed;
 }
 
-@media screen and (min-width: 600px) {
-  .homePage-container  {
-    position: fixed;
-  }
-}
-
 .solgan {
   width: fit-content;
   text-align: center;
