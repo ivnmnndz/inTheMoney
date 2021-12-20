@@ -75,39 +75,38 @@ const Dashboard = () => {
         </form>
       </div>
       <div className="sort-menu">
-          <label>Sort by: </label>
-
-          <li onClick={SortByName} onMouseEnter={(e) => setSortType("name")}>
-            Coin<i className="fas fa-sort"></i>
-          </li>
-          <li onClick={SortByName} onMouseEnter={(e) => setSortType("symbol")}>
-            Symbol<i className="fas fa-sort"></i>
-          </li>
-          <li
-            onClick={SortByValue}
-            onMouseEnter={(e) => setSortType("current_price")}
-          >
-            Price<i className="fas fa-sort"></i>
-          </li>
-          <li
-            onClick={SortByValue}
-            onMouseEnter={(e) => setSortType("total_volume")}
-          >
-            Vol.<i className="fas fa-sort"></i>
-          </li>
-          <li
-            onClick={SortByValue}
-            onMouseEnter={(e) => setSortType("price_change_percentage_24h")}
-          >
-            %<i className="fas fa-sort"></i>
-          </li>
-          <li
-            onClick={SortByValue}
-            onMouseEnter={(e) => setSortType("market_cap")}
-          >
-            Mkt Cap<i className="fas fa-sort"></i>
-          </li>
-        </div>
+        <label>Sort by: </label>
+        <li onClick={SortByName} onMouseEnter={(e) => setSortType("name")}>
+          Coin<i className="fas fa-sort"></i>
+        </li>
+        <li onClick={SortByName} onMouseEnter={(e) => setSortType("symbol")}>
+          Symbol<i className="fas fa-sort"></i>
+        </li>
+        <li
+          onClick={SortByValue}
+          onMouseEnter={(e) => setSortType("current_price")}
+        >
+          Price<i className="fas fa-sort"></i>
+        </li>
+        <li
+          onClick={SortByValue}
+          onMouseEnter={(e) => setSortType("total_volume")}
+        >
+          Vol.<i className="fas fa-sort"></i>
+        </li>
+        <li
+          onClick={SortByValue}
+          onMouseEnter={(e) => setSortType("price_change_percentage_24h")}
+        >
+          %<i className="fas fa-sort"></i>
+        </li>
+        <li
+          onClick={SortByValue}
+          onMouseEnter={(e) => setSortType("market_cap")}
+        >
+          Mkt Cap<i className="fas fa-sort"></i>
+        </li>
+      </div>
       {filteredCoins.map((coin) => {
         return (
           <Coin
