@@ -78,7 +78,7 @@ const Dashboard = () => {
           <label>Sort by: </label>
 
           <li onClick={SortByName} onMouseEnter={(e) => setSortType("name")}>
-            Name<i className="fas fa-sort"></i>
+            Coin<i className="fas fa-sort"></i>
           </li>
           <li onClick={SortByName} onMouseEnter={(e) => setSortType("symbol")}>
             Symbol<i className="fas fa-sort"></i>
@@ -93,7 +93,7 @@ const Dashboard = () => {
             onClick={SortByValue}
             onMouseEnter={(e) => setSortType("total_volume")}
           >
-            Volume<i className="fas fa-sort"></i>
+            Vol.<i className="fas fa-sort"></i>
           </li>
           <li
             onClick={SortByValue}
@@ -105,7 +105,7 @@ const Dashboard = () => {
             onClick={SortByValue}
             onMouseEnter={(e) => setSortType("market_cap")}
           >
-            Market Cap<i className="fas fa-sort"></i>
+            Mkt Cap<i className="fas fa-sort"></i>
           </li>
         </div>
       {filteredCoins.map((coin) => {
