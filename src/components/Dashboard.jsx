@@ -2,10 +2,11 @@ import React, { useState, useEffect, nextID } from "react";
 import "../css/dashboard.css";
 import Coin from "./Coin";
 
-const Dashboard = (index) => {
+const Dashboard = () => {
   const [coins, setCoins] = useState([]);
   const [search, setSearch] = useState("");
-  const [sortBy, setSortBy] = useState();
+  const [sortType, setSortType] = useState("market_cap");
+  const [sortOrder, setSortOrder] = useState(true);
 
   useEffect(() => {
     fetch(
@@ -31,24 +32,31 @@ const Dashboard = (index) => {
   );
   // Sort By Value
   const SortByValue = () => {
+    setSortOrder(!sortOrder);
     const sortedCoins = coins.sort((a, b) => {
-      return b.current_price - a.current_price;
+      return sortOrder ? b[sortType] - a[sortType] : a[sortType] - b[sortType];
     });
-    setCoins([...coins], !sortedCoins);
+    setCoins([...coins], sortedCoins);
+;
   };
 
   // Sort By Name
-  const SortbyName = () => {
+  const SortByName = () => {
+    setSortOrder(!sortOrder);
+
     const sortedCoins = coins.sort(function (a, b) {
-      let nameA = a.name.toUpperCase();
-      let nameB = b.name.toUpperCase();
+      let nameA = sortOrder
+        ? a[sortType].toUpperCase()
+        : b[sortType].toUpperCase();
+      let nameB = sortOrder
+        ? b[sortType].toUpperCase()
+        : a[sortType].toUpperCase();
       if (nameA < nameB) {
         return -1;
       }
       if (nameA > nameB) {
         return 1;
       }
-      // names must be equal
       return 0;
     });
 
@@ -67,12 +75,48 @@ const Dashboard = (index) => {
             onChange={handleChange}
           />
         </form>
-        <button className="sort" onClick={SortbyName}>
-          Sort via Name
-        </button>
-        <button className="sort" onClick={SortByValue}>
-          Sort via Value
-        </button>
+        <div className="sort-menu">
+          <label>Sort by: </label>
+
+          <li
+            onClick={SortByName}
+            onMouseEnter={(e) => setSortType("name")}
+          >
+            Name<i className="fas fa-sort"></i>
+          </li>
+          <li
+            onClick={SortByName}
+            onMouseEnter={
+              (e) => setSortType("symbol")
+            }
+          >
+            Symbol<i className="fas fa-sort"></i>
+          </li>
+          <li
+            onClick={SortByValue}
+            onMouseEnter={(e) => setSortType("current_price")}
+          >
+            Price<i className="fas fa-sort"></i>
+          </li>
+          <li
+            onClick={SortByValue}
+            onMouseEnter={(e) => setSortType("total_volume")}
+          >
+            Volume<i className="fas fa-sort"></i>
+          </li>
+          <li
+            onClick={SortByValue}
+            onMouseEnter={(e) => setSortType("price_change_percentage_24h")}
+          >
+            %<i className="fas fa-sort"></i>
+          </li>
+          <li
+            onClick={SortByValue}
+            onMouseEnter={(e) => setSortType("market_cap")}
+          >
+            Market Cap<i className="fas fa-sort"></i>
+          </li>
+        </div>
       </div>
       {filteredCoins.map((coin) => {
         return (
