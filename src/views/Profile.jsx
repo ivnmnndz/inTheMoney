@@ -31,9 +31,6 @@ const Profile = () => {
   //     })}
   //   </div>
   // )
-  useEffect(() => {
-    // getMyTrades(currentUser.uid)
-  }, []);
   const getTrades = async () => {
     if (currentUser) {
       await getMyTrades(currentUser.uid);
@@ -41,7 +38,9 @@ const Profile = () => {
       console.log("error");
     }
   };
-  getTrades();
+  useEffect(() => {
+    getTrades();
+  }, []);
   
   return currentUser ? (
     <div className="container">

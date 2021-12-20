@@ -8,7 +8,7 @@ const Navbar = () => {
   const { currentUser, setCurrentUser } = useContext(AuthContext);
   
   let navigate = useNavigate();
-  
+
   const handleLogOut = () => {
     logout();
     setCurrentUser(null);
@@ -19,7 +19,7 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="nav-logo">
         <Link to="/">
-          <span>In the Money</span>
+          <div>In the Money</div>
         </Link>{" "}
         {/* Theme toggler  */}
         {/* <input type="checkbox" className="checkbox" id="chk" />

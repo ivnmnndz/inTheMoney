@@ -1,9 +1,9 @@
 import { db } from "./firebaseConfig";
-import { query, orderBy, where, collection, doc, getDoc, getDocs, addDoc, setDoc, QuerySnapshot } from "firebase/firestore";
+import { query, where, collection, doc, getDoc, getDocs, addDoc, setDoc } from "firebase/firestore";
 
 export const addUserDoc = async (documentId, data) => {
-  const docRef = doc(db, "users", documentId);
   try {
+    const docRef = doc(db, "users", documentId);
     await setDoc(docRef, data);
     console.log("document written with id: ", documentId);
   } catch (error) {

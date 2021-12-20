@@ -9,9 +9,9 @@ const Signin = () => {
   
   let navigate = useNavigate();
 
-  const handleSignin = (e) => {
+  const handleSignin = async (e) => {
     e.preventDefault();
-    signInWithEmail(email, password);
+    await signInWithEmail(email, password);
     navigate("/")
   };
 
