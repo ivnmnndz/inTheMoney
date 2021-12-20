@@ -30,17 +30,7 @@ const Dashboard = () => {
       coin.name.toLowerCase().includes(search.toLowerCase()) ||
       coin.symbol.toLowerCase().includes(search.toLowerCase())
   );
-  // Sort By Value
-  const SortByValue = () => {
-    setSortOrder(!sortOrder);
-    const sortedCoins = coins.sort((a, b) => {
-      return sortOrder ? b[sortType] - a[sortType] : a[sortType] - b[sortType];
-    });
-    setCoins([...coins], sortedCoins);
-;
-  };
 
-  // Sort By Name
   const SortByName = () => {
     setSortOrder(!sortOrder);
 
@@ -63,6 +53,14 @@ const Dashboard = () => {
     setCoins([...coins], !sortedCoins);
   };
 
+  const SortByValue = () => {
+    setSortOrder(!sortOrder);
+    const sortedCoins = coins.sort((a, b) => {
+      return sortOrder ? b[sortType] - a[sortType] : a[sortType] - b[sortType];
+    });
+    setCoins([...coins], sortedCoins);
+  };
+
   return (
     <div className="coin-app">
       <div className="coin-search">
@@ -75,21 +73,14 @@ const Dashboard = () => {
             onChange={handleChange}
           />
         </form>
-        <div className="sort-menu">
+      </div>
+      <div className="sort-menu">
           <label>Sort by: </label>
 
-          <li
-            onClick={SortByName}
-            onMouseEnter={(e) => setSortType("name")}
-          >
+          <li onClick={SortByName} onMouseEnter={(e) => setSortType("name")}>
             Name<i className="fas fa-sort"></i>
           </li>
-          <li
-            onClick={SortByName}
-            onMouseEnter={
-              (e) => setSortType("symbol")
-            }
-          >
+          <li onClick={SortByName} onMouseEnter={(e) => setSortType("symbol")}>
             Symbol<i className="fas fa-sort"></i>
           </li>
           <li
@@ -117,7 +108,6 @@ const Dashboard = () => {
             Market Cap<i className="fas fa-sort"></i>
           </li>
         </div>
-      </div>
       {filteredCoins.map((coin) => {
         return (
           <Coin
