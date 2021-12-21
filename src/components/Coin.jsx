@@ -14,7 +14,7 @@ const Coin = ({
 }) => {
   const { currentUser } = useContext(GlobalContext);
   /* const inputRef = useRef(0); */
-  const [modal, setModal] = useState(false);
+  const [currency, setCurrency] = useState(false);
   const [trade, setTrade] = useState(false);
 
   const tradeInfo = {
@@ -28,6 +28,7 @@ const Coin = ({
   const [tradeData, setTradeData] = useState(tradeInfo);
 
   const result = price * tradeData.quantity;
+  const cryptoQuantity = tradeData.quantity / price;
 
   const handleChange = async (e) => {
     setTradeData({
@@ -39,6 +40,11 @@ const Coin = ({
 
   const tradeModal = () => {
     setTrade(!trade);
+    setCurrency(false);
+  };
+
+  const handleCurrencyExchange = () => {
+    setCurrency(!currency);
   };
 
   if (trade) {
@@ -75,38 +81,67 @@ const Coin = ({
           <div onClick={tradeModal} className="trade-overlay"></div>
           <div className="modal-content">
             <div className="trade-modal-header">
-              <select name="currencySelect" id="">
-                <option defaultValue value="usd">
-                  USD
-                </option>
-                <option value={name}>{symbol.toUpperCase()}</option>
-              </select>
+              <div>
+                <button className="trade-modal-btn">
+                  Buy {symbol.toUpperCase()}
+                </button>
+                <button className="trade-modal-btn">
+                  Sell {symbol.toUpperCase()}
+                </button>
+              </div>
+
               <button className="close-modal" onClick={tradeModal}>
                 X
               </button>
             </div>
-            <h2>{name}</h2>
 
             <form onSubmit={handleSubmit} className="trade-form" action="">
+              <div>
+                <span>Buy in</span>
+                <select onChange={handleCurrencyExchange} name="" id="">
+                  <option>{symbol.toUpperCase()}</option>
+                  <option>USD</option>
+                </select>
+              </div>
               <label htmlFor="trade-input">
-                {`Amount in ${symbol.toUpperCase()}`}
-                <input
-                  /* ref={inputRef} */
-                  onChange={handleChange}
-                  name="quantity"
-                  type="number"
-                  id="trade-input"
-                  value={tradeData.quantity}
-                />
+                Amount
+                {currency ? (
+                  <input
+                    onChange={handleChange}
+                    placeholder="$0.00"
+                    name="quantity"
+                    type="number"
+                    id="trade-input"
+                    value={tradeData.quantity}
+                  />
+                ) : (
+                  <input
+                    onChange={handleChange}
+                    placeholder="0"
+                    name="quantity"
+                    type="number"
+                    id="trade-input"
+                    value={tradeData.quantity}
+                  />
+                )}
               </label>
               <div>
-                <span>Est Price</span>
+                <span>Current Price</span>
                 <span>${price.toLocaleString()}</span>
               </div>
-              <div>
-                <span>Est Cost</span>
-                <span>${result}</span>
-              </div>
+
+              {currency ? (
+                <div>
+                  <span>{`Est ${symbol.toUpperCase()}`}</span>
+                  <span>{cryptoQuantity.toFixed(5)}</span>
+                </div>
+              ) : (
+                <div>
+                  <span>Est Cost</span>
+                  <span>${result.toFixed(2)}</span>
+                </div>
+              )}
+
               <div>
                 <button className="trade-form-btn" type="submit">
                   Confirm Trade
