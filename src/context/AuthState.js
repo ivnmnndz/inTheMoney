@@ -8,6 +8,7 @@ export const AuthContext = createContext();
 //export a provider component to wrap children components
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     // turn listener on
@@ -19,12 +20,14 @@ export const AuthProvider = ({ children }) => {
       unsubscribe();
     };
   }, []);
-  currentUser && console.log("auth'd user uid: ", currentUser.uid)
+  currentUser && console.log("auth'd user uid: ", currentUser.uid);
   return (
     <AuthContext.Provider
       value={{
         currentUser,
         setCurrentUser,
+        isLoading,
+        setIsLoading,
       }}
     >
       {children}

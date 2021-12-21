@@ -11,13 +11,7 @@
   background-position: center;
   top: 0;
   overflow: scroll;
-  /* position: fixed; */
-}
-
-@media screen and (min-width: 600px) {
-  .homePage-container  {
-    position: fixed;
-  }
+  position: fixed;
 }
 
 .solgan {

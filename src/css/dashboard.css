@@ -43,3 +43,8 @@
 .coin-input::placeholder {
   color: black;
 }
+
+.sort-menu{
+  display: flex;
+ gap: 20px;
+}

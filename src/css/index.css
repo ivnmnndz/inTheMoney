@@ -33,6 +33,9 @@
   .nav-right {
     display: flex !important;
   }
+  .homePage-container {
+    position: fixed;
+  }
 }
 
 :root {
