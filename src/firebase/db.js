@@ -1,9 +1,9 @@
 import { db } from "./firebaseConfig";
-import { getDoc, setDoc, doc, collection, addDoc } from "firebase/firestore";
+import { query, where, collection, doc, getDoc, getDocs, addDoc, setDoc } from "firebase/firestore";
 
 export const addUserDoc = async (documentId, data) => {
-  const docRef = doc(db, "users", documentId);
   try {
+    const docRef = doc(db, "users", documentId);
     await setDoc(docRef, data);
     console.log("document written with id: ", documentId);
   } catch (error) {
@@ -16,19 +16,22 @@ export const addTradeDoc = async (data) => {
     const docRef = await addDoc(collection(db, "trades"), data);
     console.log("Document written with ID: ", docRef.id);
   } catch (error) {
-    console.error("error", error);
+    console.error("error: ", error);
   }
 };
 
-/* 
-
-// Add a new document with a generated id.
-
-const docRef = await addDoc(collection(db, "trades"), {
-  boughtPrice: "Tokyo",
-  country: "Japan"
-});
-console.log("Document written with ID: ", docRef.id); */
+export const getMyTrades = async (uid) => {
+  try {
+    const collectionRef = collection(db,"trades");
+    const q = query(collectionRef, where(uid, "==", true));
+    const querySnapShot = await getDocs(q);
+    querySnapShot.forEach((doc) => {
+    console.log(doc.id, " => ", doc.data());
+    })
+  } catch (error) {
+    console.log(error)
+  }
+};
 
 export const getUserDoc = async (documentId) => {
   const docRef = doc(db, "users", documentId);

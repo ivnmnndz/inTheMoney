@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
-import { GlobalContext } from "../context/GlobalState";
+import React, { useContext, useEffect } from "react";
 import "../css/Profile.css";
-import { getUserDoc } from "../firebase/db";
+import { AuthContext } from "../context/AuthState";
+import { getMyTrades } from "../firebase/db";
 
 const Profile = () => {
-  const { currentUser } = useContext(GlobalContext);
+  const { currentUser } = useContext(AuthContext);
 
   //   const [users, setUsers] = useState([])
   //   const usersCollectionRef = collection(db,"users")
@@ -31,25 +31,25 @@ const Profile = () => {
   //     })}
   //   </div>
   // )
-
+  const getTrades = async () => {
+    if (currentUser) {
+      await getMyTrades(currentUser.uid);
+    } else {
+      console.log("error");
+    }
+  };
+  useEffect(() => {
+    getTrades();
+  }, []);
+  
   return currentUser ? (
     <div className="container">
       <div className="user-data">
         <div>
-          Name:
-          {currentUser.displayName ? (
-            <h3>{currentUser.displayName}</h3>
-          ) : (
-            <h1>{currentUser.email}</h1>
-          )}
-          <div>
-            Avatar:
-            {currentUser.photoURL ? (
-              <img src={currentUser.photoURL} alt="avatar" />
-            ) : (
-              <i className="far fa-user-circle fa-lg"></i>
-            )}
-          </div>
+          <span>Name:</span>
+          <h3>{currentUser.displayName}</h3>
+          <span>Email: </span>
+          <div>{currentUser.email}</div>
           <button>Edit Profile</button>
         </div>
         <div className="user-stats">
@@ -60,6 +60,9 @@ const Profile = () => {
           <span>avg trade length: 30 days</span>
         </div>
         <button>Make a trade</button>
+      </div>
+      <div>
+        <h2>My Trades</h2>
       </div>
     </div>
   ) : (

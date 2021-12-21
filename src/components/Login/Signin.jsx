@@ -2,23 +2,22 @@ import React, { useState, useContext} from "react";
 import { signInWithEmail } from "../../firebase/auth";
 import "../../css/signin.css";
 import { useNavigate } from "react-router-dom";
-import { GlobalContext } from "../../context/GlobalState";
+import { AuthContext } from "../../context/AuthState";
 
 const Signin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-const {setIsLoading} = useContext(GlobalContext)
+const {setIsLoading} = useContext(AuthContext)
 
   let navigate = useNavigate();
 
-
-  const handleSignin = (e) => {
-    e.preventDefault(); 
+  const handleSignin = async (e) => {
+    e.preventDefault();
     setIsLoading(true);
-    signInWithEmail(email, password);
-    navigate("/");
-   
+    await signInWithEmail(email, password);
+    setIsLoading(false);
+    navigate("/")
   };
 
     return (

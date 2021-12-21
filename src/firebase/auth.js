@@ -2,8 +2,8 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  updateProfile,
 } from "firebase/auth";
-
 import { auth } from "./firebaseConfig";
 
 const registerWithEmail = (email, password) =>
@@ -18,7 +18,7 @@ const registerWithEmail = (email, password) =>
       // Sign Failure
       const errorCode = error.code;
       const errorMessage = error.message;
-      return error;
+      console.error(errorCode, errorMessage);
     });
 
 const signInWithEmail = (email, password) =>
@@ -32,11 +32,26 @@ const signInWithEmail = (email, password) =>
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      return error;
+      console.error(errorCode, errorMessage);
     });
+
+const updateAuthProfile = (data) => {
+  updateProfile(auth.currentUser, data)
+  // can delete then/catch. not doing anything with promise return
+    .then(() => {
+      console.log("updated")
+      // Profile updated!
+      // ...
+    })
+    .catch((error) => {
+      console.log(error);
+      // An error occurred
+      // ...
+    });
+};
 
 const logout = () => {
   signOut(auth);
 };
 
-export { auth, registerWithEmail, signInWithEmail, logout };
+export { auth, registerWithEmail, signInWithEmail, updateAuthProfile, logout };

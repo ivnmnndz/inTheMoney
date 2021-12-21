@@ -3,10 +3,10 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase/firebaseConfig";
 
 //create context
-export const GlobalContext = createContext();
+export const AuthContext = createContext();
 
 //export a provider component to wrap children components
-export const GlobalProvider = ({ children }) => {
+export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -22,7 +22,7 @@ export const GlobalProvider = ({ children }) => {
   }, []);
   currentUser && console.log("auth'd user uid: ", currentUser.uid);
   return (
-    <GlobalContext.Provider
+    <AuthContext.Provider
       value={{
         currentUser,
         setCurrentUser,
@@ -31,6 +31,6 @@ export const GlobalProvider = ({ children }) => {
       }}
     >
       {children}
-    </GlobalContext.Provider>
+    </AuthContext.Provider>
   );
 };
