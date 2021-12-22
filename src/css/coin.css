@@ -51,7 +51,7 @@
   position: fixed;
 }
 
-body.active-modal {
+body.trade-modal {
   overflow-y: hidden;
 }
 
@@ -67,10 +67,10 @@ body.active-modal {
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  width: 400px;
+  width: 40%;
   justify-content: center;
-  padding: 30px;
-  line-height: 50px;
+  padding: 40px;
+  line-height: 40px;
   z-index: 5;
 }
 
@@ -82,31 +82,31 @@ body.active-modal {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  margin-bottom: 0;
+  border-bottom: 1px solid grey;
 }
 
-.modal-content select {
-  outline: none;
+.trade-modal-header button {
   background-color: transparent;
+  cursor: pointer;
+  height: 50px;
+  margin: none;
+  padding: 0;
+}
+
+.trade-modal-btn {
   border: none;
-  display: flex;
-  bottom: 480px;
-  left: 60px;
-  width: fit-content;
+  border-bottom: 1px solid greenyellow;
+}
+
+.trade-modal-header button:first-child {
+  margin-right: 20px;
 }
 
 .close-modal {
-  color: white;
-  font-size: 30px;
-  border-radius: 10px;
+  font-size: 20px;
   cursor: pointer;
   background-color: transparent;
   border: none;
-}
-
-.btn-trade:hover {
-  background-color: rgb(9, 151, 111);
-  color: white;
 }
 
 .trade-form {
@@ -116,6 +116,31 @@ body.active-modal {
   width: 100%;
 }
 
+.trade-form > * {
+  margin-bottom: 10px;
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid grey;
+}
+.trade-form select {
+  outline: none;
+  background-color: transparent;
+  width: 60px;
+  border: 1px solid grey;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.trade-form input {
+  padding: 5px;
+  width: 50px;
+  border-radius: 5px;
+  background-color: transparent;
+  border: 0.5px solid rgb(207, 207, 207);
+  outline: none;
+}
 .trade-form-btn {
   background-color: rgb(12, 231, 168);
   color: black;
@@ -131,24 +156,6 @@ body.active-modal {
 .trade-form-btn:hover {
   background-color: rgb(9, 151, 111);
   color: white;
-}
-
-.trade-form > * {
-  margin-bottom: 10px;
-  width: 70%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid grey;
-}
-
-.trade-form input {
-  padding: 5px;
-  width: 50px;
-  border-radius: 5px;
-  background-color: transparent;
-  border: 1px solid white;
-  outline: none;
 }
 
 /* mobile Coin */
