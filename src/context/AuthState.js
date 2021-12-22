@@ -20,7 +20,7 @@ export const AuthProvider = ({ children }) => {
       unsubscribe();
     };
   }, []);
-  currentUser && console.log("auth'd user uid: ", currentUser.uid);
+
   return (
     <AuthContext.Provider
       value={{

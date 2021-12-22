@@ -23,10 +23,12 @@ export const addTradeDoc = async (data) => {
 export const getMyTrades = async (uid) => {
   try {
     const collectionRef = collection(db,"trades");
-    const q = query(collectionRef, where(uid, "==", true));
+    const q = query(collectionRef, where("user_id", "==", uid));
     const querySnapShot = await getDocs(q);
     querySnapShot.forEach((doc) => {
+    //do what here?
     console.log(doc.id, " => ", doc.data());
+
     })
   } catch (error) {
     console.log(error)
@@ -40,11 +42,3 @@ export const getUserDoc = async (documentId) => {
   if (data === null || data === undefined) return null;
   return { documentId, ...data };
 };
-
-// const getUsers = async () => {
-
-//   const data = await getDocs(usersCollectionRef);
-
-//   setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-// };
-// getUsers();

@@ -20,7 +20,7 @@ const Navbar = () => {
       <div className="nav-logo">
         <Link to="/">
           <div>In the Money</div>
-        </Link>{" "}
+        </Link>
         {/* Theme toggler  */}
         {/* <input type="checkbox" className="checkbox" id="chk" />
         <label className="label" htmlFor="chk">

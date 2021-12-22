@@ -1,10 +1,58 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../css/Profile.css";
 import { AuthContext } from "../context/AuthState";
 import { getMyTrades } from "../firebase/db";
 
 const Profile = () => {
   const { currentUser } = useContext(AuthContext);
+  const [myTrades, setMyTrades] = useState();
+
+  
+  useEffect(() => {
+    const getTrades = async () => {
+      if (currentUser) {
+        const myTradesArray = await getMyTrades(currentUser.uid);
+        console.log('myTradesArray',myTradesArray)
+        setMyTrades(myTradesArray);
+      } else {
+        console.log("error, no user");
+      }
+    };
+    getTrades();
+  }, [currentUser]);
+
+  return currentUser ? (
+    <div className="container">
+      <div className="user-data">
+        <div>
+          <span>Name:</span>
+          <h3>{currentUser.displayName}</h3>
+          <span>Email: </span>
+          <div>{currentUser.email}</div>
+          <button>Edit Profile</button>
+        </div>
+        {/* <div className="user-stats">
+          <h4>STATS</h4>
+          <span>wins: 10</span>
+          <span>losses: 10</span>
+          <span>win %: 50%</span>
+          <span>avg trade length: 30 days</span>
+        </div> */}
+        <button>Make a trade</button>
+      </div>
+      <div>
+        <h2>My Trades</h2>
+        <div>{myTrades}</div>
+      </div>
+    </div>
+  ) : (
+    <div>Loading</div>
+  );
+};
+
+export default Profile;
+
+
 
   //   const [users, setUsers] = useState([])
   //   const usersCollectionRef = collection(db,"users")
@@ -31,43 +79,3 @@ const Profile = () => {
   //     })}
   //   </div>
   // )
-  const getTrades = async () => {
-    if (currentUser) {
-      await getMyTrades(currentUser.uid);
-    } else {
-      console.log("error");
-    }
-  };
-  useEffect(() => {
-    getTrades();
-  }, []);
-  
-  return currentUser ? (
-    <div className="container">
-      <div className="user-data">
-        <div>
-          <span>Name:</span>
-          <h3>{currentUser.displayName}</h3>
-          <span>Email: </span>
-          <div>{currentUser.email}</div>
-          <button>Edit Profile</button>
-        </div>
-        <div className="user-stats">
-          <h4>STATS</h4>
-          <span>wins: 10</span>
-          <span>losses: 10</span>
-          <span>win %: 50%</span>
-          <span>avg trade length: 30 days</span>
-        </div>
-        <button>Make a trade</button>
-      </div>
-      <div>
-        <h2>My Trades</h2>
-      </div>
-    </div>
-  ) : (
-    <div>Loading</div>
-  );
-};
-
-export default Profile;

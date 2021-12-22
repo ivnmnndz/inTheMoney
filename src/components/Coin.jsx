@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState, useRef } from "react";
-import { GlobalContext } from "../context/GlobalState";
+import React, { useContext, useState } from "react";
+import { AuthContext } from "../context/AuthState";
 import "../css/coin.css";
 import { addTradeDoc } from "../firebase/db";
 
@@ -12,61 +12,49 @@ const Coin = ({
   priceChange,
   marketcap,
 }) => {
-  const { currentUser } = useContext(GlobalContext);
-  /* const inputRef = useRef(0); */
+  const { currentUser } = useContext(AuthContext);
   const [currency, setCurrency] = useState(false);
-  const [trade, setTrade] = useState(false);
-
-  const tradeInfo = {
-    asset: name,
-    market_value: price,
-    quantity: 0,
-    dollar_amount: 0,
-    user_id: currentUser.uid,
-  };
-
-  const [tradeData, setTradeData] = useState(tradeInfo);
-
-  const result = price * tradeData.quantity;
-  const cryptoQuantity = tradeData.quantity / price;
-
+  const [tradeModal, setTradeModal] = useState(false);
+  const [quantity, setQuantity] = useState(0);
+  
   const handleChange = async (e) => {
-    setTradeData({
-      ...tradeData,
-      quantity: e.target.value,
-      dollar_amount: result,
-    });
+    setQuantity(e.target.value);
   };
 
-  const tradeModal = () => {
-    setTrade(!trade);
+  const handleTradeModal = () => {
+    setTradeModal(!tradeModal);
     setCurrency(false);
   };
-
+  
   const handleCurrencyExchange = () => {
     setCurrency(!currency);
   };
 
-  if (trade) {
-    document.body.classList.add("trade-modal");
-  } else {
-    document.body.classList.remove("trade-modal");
-  }
+  const dollarResult = parseInt(price * quantity).toFixed(2);
+  const cryptoQuantity = parseInt(quantity / price).toFixed(6);
+  const orderData = {
+    asset: name,
+    market_value: price,
+    quantity: currency ? cryptoQuantity : quantity,
+    dollar_amount: currency ? quantity : dollarResult,
+    user_id: currentUser.uid,
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await addTradeDoc(tradeData);
+    await addTradeDoc(orderData);
+    setQuantity(0);
+    setTradeModal(false);
+    alert("Purchased some coin!")
   };
 
   return (
     <>
-      <div onClick={tradeModal} className="coin-row">
+      <div onClick={handleTradeModal} className="coin-row">
         <img src={image} alt="crypto" />
         <h1>{name}</h1>
         <p className="coin-symbol">{symbol}</p>
-
         <p className="coin-price">${price.toLocaleString()}</p>
-
         <p className="coin-volume">Vol. ${volume.toLocaleString()}</p>
         {priceChange < 0 ? (
           <p className="coin-percent red">{priceChange.toFixed(1)}%</p>
@@ -76,9 +64,9 @@ const Coin = ({
         <p className="coin-marketcap">Mkt Cap: ${marketcap.toLocaleString()}</p>
       </div>
 
-      {trade && (
+      {tradeModal && (
         <div className="modal">
-          <div onClick={tradeModal} className="trade-overlay"></div>
+          <div onClick={handleTradeModal} className="trade-overlay"></div>
           <div className="modal-content">
             <div className="trade-modal-header">
               <div>
@@ -90,19 +78,21 @@ const Coin = ({
                 </button>
               </div>
 
-              <button className="close-modal" onClick={tradeModal}>
+              <button className="close-modal" onClick={handleTradeModal}>
                 X
               </button>
             </div>
 
-            <form onSubmit={handleSubmit} className="trade-form" action="">
+            <form onSubmit={handleSubmit} className="trade-form">
+
               <div>
                 <span>Buy in</span>
-                <select onChange={handleCurrencyExchange} name="" id="">
+                <select onChange={handleCurrencyExchange}>
                   <option>{symbol.toUpperCase()}</option>
                   <option>USD</option>
                 </select>
               </div>
+
               <label htmlFor="trade-input">
                 Amount
                 {currency ? (
@@ -112,7 +102,7 @@ const Coin = ({
                     name="quantity"
                     type="number"
                     id="trade-input"
-                    value={tradeData.quantity}
+                    value={quantity}
                   />
                 ) : (
                   <input
@@ -121,9 +111,10 @@ const Coin = ({
                     name="quantity"
                     type="number"
                     id="trade-input"
-                    value={tradeData.quantity}
+                    value={quantity}
                   />
                 )}
+
               </label>
               <div>
                 <span>Current Price</span>
@@ -133,12 +124,12 @@ const Coin = ({
               {currency ? (
                 <div>
                   <span>{`Est ${symbol.toUpperCase()}`}</span>
-                  <span>{cryptoQuantity.toFixed(5)}</span>
+                  <span>{cryptoQuantity}</span>
                 </div>
               ) : (
                 <div>
                   <span>Est Cost</span>
-                  <span>${result.toFixed(2)}</span>
+                  <span>${dollarResult}</span>
                 </div>
               )}
 

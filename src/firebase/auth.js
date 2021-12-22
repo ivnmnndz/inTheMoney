@@ -18,7 +18,7 @@ const registerWithEmail = (email, password) =>
       // Sign Failure
       const errorCode = error.code;
       const errorMessage = error.message;
-      console.error(errorCode, errorMessage);
+      console.log(errorCode, errorMessage);
     });
 
 const signInWithEmail = (email, password) =>
@@ -32,7 +32,7 @@ const signInWithEmail = (email, password) =>
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      console.error(errorCode, errorMessage);
+      console.log(errorCode, errorMessage);
     });
 
 const updateAuthProfile = (data) => {
