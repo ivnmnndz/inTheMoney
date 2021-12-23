@@ -1,5 +1,14 @@
 import { db } from "./firebaseConfig";
-import { query, where, collection, doc, getDoc, getDocs, addDoc, setDoc } from "firebase/firestore";
+import {
+  query,
+  where,
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  addDoc,
+  setDoc,
+} from "firebase/firestore";
 
 export const addUserDoc = async (documentId, data) => {
   try {
@@ -22,16 +31,16 @@ export const addTradeDoc = async (data) => {
 
 export const getMyTrades = async (uid) => {
   try {
-    const collectionRef = collection(db,"trades");
+    const collectionRef = collection(db, "trades");
     const q = query(collectionRef, where("user_id", "==", uid));
     const querySnapShot = await getDocs(q);
+    const trades = [];
     querySnapShot.forEach((doc) => {
-    //do what here?
-    console.log(doc.id, " => ", doc.data());
-
-    })
+      trades.push({ ...doc.data(), id: doc.id });
+    });
+    return trades;
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 };
 
