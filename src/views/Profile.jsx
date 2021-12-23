@@ -6,14 +6,7 @@ import { getMyTrades } from "../firebase/db";
 const Profile = () => {
   const { currentUser } = useContext(AuthContext);
   const [myTrades, setMyTrades] = useState([]);
-
-  /* useEffect(
-    () =>
-      onSnapshot(collection(db, "trades"), (snapshot) =>
-        setMyTrades(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
-      ),
-    []
-  ); */
+  const [profileElipseModal, setProfileElipseModal] = useState(false);
 
   useEffect(() => {
     async function fetchTrades() {
@@ -27,6 +20,10 @@ const Profile = () => {
     fetchTrades();
   }, []);
   console.log(myTrades);
+
+  const profileElipse = () => {
+    setProfileElipseModal(!profileElipse);
+  };
 
   return currentUser ? (
     <div className="container">
@@ -43,10 +40,28 @@ const Profile = () => {
       </div>
 
       <div className="user-stats">
-        <h2>My Trades</h2>
-        {myTrades.map((trade) => (
-          <div key={trade.id}>{trade.asset}</div>
-        ))}
+        <div className="user-stats-header">
+          <span>My Trades</span>
+          <div className="profile-elipse" onClick={profileElipse}>
+            ...
+          </div>
+        </div>
+        <div className="user-stats-body">
+          {myTrades.map((trade) => (
+            <div className="user-stats-container" key={trade.id}>
+              <div className="user-stats-body-trade-top">
+                <span>{trade.asset}</span>
+                {/*trade.dollar_amount will be replaced with dynamic value based on which display you want from elipse */}
+                <span>${trade.dollar_amount}</span>
+              </div>
+              <div className="user-stats-body-trade-bottom">
+                <span>Qty:{trade.quantity}</span>
+                {/*trade.market_value will be replaced with dynamic value based on which display you want from elipse */}
+                <span>{trade.market_value}</span>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   ) : (
