@@ -5,6 +5,7 @@ import Home from "./views/Home";
 import Signin from "./components/Login/Signin";
 import Signup from "./components/Login/Signup";
 import Profile from "./views/Profile";
+import NotFound from "./views/NotFound";
 
 const App = () => {
 
@@ -16,6 +17,7 @@ const App = () => {
         <Route path="/profile" element={<Profile />} />
         <Route path="/login" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );

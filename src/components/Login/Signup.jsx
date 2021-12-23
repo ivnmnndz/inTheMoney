@@ -7,6 +7,7 @@ const Signup = () => {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   let navigate = useNavigate();
 
@@ -31,6 +32,7 @@ const Signup = () => {
             placeholder="User Name"
             value={userName}
             onChange={(e) => setUserName(e.target.value)}
+            required
           />
 
           <input
@@ -39,6 +41,7 @@ const Signup = () => {
             placeholder="E-mail"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
           />
 
           <input
@@ -47,15 +50,16 @@ const Signup = () => {
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
 
-          {/* <input
+          <input
             name="confirmPassword"
             className="confirm-password"
             placeholder="Confirm Password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
-          /> */}
+          />
           <button type="submit">Submit</button>
         </form>
       </div>
