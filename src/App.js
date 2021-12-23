@@ -7,7 +7,6 @@ import Signup from "./components/Login/Signup";
 import Profile from "./views/Profile";
 
 const App = () => {
-
   return (
     <BrowserRouter>
       <Navbar />

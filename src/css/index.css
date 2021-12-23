@@ -40,7 +40,7 @@
 
 :root {
   /* color-pallet */
-  --color-purple: rgb(27, 21, 57);
+  --color-purple: rgba(16, 8, 32, 255);
   --color-teal: rgb(12, 231, 168);
   --color-red: #f00606;
   --color-white: white;
