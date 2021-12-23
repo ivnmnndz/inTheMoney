@@ -1,9 +1,10 @@
 .container {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   height: 100vh;
   text-align: center;
+  background-color: rgba(0, 0, 0, 255);
 }
 
 .user-data {
@@ -12,13 +13,51 @@
   justify-content: center;
   align-items: center;
   width: 50%;
-  height: 70%;
+
+  background-color: rgba(30, 33, 35, 255);
 }
 .user-stats {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  width: 50%;
-  height: 70%;
+  width: 300px;
+  border: 1px solid rgba(62, 71, 77, 255);
+  border-radius: 5px;
+  background-color: rgba(30, 33, 35, 255);
+}
+.user-stats-header {
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px solid rgba(62, 71, 77, 255);
+  padding: 10px;
+}
+
+.profile-elipse {
+  cursor: pointer;
+}
+
+.profile-elipse:hover {
+  color: red;
+}
+
+.user-stats-body {
+  flex-direction: column;
+}
+
+.user-stats-container {
+  border-bottom: 1px solid rgba(62, 71, 77, 255);
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.user-stats-body-trade-top {
+  display: flex;
+  justify-content: space-around;
+}
+
+.user-stats-body-trade-bottom {
+  display: flex;
+  justify-content: space-around;
 }

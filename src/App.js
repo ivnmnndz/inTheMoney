@@ -8,7 +8,6 @@ import Profile from "./views/Profile";
 import NotFound from "./views/NotFound";
 
 const App = () => {
-
   return (
     <BrowserRouter>
       <Navbar />
