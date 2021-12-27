@@ -43,7 +43,7 @@ const {setIsLoading} = useContext(AuthContext)
           <button className="signin-btn" type="submit">
             Sign in
           </button>
-          <a href="/">Forgot your password?</a>
+          <a href="/forgot_password">Forgot your password?</a>
         </form>
       </div>
     );

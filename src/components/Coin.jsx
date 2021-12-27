@@ -37,7 +37,7 @@ const Coin = ({
     market_value: price,
     quantity: currency ? cryptoQuantity : quantity,
     dollar_amount: currency ? quantity : dollarResult,
-    user_id: currentUser.uid,
+    user_id: currentUser && currentUser.uid,
   };
 
   const handleSubmit = async (e) => {
