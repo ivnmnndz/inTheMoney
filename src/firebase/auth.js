@@ -55,14 +55,15 @@ const logout = () => {
   signOut(auth);
 };
 
-const passwordReset =(email) =>
-{sendPasswordResetEmail(auth, email)
-.then(() => {
- alert("Password reset email sent!")
-})
-.catch((error) => {
-  const errorCode = error.code;
-  const errorMessage = error.message;
-});}
+const passwordReset = (email) => {
+  sendPasswordResetEmail(auth, email)
+    .then(() => {
+      alert("Password reset email sent!")
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+    });
+};
 
 export { auth, registerWithEmail, signInWithEmail, updateAuthProfile, logout, passwordReset };
