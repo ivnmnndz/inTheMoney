@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import {passwordReset} from "../firebase/auth"
+import { passwordReset } from "../firebase/auth";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    passwordReset(email)
+    passwordReset(email);
   };
 
   const handleChange = (e) => {
@@ -22,7 +22,7 @@ const ForgotPassword = () => {
       <h1>Forgot your password?</h1>
       <label>
         Enter your email
-        <input type="email" onChange={handleChange} />
+        <input className="forgot-email"type="email" onChange={handleChange} />
       </label>
       <button type="submit">Recover Password</button>
       <Link to="/">
