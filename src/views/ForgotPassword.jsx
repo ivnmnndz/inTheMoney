@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import {passwordReset} from "../firebase/auth"
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    passwordReset(email)
   };
 
   const handleChange = (e) => {
+    e.preventDefault();
     setEmail(e.target.value);
   };
   console.log("email: ", email);

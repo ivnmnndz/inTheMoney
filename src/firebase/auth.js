@@ -3,6 +3,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
   updateProfile,
+  sendPasswordResetEmail,
 } from "firebase/auth";
 import { auth } from "./firebaseConfig";
 
@@ -54,4 +55,14 @@ const logout = () => {
   signOut(auth);
 };
 
-export { auth, registerWithEmail, signInWithEmail, updateAuthProfile, logout };
+const passwordReset =(email) =>
+{sendPasswordResetEmail(auth, email)
+.then(() => {
+ alert("Password has been sent to your email.")
+})
+.catch((error) => {
+  const errorCode = error.code;
+  const errorMessage = error.message;
+});}
+
+export { auth, registerWithEmail, signInWithEmail, updateAuthProfile, logout, passwordReset };
