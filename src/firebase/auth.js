@@ -58,7 +58,7 @@ const logout = () => {
 const passwordReset =(email) =>
 {sendPasswordResetEmail(auth, email)
 .then(() => {
- alert("Password has been sent to your email.")
+ alert("Password reset email sent!")
 })
 .catch((error) => {
   const errorCode = error.code;
