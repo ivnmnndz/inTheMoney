@@ -7,12 +7,12 @@ const Dashboard = () => {
   const [search, setSearch] = useState("");
   const [sortType, setSortType] = useState("market_cap");
   const [sortOrder, setSortOrder] = useState(true);
-  const [sortCoinOrder, setCoinSortOrder] = useState(true);
-  const [sortSymbolOrder, setSymbolSortOrder] = useState(true);
-  const [sortPriceOrder, setPriceSortOrder] = useState(true);
-  const [sortVolOrder, setVolSortOrder] = useState(true);
-  const [sortPriceChangeOrder, setPriceChangeSortOrder] = useState(true);
-  const [sortMktCapOrder, setMktCapSortOrder] = useState(true);
+  const [sortCoinOrder, setSortCoinOrder] = useState(true);
+  const [sortSymbolOrder, setSortSymbolOrder] = useState(true);
+  const [sortPriceOrder, setSortPriceOrder] = useState(true);
+  const [sortVolOrder, setSortVolOrder] = useState(true);
+  const [sortPriceChangeOrder, setSortPriceChangeOrder] = useState(true);
+  const [sortMktCapOrder, setSortMktCapOrder] = useState(true);
 
   useEffect(() => {
     fetch(
@@ -83,7 +83,7 @@ const Dashboard = () => {
           onClick={SortByName}
           onClickCapture={(e) =>
             setSortType("name") +
-            setCoinSortOrder(!sortCoinOrder) +
+            setSortCoinOrder(!sortCoinOrder) +
             setSortOrder(sortCoinOrder)
           }
         >
@@ -93,7 +93,7 @@ const Dashboard = () => {
           onClick={SortByName}
           onClickCapture={(e) =>
             setSortType("symbol") +
-            setSymbolSortOrder(!sortSymbolOrder) +
+            setSortSymbolOrder(!sortSymbolOrder) +
             setSortOrder(sortSymbolOrder)
           }
         >
@@ -103,7 +103,7 @@ const Dashboard = () => {
           onClick={SortByValue}
           onClickCapture={(e) =>
             setSortType("current_price") +
-            setPriceSortOrder(!sortPriceOrder) +
+            setSortPriceOrder(!sortPriceOrder) +
             setSortOrder(sortPriceOrder)
           }
         >
@@ -113,7 +113,7 @@ const Dashboard = () => {
           onClick={SortByValue}
           onClickCapture={(e) =>
             setSortType("total_volume") +
-            setVolSortOrder(!sortVolOrder) +
+            setSortVolOrder(!sortVolOrder) +
             setSortOrder(sortVolOrder)
           }
         >
@@ -123,7 +123,7 @@ const Dashboard = () => {
           onClick={SortByValue}
           onClickCapture={(e) =>
             setSortType("price_change_percentage_24h") +
-            setPriceChangeSortOrder(!sortPriceChangeOrder) +
+            setSortPriceChangeOrder(!sortPriceChangeOrder) +
             setSortOrder(sortPriceChangeOrder)
           }
         >
@@ -133,7 +133,7 @@ const Dashboard = () => {
           onClick={SortByValue}
           onClickCapture={(e) =>
             setSortType("market_cap") +
-            setMktCapSortOrder(!sortMktCapOrder) +
+            setSortMktCapOrder(!sortMktCapOrder) +
             setSortOrder(sortMktCapOrder)
           }
         >
