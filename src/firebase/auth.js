@@ -38,9 +38,9 @@ const signInWithEmail = (email, password) =>
 
 const updateAuthProfile = (data) => {
   updateProfile(auth.currentUser, data)
-  // can delete then/catch. not doing anything with promise return
+    // can delete then/catch. not doing anything with promise return
     .then(() => {
-      console.log("updated")
+      console.log("updated");
       // Profile updated!
       // ...
     })
@@ -57,6 +57,7 @@ const logout = () => {
 
 const passwordReset = (email) => {
   sendPasswordResetEmail(auth, email)
+  // Reset Email sent
     .then(() => {
       alert("Password reset email sent!")
     })
@@ -66,4 +67,11 @@ const passwordReset = (email) => {
     });
 };
 
-export { auth, registerWithEmail, signInWithEmail, updateAuthProfile, logout, passwordReset };
+export {
+  auth,
+  registerWithEmail,
+  signInWithEmail,
+  updateAuthProfile,
+  logout,
+  passwordReset,
+};

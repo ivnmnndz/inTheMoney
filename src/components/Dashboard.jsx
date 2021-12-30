@@ -7,6 +7,12 @@ const Dashboard = () => {
   const [search, setSearch] = useState("");
   const [sortType, setSortType] = useState("market_cap");
   const [sortOrder, setSortOrder] = useState(true);
+  const [sortCoinOrder, setCoinSortOrder] = useState(true);
+  const [sortSymbolOrder, setSymbolSortOrder] = useState(true);
+  const [sortPriceOrder, setPriceSortOrder] = useState(true);
+  const [sortVolOrder, setVolSortOrder] = useState(true);
+  const [sortPriceChangeOrder, setPriceChangeSortOrder] = useState(true);
+  const [sortMktCapOrder, setMktCapSortOrder] = useState(true);
 
   useEffect(() => {
     fetch(
@@ -32,8 +38,6 @@ const Dashboard = () => {
   );
 
   const SortByName = () => {
-    setSortOrder(!sortOrder);
-
     const sortedCoins = coins.sort(function (a, b) {
       let nameA = sortOrder
         ? a[sortType].toUpperCase()
@@ -54,7 +58,6 @@ const Dashboard = () => {
   };
 
   const SortByValue = () => {
-    setSortOrder(!sortOrder);
     const sortedCoins = coins.sort((a, b) => {
       return sortOrder ? b[sortType] - a[sortType] : a[sortType] - b[sortType];
     });
@@ -76,33 +79,63 @@ const Dashboard = () => {
       </div>
       <div className="sort-menu">
         <label>Sort by: </label>
-        <li onClick={SortByName} onMouseEnter={(e) => setSortType("name")}>
+        <li
+          onClick={SortByName}
+          onClickCapture={(e) =>
+            setSortType("name") +
+            setCoinSortOrder(!sortCoinOrder) +
+            setSortOrder(sortCoinOrder)
+          }
+        >
           Coin<i className="fas fa-sort"></i>
         </li>
-        <li onClick={SortByName} onMouseEnter={(e) => setSortType("symbol")}>
+        <li
+          onClick={SortByName}
+          onClickCapture={(e) =>
+            setSortType("symbol") +
+            setSymbolSortOrder(!sortSymbolOrder) +
+            setSortOrder(sortSymbolOrder)
+          }
+        >
           Symbol<i className="fas fa-sort"></i>
         </li>
         <li
           onClick={SortByValue}
-          onMouseEnter={(e) => setSortType("current_price")}
+          onClickCapture={(e) =>
+            setSortType("current_price") +
+            setPriceSortOrder(!sortPriceOrder) +
+            setSortOrder(sortPriceOrder)
+          }
         >
           Price<i className="fas fa-sort"></i>
         </li>
         <li
           onClick={SortByValue}
-          onMouseEnter={(e) => setSortType("total_volume")}
+          onClickCapture={(e) =>
+            setSortType("total_volume") +
+            setVolSortOrder(!sortVolOrder) +
+            setSortOrder(sortVolOrder)
+          }
         >
           Vol.<i className="fas fa-sort"></i>
         </li>
         <li
           onClick={SortByValue}
-          onMouseEnter={(e) => setSortType("price_change_percentage_24h")}
+          onClickCapture={(e) =>
+            setSortType("price_change_percentage_24h") +
+            setPriceChangeSortOrder(!sortPriceChangeOrder) +
+            setSortOrder(sortPriceChangeOrder)
+          }
         >
           %<i className="fas fa-sort"></i>
         </li>
         <li
           onClick={SortByValue}
-          onMouseEnter={(e) => setSortType("market_cap")}
+          onClickCapture={(e) =>
+            setSortType("market_cap") +
+            setMktCapSortOrder(!sortMktCapOrder) +
+            setSortOrder(sortMktCapOrder)
+          }
         >
           Mkt Cap<i className="fas fa-sort"></i>
         </li>
