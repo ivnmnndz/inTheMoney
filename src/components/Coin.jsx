@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import { AuthContext } from "../context/AuthState";
 import "../css/coin.css";
 import { addTradeDoc } from "../firebase/db";
@@ -15,8 +16,11 @@ const Coin = ({
   const { currentUser } = useContext(AuthContext);
   const [currency, setCurrency] = useState(false);
   const [tradeModal, setTradeModal] = useState(false);
+  const [sellCoin, setSellCoin] = useState(false);
   const [quantity, setQuantity] = useState(0);
-  
+
+  let { coin } = useParams();
+
   const handleChange = async (e) => {
     setQuantity(e.target.value);
   };
@@ -24,8 +28,17 @@ const Coin = ({
   const handleTradeModal = () => {
     setTradeModal(!tradeModal);
     setCurrency(false);
+    setSellCoin(false);
   };
-  
+
+  const sellCrypto = () => {
+    setSellCoin(true);
+  };
+
+  const buyCrypto = () => {
+    setSellCoin(false);
+  };
+
   const handleCurrencyExchange = () => {
     setCurrency(!currency);
   };
@@ -35,8 +48,9 @@ const Coin = ({
   const orderData = {
     asset: name,
     market_value: price,
-    quantity: currency ? cryptoQuantity : quantity,
-    dollar_amount: currency ? quantity : dollarResult,
+    quantity: currency ? Number(cryptoQuantity) : Number(quantity),
+
+    dollar_amount: currency ? Number(quantity) : Number(dollarResult),
     user_id: currentUser && currentUser.uid,
   };
 
@@ -45,7 +59,7 @@ const Coin = ({
     await addTradeDoc(orderData);
     setQuantity(0);
     setTradeModal(false);
-    alert("Purchased some coin!")
+    alert("Purchased some coin!");
   };
 
   return (
@@ -54,14 +68,14 @@ const Coin = ({
         <img src={image} alt="crypto" />
         <h1>{name}</h1>
         <p className="coin-symbol">{symbol}</p>
-        <p className="coin-price">${price.toLocaleString()}</p>
-        <p className="coin-volume">Vol. ${volume.toLocaleString()}</p>
+        <p className="coin-price">${price}</p>
+        <p className="coin-volume">Vol. ${volume}</p>
         {priceChange < 0 ? (
-          <p className="coin-percent red">{priceChange.toFixed(1)}%</p>
+          <p className="coin-percent red">{priceChange}%</p>
         ) : (
-          <p className="coin-percent green">{priceChange.toFixed(1)}%</p>
+          <p className="coin-percent green">{priceChange}%</p>
         )}
-        <p className="coin-marketcap">Mkt Cap: ${marketcap.toLocaleString()}</p>
+        <p className="coin-marketcap">Mkt Cap: ${marketcap}</p>
       </div>
 
       {tradeModal && (
@@ -70,10 +84,20 @@ const Coin = ({
           <div className="modal-content">
             <div className="trade-modal-header">
               <div>
-                <button className="trade-modal-btn">
+                <button
+                  className={
+                    sellCoin ? "trade-modal-btn" : "trade-modal-btn border"
+                  }
+                  onClick={buyCrypto}
+                >
                   Buy {symbol.toUpperCase()}
                 </button>
-                <button className="trade-modal-btn">
+                <button
+                  className={
+                    sellCoin ? "trade-modal-btn border" : "trade-modal-btn"
+                  }
+                  onClick={sellCrypto}
+                >
                   Sell {symbol.toUpperCase()}
                 </button>
               </div>
@@ -84,7 +108,6 @@ const Coin = ({
             </div>
 
             <form onSubmit={handleSubmit} className="trade-form">
-
               <div>
                 <span>Buy in</span>
                 <select onChange={handleCurrencyExchange}>
@@ -114,7 +137,6 @@ const Coin = ({
                     value={quantity}
                   />
                 )}
-
               </label>
               <div>
                 <span>Current Price</span>
@@ -123,12 +145,16 @@ const Coin = ({
 
               {currency ? (
                 <div>
-                  <span>{`Est ${symbol.toUpperCase()}`}</span>
+                  {sellCoin ? (
+                    <span>Est Credit</span>
+                  ) : (
+                    <span>{`Est ${symbol.toUpperCase()}`}</span>
+                  )}
                   <span>{cryptoQuantity}</span>
                 </div>
               ) : (
                 <div>
-                  <span>Est Cost</span>
+                  {sellCoin ? <span>Est Credit</span> : <span>Est Cost</span>}
                   <span>${dollarResult}</span>
                 </div>
               )}

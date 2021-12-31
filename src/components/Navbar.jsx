@@ -6,7 +6,7 @@ import { logout } from "../firebase/auth";
 
 const Navbar = () => {
   const { currentUser, setCurrentUser } = useContext(AuthContext);
-  
+
   let navigate = useNavigate();
 
   const handleLogOut = () => {
@@ -21,15 +21,7 @@ const Navbar = () => {
         <Link to="/">
           <div>In the Money</div>
         </Link>
-        {/* Theme toggler  */}
-        {/* <input type="checkbox" className="checkbox" id="chk" />
-        <label className="label" htmlFor="chk">
-          <i className="fas fa-moon"></i>
-          <i className="fas fa-sun"></i>
-          <div className="ball"></div>
-        </label> */}
       </div>
-      {/* Hamburger toggler- (only shows under 600px) */}
       <input id="toggle1" type="checkbox" />
       <label className="hamburger1" htmlFor="toggle1">
         <div className="top"></div>

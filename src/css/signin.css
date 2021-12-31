@@ -1,24 +1,23 @@
 .blockchain {
   background-image: url("../images/blockchain.svg");
-  width: 175px;
-  height: 175px;
-  position: absolute;
-  top: 80px;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
   background-size: cover;
 }
 
 .signup-container {
   align-items: center;
   display: flex;
+  flex-direction: column;
   height: 100vh;
-  justify-content: center;
+  justify-content: flex-start;
   width: 100%;
 }
-.signup-container h1{
- font-size: 70px;
- margin-bottom: 10px;
- margin-top: 0;
- text-align: center;
+.signup-container h1 {
+  text-align: center;
 }
 
 .signup-form {
@@ -38,7 +37,7 @@
   background-color: transparent;
   border-radius: 5px;
   outline: none;
-  width:50%;
+  width: 50%;
   color: rgb(215, 81, 121);
   transition: 0.3s;
 }
@@ -51,7 +50,7 @@
 }
 
 .signin-btn {
-  background-color:var(--color-teal);
+  background-color: var(--color-teal);
   border: none;
   letter-spacing: 0.5px;
   font-weight: 700;
@@ -68,13 +67,8 @@
   color: rgb(215, 81, 121);
 }
 
-.signup-form a {
-  text-decoration: none;
-}
-
-
 .signup-form button {
-  background-color:var(--color-teal);
+  background-color: var(--color-teal);
   border: none;
   letter-spacing: 0.5px;
   font-weight: 700;

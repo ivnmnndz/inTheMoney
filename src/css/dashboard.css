@@ -3,6 +3,7 @@
   align-items: center;
   top: 100px;
   position: relative;
+
   color: white;
   z-index: 1;
   flex-wrap: wrap;
@@ -44,7 +45,9 @@
   color: black;
 }
 
-.sort-menu{
+.sort-menu {
   display: flex;
- gap: 20px;
+  gap: 20px;
+  width: 100%;
+  justify-content: center;
 }

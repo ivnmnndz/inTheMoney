@@ -41,7 +41,6 @@
 * {
   font-family: "JetBrains Mono", monospace;
   color: var(--color-white);
-  text-decoration: none;
 }
 
 .red {
@@ -67,10 +66,12 @@ input::-webkit-inner-spin-button {
 
 button {
   background-color: var(--color-teal);
+  cursor: pointer;
 }
 
 a {
   text-decoration: none;
+  cursor: pointer;
 }
 
 li {

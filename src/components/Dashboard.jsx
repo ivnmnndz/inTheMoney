@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link, Outlet } from "react-router-dom";
 import "../css/dashboard.css";
 import Coin from "./Coin";
 
@@ -109,18 +110,22 @@ const Dashboard = () => {
       </div>
       {filteredCoins.map((coin) => {
         return (
-          <Coin
-            key={coin.id}
-            name={coin.name}
-            image={coin.image}
-            symbol={coin.symbol}
-            marketcap={coin.market_cap}
-            price={coin.current_price}
-            priceChange={coin.price_change_percentage_24h}
-            volume={coin.total_volume}
-          />
+          <>
+            <Coin
+              key={coin.id}
+              name={coin.name}
+              image={coin.image}
+              symbol={coin.symbol}
+              marketcap={coin.market_cap}
+              price={coin.current_price}
+              priceChange={coin.price_change_percentage_24h}
+              volume={coin.total_volume}
+            />
+            <Link to={coin.symbol}>go to coin</Link>
+          </>
         );
       })}
+      <Outlet />
     </div>
   );
 };

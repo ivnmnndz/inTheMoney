@@ -7,6 +7,7 @@ const Profile = () => {
   const { currentUser } = useContext(AuthContext);
   const [myTrades, setMyTrades] = useState([]);
   const [profileElipseModal, setProfileElipseModal] = useState(false);
+  const [totalDollarAmount, setTotalDollarAmount] = useState([]);
 
   useEffect(() => {
     async function fetchTrades() {
@@ -19,45 +20,84 @@ const Profile = () => {
     }
     fetchTrades();
   }, []);
-  console.log(myTrades);
+  console.log({ myTrades });
 
   const profileElipse = () => {
     setProfileElipseModal(!profileElipse);
   };
 
+  const sumOfDollarAmount = myTrades.reduce((sum, currentValue) => {
+    return sum + parseInt(currentValue.dollar_amount);
+  }, 0);
+
+  console.log({ sumOfDollarAmount });
+
+  const groupBy = (array, key) => {
+    return array.reduce((result, currentValue) => {
+      (result[currentValue[key]] = result[currentValue[key]] || []).push(
+        currentValue
+      );
+
+      return result;
+    }, {});
+  };
+
+  const myTradesGroupByName = groupBy(myTrades, "asset");
+  console.log({ myTradesGroupByName });
+
+  let totals = {};
+  myTrades.forEach((element) => {
+    if (totals[element.asset] !== undefined) {
+      totals[element.asset] = {
+        quantity: element.quantity + totals[element.asset].quantity,
+        dollar_amount:
+          element.dollar_amount + totals[element.asset].dollar_amount,
+      };
+    } else {
+      totals[element.asset] = {
+        quantity: element.quantity,
+        dollar_amount: element.dollar_amount,
+      };
+    }
+  });
+  console.log({ totals });
+
+  const sumOfSameCrypto = Object.entries(totals);
+
   return currentUser ? (
     <div className="container">
       <div className="user-data">
         <div>
-          <span>Name:</span>
-          <h3>{currentUser.displayName}</h3>
-          <span>Email: </span>
-          <div>{currentUser.email}</div>
-          <button>Edit Profile</button>
+          <span>Name: {currentUser.displayName}</span>
         </div>
-
-        <button>Make a trade</button>
+        <div>
+          <span>Email: {currentUser.email}</span>
+        </div>
+        <div>
+          <span>Total Amount: ${sumOfDollarAmount}</span>
+        </div>
+        <div>
+          <button>Edit Profile</button>
+          <button>Make a trade</button>
+        </div>
       </div>
 
       <div className="user-stats">
         <div className="user-stats-header">
-          <span>My Trades</span>
-          <div className="profile-elipse" onClick={profileElipse}>
-            ...
-          </div>
+          <span>Current Holdings</span>
         </div>
         <div className="user-stats-body">
-          {myTrades.map((trade) => (
-            <div className="user-stats-container" key={trade.id}>
+          {sumOfSameCrypto.map((trade, i) => (
+            <div className="user-stats-container" key={i}>
               <div className="user-stats-body-trade-top">
-                <span>{trade.asset}</span>
+                <span>{trade[0]}</span>
                 {/*trade.dollar_amount will be replaced with dynamic value based on which display you want from elipse */}
-                <span>${trade.dollar_amount}</span>
+                <span>Total Equity: ${trade[1].dollar_amount}</span>
               </div>
               <div className="user-stats-body-trade-bottom">
-                <span>Qty:{trade.quantity}</span>
+                <span>Qty:{trade[1].quantity}</span>
                 {/*trade.market_value will be replaced with dynamic value based on which display you want from elipse */}
-                <span>{trade.market_value}</span>
+                <span></span>
               </div>
             </div>
           ))}
@@ -70,29 +110,3 @@ const Profile = () => {
 };
 
 export default Profile;
-
-//   const [users, setUsers] = useState([])
-//   const usersCollectionRef = collection(db,"users")
-
-//   // user exist ? if so, more conditionals based on what data is attached to it
-//   // otherwise show loading until we fetch user
-
-// useEffect(() => {
-//   const getUsers = async () => {
-//     const data = await getDocs(usersCollectionRef)
-//     setUsers(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
-//   }
-//   getUsers()
-// }, [])
-
-// return (
-//   <div>
-//     {users.map((users) => {
-//         return <div>
-//           <h1>Name: {users.name}</h1>
-//           <h1>{users.email}</h1>
-
-//         </div>
-//     })}
-//   </div>
-// )
