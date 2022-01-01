@@ -2,31 +2,14 @@
 
 .navbar {
   display: flex;
-  width: 100%;
-  align-items: center;
   justify-content: space-between;
-
-  background-color: black;
-}
-
-.sign .nav-logo {
-  margin: 0 10px;
-}
-.nav-logo div {
-  margin-left: 20px;
-  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: rgb(25, 150, 179);
 }
 
 .nav-right {
   display: flex;
-}
-
-.nav-link span {
-  transition: 0.5s;
-}
-
-.nav-link span:hover {
-  color: black;
 }
 
 .nav-link {
@@ -36,7 +19,7 @@
 
 .nav-link:hover {
   background-color: var(--color-teal);
-  color: var(--color-black);
+  color: black;
 }
 .navbar .icon {
   display: none;

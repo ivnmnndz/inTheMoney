@@ -44,14 +44,11 @@
   /* color-pallet */
   --color-purple: rgba(16, 8, 32, 255);
   --color-teal: rgb(12, 231, 168);
-  --color-red: #f00606;
-  --color-white: white;
-  --color-black: black;
 }
 
 * {
   font-family: "JetBrains Mono", monospace;
-  color: var(--color-white);
+  color: white;
 }
 
 .red {
@@ -74,10 +71,20 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+input {
+  background-color: transparent;
+  outline: none;
+  border: 2px solid white;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+}
 
 button {
   background-color: var(--color-teal);
   cursor: pointer;
+  margin: 10px;
+  padding: 10px;
 }
 
 a {

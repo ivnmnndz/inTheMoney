@@ -19,7 +19,7 @@ const Profile = () => {
       }
     }
     fetchTrades();
-  }, []);
+  }, [currentUser]);
   console.log({ myTrades });
 
   const profileElipse = () => {
@@ -29,21 +29,6 @@ const Profile = () => {
   const sumOfDollarAmount = myTrades.reduce((sum, currentValue) => {
     return sum + parseInt(currentValue.dollar_amount);
   }, 0);
-
-  console.log({ sumOfDollarAmount });
-
-  const groupBy = (array, key) => {
-    return array.reduce((result, currentValue) => {
-      (result[currentValue[key]] = result[currentValue[key]] || []).push(
-        currentValue
-      );
-
-      return result;
-    }, {});
-  };
-
-  const myTradesGroupByName = groupBy(myTrades, "asset");
-  console.log({ myTradesGroupByName });
 
   let totals = {};
   myTrades.forEach((element) => {
@@ -74,7 +59,7 @@ const Profile = () => {
           <span>Email: {currentUser.email}</span>
         </div>
         <div>
-          <span>Total Amount: ${sumOfDollarAmount}</span>
+          <span>Total Invested: ${sumOfDollarAmount}</span>
         </div>
         <div>
           <button>Edit Profile</button>
@@ -89,15 +74,10 @@ const Profile = () => {
         <div className="user-stats-body">
           {sumOfSameCrypto.map((trade, i) => (
             <div className="user-stats-container" key={i}>
-              <div className="user-stats-body-trade-top">
+              <div className="user-stats-content">
                 <span>{trade[0]}</span>
-                {/*trade.dollar_amount will be replaced with dynamic value based on which display you want from elipse */}
-                <span>Total Equity: ${trade[1].dollar_amount}</span>
-              </div>
-              <div className="user-stats-body-trade-bottom">
-                <span>Qty:{trade[1].quantity}</span>
-                {/*trade.market_value will be replaced with dynamic value based on which display you want from elipse */}
-                <span></span>
+                <span>{`Total Equity: $${trade[1].dollar_amount}`}</span>
+                <span>{`Qty: ${trade[1].quantity}`}</span>
               </div>
             </div>
           ))}

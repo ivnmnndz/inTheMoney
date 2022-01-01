@@ -55,18 +55,18 @@
 
 .user-stats-container {
   border-bottom: 1px solid rgba(62, 71, 77, 255);
-  height: 80px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
 }
 
-.user-stats-body-trade-top {
+.user-stats-content {
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px;
   justify-content: space-around;
 }
-
-.user-stats-body-trade-bottom {
-  display: flex;
-  justify-content: space-around;
+.user-stats-content span {
+  margin-bottom: 5px;
 }

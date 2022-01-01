@@ -17,11 +17,9 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <div className="nav-logo">
-        <Link to="/">
-          <div>In the Money</div>
-        </Link>
-      </div>
+      <Link className="nav-link" to="/">
+        In the Money
+      </Link>
       <input id="toggle1" type="checkbox" />
       <label className="hamburger1" htmlFor="toggle1">
         <div className="top"></div>
@@ -38,16 +36,16 @@ const Navbar = () => {
             {currentUser.displayName}
           </Link>
           <Link className="nav-link" to="/" onClick={handleLogOut}>
-            <span>Logout</span>
+            Logout
           </Link>
         </div>
       ) : (
         <div className="nav-right">
           <Link className="nav-link" to="/login">
-            <span>Log In</span>
+            Log In
           </Link>
           <Link className="nav-link" to="/signup">
-            <span>Sign Up</span>
+            Sign Up
           </Link>
         </div>
       )}

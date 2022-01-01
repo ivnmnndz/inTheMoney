@@ -1,9 +1,9 @@
 .homePage-container {
-  align-items: center;
   display: table;
+  justify-content: center;
+  align-items: center;
   height: 100vh;
   z-index: -1;
-  justify-content: center;
   width: 100%;
   background: url(../images/sajad-nori-i09DzZkwnuY-unsplash.jpg);
   background-size: cover;
@@ -23,29 +23,28 @@
   padding-bottom: 2%;
 }
 .signup-login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin: auto;
   width: fit-content;
-  display: table;
 }
 
 #create-User-btn {
-  background-color: var(--color-red);
+  background-color: red;
   border-radius: 25px;
   width: 250px;
   height: 50px;
   transition-duration: 0.5s;
-  margin: auto;
-  display: list-item;
 }
 
 #create-User-btn:hover {
-  background-color: var(--color-black);
+  background-color: black;
 }
 
 #logIn-link {
-  display: list-item;
   text-align: center;
-
   font-size: 75%;
   margin-top: 10px;
 }

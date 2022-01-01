@@ -80,7 +80,6 @@ body.trade-modal {
 
 .trade-modal-header button {
   background-color: transparent;
-  cursor: pointer;
   height: 50px;
   margin: none;
   padding: 0;
@@ -134,7 +133,6 @@ body.trade-modal {
   border-radius: 5px;
   background-color: transparent;
   border: 0.5px solid rgb(207, 207, 207);
-  outline: none;
 }
 .trade-form-btn {
   background-color: rgb(12, 231, 168);
@@ -144,7 +142,6 @@ body.trade-modal {
   margin: auto;
   margin-bottom: 10px;
   padding: 10px 35px;
-  cursor: pointer;
   transition: 0.3s;
 }
 

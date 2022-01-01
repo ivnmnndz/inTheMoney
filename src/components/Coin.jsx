@@ -70,11 +70,9 @@ const Coin = ({
         <p className="coin-symbol">{symbol}</p>
         <p className="coin-price">${price}</p>
         <p className="coin-volume">Vol. ${volume}</p>
-        {priceChange < 0 ? (
-          <p className="coin-percent red">{priceChange}%</p>
-        ) : (
-          <p className="coin-percent green">{priceChange}%</p>
-        )}
+        <p className={`coin-percent ${priceChange < 0 ? "red" : "green"}`}>
+          {priceChange}%
+        </p>
         <p className="coin-marketcap">Mkt Cap: ${marketcap}</p>
       </div>
 
