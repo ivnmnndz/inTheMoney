@@ -1,10 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
 
+/* Response Menu Icon */
 @media screen and (max-width: 600px) {
   .navbar {
     padding: 20px 0;
   }
-  .nav-right {
+
+  .navbar .nav-right {
     display: none;
   }
   .nav-link {
@@ -21,6 +23,20 @@
     right: 0;
     cursor: pointer;
   }
+}
+@media screen and (max-width: 900px) {
+  .sort-name {
+    display:none;
+  }
+  .sort-vol {
+    display: none;
+  }
+  .sort-mktCap{
+    display: none;
+  }
+
+}
+@media screen and (min-width: 600px) {
   .nav-right {
     display: flex !important;
   }

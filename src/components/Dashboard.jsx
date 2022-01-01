@@ -81,6 +81,7 @@ const Dashboard = () => {
       <div className="sort-menu">
         <label>Sort by: </label>
         <li
+          className="sort-name"
           onClick={SortByName}
           onClickCapture={(e) =>
             setSortType("name") +
@@ -91,6 +92,7 @@ const Dashboard = () => {
           Coin<i className="fas fa-sort"></i>
         </li>
         <li
+          className="sort-symbol"
           onClick={SortByName}
           onClickCapture={(e) =>
             setSortType("symbol") +
@@ -101,6 +103,7 @@ const Dashboard = () => {
           Symbol<i className="fas fa-sort"></i>
         </li>
         <li
+          className="sort-price"
           onClick={SortByValue}
           onClickCapture={(e) =>
             setSortType("current_price") +
@@ -111,6 +114,7 @@ const Dashboard = () => {
           Price<i className="fas fa-sort"></i>
         </li>
         <li
+          className="sort-vol"
           onClick={SortByValue}
           onClickCapture={(e) =>
             setSortType("total_volume") +
@@ -121,6 +125,7 @@ const Dashboard = () => {
           Vol.<i className="fas fa-sort"></i>
         </li>
         <li
+          className="sort-percent"
           onClick={SortByValue}
           onClickCapture={(e) =>
             setSortType("price_change_percentage_24h") +
@@ -131,6 +136,7 @@ const Dashboard = () => {
           %<i className="fas fa-sort"></i>
         </li>
         <li
+          className="sort-mktCap"
           onClick={SortByValue}
           onClickCapture={(e) =>
             setSortType("market_cap") +
