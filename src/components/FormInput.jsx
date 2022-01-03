@@ -2,29 +2,16 @@ import React, { useState } from "react";
 
 const FormInput = (props) => {
   const [isBlur, setIsBlur] = useState(false);
-  const { label, errorMessage, onChange, id, ...inputProps } = props;
+  const { label, errorMessage, handleChange, id, ...inputProps } = props;
   const handleBlur = (e) => {
     setIsBlur(true);
   };
   return (
     <>
-      <label
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "flex-start",
-          alignItems: "start",
-          margin: "15px"
-        }}
-      >
+      <label style={{display: "flex", flexDirection: "column", justifyContent: "flex-start", alignItems: "start"}}>
         <span>{label}</span>
-        <input
-          {...inputProps}
-          onChange={onChange}
-          onBlur={handleBlur}
-          focused={isBlur.toString()}
-        />
-        <span style={{color: "red", fontSize: "10px"}}>{errorMessage}</span>
+        <input {...inputProps} onChange={handleChange} onBlur={handleBlur} focused={isBlur.toString()}/>
+        <span>{errorMessage}</span>
       </label>
     </>
   );
