@@ -27,7 +27,7 @@ const Profile = () => {
   };
 
   const sumOfDollarAmount = myTrades.reduce((sum, currentValue) => {
-    return sum + parseInt(currentValue.dollar_amount);
+    return sum + currentValue.dollar_amount;
   }, 0);
 
   let totals = {};
