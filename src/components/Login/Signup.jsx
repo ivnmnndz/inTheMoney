@@ -43,12 +43,10 @@ const Signup = () => {
     if (email.match(validEmail)) {
       setValidEmail(true);
     }
-    if ( confirmPassword != password) {
+    if (confirmPassword !== password) {
       setValidConfirmation(false);
     }
-    if (
-      password === confirmPassword
-    ) {
+    if (password === confirmPassword) {
       setValidConfirmation(true);
     }
     if (!password.match(validPassword)) {
@@ -79,7 +77,7 @@ const Signup = () => {
             required
           />
           <div className={validUserName ? "hide" : "show"}>
-            Invalid Username must contain at least 6 characters.
+          The password length must be at least 8 characters
           </div>
           <input
             className="signup-email"
@@ -90,10 +88,11 @@ const Signup = () => {
             required
           />
           <div className={validEmail ? "hide" : "show"}>
-            Invalid Email Address
+            The email you have entered is invaild
           </div>
 
           <input
+            type="password"
             name="password"
             className="signup-password"
             placeholder="Password"
@@ -102,21 +101,13 @@ const Signup = () => {
             required
           />
           <div className={validPassword ? "hide" : "show"}>
-            The password length must be greater than or equal to 8
-          </div>
-          <div className={validPassword ? "hide" : "show"}>
-            The password must contain one or more uppercase characters
-          </div>
-          <div className={validPassword ? "hide" : "show"}>
-            The password must contain one or more lowercase characters
-          </div>
-          <div className={validPassword ? "hide" : "show"}>
-            The password must contain one or more numeric values
-          </div>
-          <div className={validPassword ? "hide" : "show"}>
-            The password must contain one or more special characters.
+            The password length must be at least 8 characters, must contain
+            at least 1 uppercase and lowercase characters, must
+            contain one or more numeric values, and must contain one or more
+            special characters.
           </div>
           <input
+            type="password"
             name="confirmPassword"
             className="confirm-password"
             placeholder="Confirm Password"
@@ -124,7 +115,7 @@ const Signup = () => {
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
           <div className={validConfirmation ? "hide" : "show"}>
-            Password does not match
+            Passwords do not match
           </div>
           <button type="submit">Submit</button>
         </form>
