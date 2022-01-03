@@ -43,11 +43,10 @@ const Signup = () => {
     if (email.match(validEmail)) {
       setValidEmail(true);
     }
-    if ((!password.match(confirmPassword), confirmPassword != password)) {
+    if ( confirmPassword != password) {
       setValidConfirmation(false);
     }
     if (
-      password.match(confirmPassword) &&
       password === confirmPassword
     ) {
       setValidConfirmation(true);
