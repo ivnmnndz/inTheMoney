@@ -73,17 +73,15 @@
   color: rgb(215, 81, 121);
 }
 
-.hide{
-  display:none
+.hide {
+  display: none;
 }
 
-.show{
-  display:contents;
-  color:red;
+.show {
+  display:flex;
+  justify-content: center;
+  color: red;
   font-size: small;
-}
-
-.error-container{
-  display: inline
-
+  width:50%;
+  text-align: center;
 }
