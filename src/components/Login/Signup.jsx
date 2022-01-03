@@ -77,7 +77,7 @@ const Signup = () => {
             required
           />
           <div className={validUserName ? "hide" : "show"}>
-          The password length must be at least 8 characters
+          The username length must be at least 6 characters
           </div>
           <input
             className="signup-email"
