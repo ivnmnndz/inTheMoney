@@ -43,20 +43,29 @@ const Coin = ({
     setCurrency(!currency);
   };
 
-  const dollarResult = parseInt(price * quantity).toFixed(2);
-  const cryptoQuantity = parseInt(quantity / price).toFixed(6);
-  const orderData = {
+  const dollarResult = price * quantity;
+  const cryptoQuantity = quantity / price;
+
+  const buyOrderData = {
     asset: name,
     market_value: price,
     quantity: currency ? Number(cryptoQuantity) : Number(quantity),
-
     dollar_amount: currency ? Number(quantity) : Number(dollarResult),
+    user_id: currentUser && currentUser.uid,
+  };
+  const sellOrderData = {
+    asset: name,
+    market_value: price,
+    quantity: currency ? Number(-cryptoQuantity) : Number(-quantity),
+    dollar_amount: currency ? Number(-quantity) : Number(-dollarResult),
     user_id: currentUser && currentUser.uid,
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await addTradeDoc(orderData);
+    sellCoin
+      ? await addTradeDoc(sellOrderData)
+      : await addTradeDoc(buyOrderData);
     setQuantity(0);
     setTradeModal(false);
     alert("Purchased some coin!");
@@ -148,12 +157,12 @@ const Coin = ({
                   ) : (
                     <span>{`Est ${symbol.toUpperCase()}`}</span>
                   )}
-                  <span>{cryptoQuantity}</span>
+                  <span>{cryptoQuantity.toFixed(5)}</span>
                 </div>
               ) : (
                 <div>
                   {sellCoin ? <span>Est Credit</span> : <span>Est Cost</span>}
-                  <span>${dollarResult}</span>
+                  <span>${dollarResult.toFixed(2)}</span>
                 </div>
               )}
 

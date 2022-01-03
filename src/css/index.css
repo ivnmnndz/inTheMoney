@@ -20,7 +20,7 @@
     cursor: pointer;
     position: absolute;
     right: 0;
-    top:0
+    top: 0;
   }
 }
 @media screen and (max-width: 900px) {
@@ -94,4 +94,5 @@ a {
 
 li {
   list-style: none;
+  cursor: pointer;
 }

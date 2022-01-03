@@ -74,25 +74,26 @@ body.trade-modal {
 .trade-modal-header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   border-bottom: 1px solid grey;
 }
 
 .trade-modal-header button {
   background-color: transparent;
-  height: 50px;
-  margin: none;
   padding: 0;
 }
 
 .trade-modal-btn {
   border: none;
+  margin: 0;
+  height: 46px;
 }
 .border {
   border-bottom: 1px solid greenyellow;
 }
 
-.trade-modal-header button:first-child {
+.trade-modal-btn:first-child {
   margin-right: 20px;
 }
 
