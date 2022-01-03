@@ -43,6 +43,12 @@
   display: none;
 }
 
+#toggle1:checked ~ .hamburger1 {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
 #toggle1:checked ~ .hamburger1 .top {
   -webkit-transform: rotate(-45deg);
   transform: rotate(-45deg);
@@ -61,5 +67,7 @@
 }
 
 #toggle1:checked ~ .nav-right {
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
 }
