@@ -89,7 +89,7 @@ const Signup = () => {
             required
           />
           <div className={validUserName ? "hide" : "show"}>
-            Invalid Username must contain least 6 characters.
+            Invalid Username must contain at least 6 characters.
           </div>
           <input
             className="signup-email"
