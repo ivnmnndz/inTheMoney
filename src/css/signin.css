@@ -72,3 +72,18 @@
   background-color: var(--color-teal);
   color: rgb(215, 81, 121);
 }
+
+.hide{
+  display:none
+}
+
+.show{
+  display:contents;
+  color:red;
+  font-size: small;
+}
+
+.error-container{
+  display: inline
+
+}

@@ -8,18 +8,72 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [validUserName, setValidUserName] = useState(true);
+  const [validEmail, setValidEmail] = useState(true);
+  const [validPassword, setValidPassword] = useState(true);
+  const [validConfirmation, setValidConfirmation] = useState(true);
 
   let navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const CreateUser = async (e) => {
     const user = await registerWithEmail(email, password);
     updateAuthProfile({ displayName: userName });
     const data = { displayName: userName, email: email, uid: user.uid };
     await addUserDoc(user.uid, data);
     navigate("/");
   };
-
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    let validEmail =
+      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    let validPassword =
+      "(?=^.{8,}$)(?=.*d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$";
+    if (
+      email.match(validEmail) &&
+      password.match(confirmPassword, validPassword) &&
+      password.length === confirmPassword.length &&
+      userName.length >= 6
+    ) {
+      console.log("Valid email address!");
+      CreateUser();
+    }
+    if (!email.match(validEmail)) {
+      setValidEmail(false);
+      console.log("no email");
+    }
+    if (email.match(validEmail)) {
+      setValidEmail(true);
+    }
+    if (
+      (!password.match(confirmPassword, confirmPassword.length),
+      password.length !== confirmPassword.length)
+    ) {
+      setValidConfirmation(false);
+      console.log("nopassword");
+    }
+    if (
+      (password.match(confirmPassword, confirmPassword.length),
+      password.length === confirmPassword.length)
+    ) {
+      setValidConfirmation(true);
+    }
+    if (!password.match(validPassword)) {
+      setValidPassword(false);
+      console.log(
+        "The password length must be greater than or equal to 8 The password must contain one or more uppercase characters The password must contain one or more lowercase characters The password must contain one or more numeric values The password must contain one or more special characters"
+      );
+    }
+     if (password.match(validPassword)) {
+      setValidPassword(true)
+    }
+    if (userName.length < 6) {
+      setValidUserName(false);
+      console.log("Must be 6 or more charaters");
+    }
+    if (userName.length >= 6) {
+      setValidUserName(true);
+    }
+  };
   return (
     <>
       <div className="signup-container">
@@ -34,7 +88,9 @@ const Signup = () => {
             onChange={(e) => setUserName(e.target.value)}
             required
           />
-
+          <div className={validUserName ? "hide" : "show"}>
+            Invalid Username must contain least 6 characters.
+          </div>
           <input
             className="signup-email"
             name="email"
@@ -43,6 +99,9 @@ const Signup = () => {
             onChange={(e) => setEmail(e.target.value)}
             required
           />
+          <div className={validEmail ? "hide" : "show"}>
+            Invalid Email Address
+          </div>
 
           <input
             name="password"
@@ -52,6 +111,23 @@ const Signup = () => {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
+          <ul className={validPassword ? "error-container hide" : "container show"}>
+            <il className={validPassword ? "hide" : "show"}>
+              The password length must be greater than or equal to 8
+            </il>
+            <il className={validPassword ? "hide" : "show"}>
+              The password must contain one or more uppercase characters
+            </il>
+            <il className={validPassword ? "hide" : "show"}>
+              The password must contain one or more lowercase characters
+            </il>
+            <il className={validPassword ? "hide" : "show"}>
+              The password must contain one or more numeric values
+            </il>
+            <il className={validPassword ? "hide" : "show"}>
+              The password must contain one or more special characters.
+            </il>
+          </ul>
 
           <input
             name="confirmPassword"
@@ -60,6 +136,9 @@ const Signup = () => {
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
+          <div className={validConfirmation ? "hide" : "show"}>
+            Password does not match
+          </div>
           <button type="submit">Submit</button>
         </form>
       </div>
