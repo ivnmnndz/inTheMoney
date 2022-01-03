@@ -50,3 +50,12 @@
   width: 100%;
   justify-content: center;
 }
+
+.sort-name,
+.sort-symbol,
+.sort-price,
+.sort-vol,
+.sort-mktCap,
+.sort-percent {
+  cursor: pointer;
+}

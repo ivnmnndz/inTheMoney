@@ -2,10 +2,6 @@
 
 /* Response Menu Icon */
 @media screen and (max-width: 600px) {
-  .navbar {
-    padding: 20px 0;
-  }
-
   .navbar .nav-right {
     display: none;
   }
@@ -14,29 +10,26 @@
   }
   .navbar .hamburger1 {
     height: 45px;
-    margin-right: 10px;
-    margin-top: 10px;
     display: inline;
     cursor: pointer;
-    position: absolute;
-    right: 0;
-    top:0
+    padding-right: 10px;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
   }
 }
 @media screen and (max-width: 900px) {
-  .sort-name {
-    display: none;
-  }
-  .sort-vol {
-    display: none;
-  }
+  .sort-name,
+  .sort-vol,
   .sort-mktCap {
     display: none;
   }
 }
 @media screen and (min-width: 600px) {
   .nav-right {
-    display: flex !important;
+    flex-direction: row !important;
+    margin-top: 0px !important;
   }
 }
 
