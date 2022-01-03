@@ -111,7 +111,6 @@ const Signup = () => {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <ul className={validPassword ? "error-container hide" : "container show"}>
             <il className={validPassword ? "hide" : "show"}>
               The password length must be greater than or equal to 8
             </il>
@@ -127,8 +126,6 @@ const Signup = () => {
             <il className={validPassword ? "hide" : "show"}>
               The password must contain one or more special characters.
             </il>
-          </ul>
-
           <input
             name="confirmPassword"
             className="confirm-password"
