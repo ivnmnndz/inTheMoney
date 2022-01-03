@@ -37,10 +37,11 @@
   width: 250px;
   height: 50px;
   transition-duration: 0.5s;
+  font-size: small;
 }
 
 #create-User-btn:hover {
-  background-color: black;
+  font-size:medium;
 }
 
 #logIn-link {
