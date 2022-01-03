@@ -30,8 +30,8 @@ const Signup = () => {
       "(?=^.{8,}$)(?=.*d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$";
     if (
       email.match(validEmail) &&
-      password.match(confirmPassword, validPassword) &&
-      password.length === confirmPassword.length &&
+      password.match(validPassword) &&
+      password === confirmPassword &&
       userName.length >= 6
     ) {
       console.log("Valid email address!");
@@ -39,36 +39,27 @@ const Signup = () => {
     }
     if (!email.match(validEmail)) {
       setValidEmail(false);
-      console.log("no email");
     }
     if (email.match(validEmail)) {
       setValidEmail(true);
     }
-    if (
-      (!password.match(confirmPassword, confirmPassword.length),
-      password.length !== confirmPassword.length)
-    ) {
+    if ((!password.match(confirmPassword), confirmPassword != password)) {
       setValidConfirmation(false);
-      console.log("nopassword");
     }
     if (
-      (password.match(confirmPassword, confirmPassword.length),
-      password.length === confirmPassword.length)
+      password.match(confirmPassword) &&
+      password === confirmPassword
     ) {
       setValidConfirmation(true);
     }
     if (!password.match(validPassword)) {
       setValidPassword(false);
-      console.log(
-        "The password length must be greater than or equal to 8 The password must contain one or more uppercase characters The password must contain one or more lowercase characters The password must contain one or more numeric values The password must contain one or more special characters"
-      );
     }
-     if (password.match(validPassword)) {
-      setValidPassword(true)
+    if (password.match(validPassword)) {
+      setValidPassword(true);
     }
     if (userName.length < 6) {
       setValidUserName(false);
-      console.log("Must be 6 or more charaters");
     }
     if (userName.length >= 6) {
       setValidUserName(true);
@@ -111,21 +102,21 @@ const Signup = () => {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-            <il className={validPassword ? "hide" : "show"}>
-              The password length must be greater than or equal to 8
-            </il>
-            <il className={validPassword ? "hide" : "show"}>
-              The password must contain one or more uppercase characters
-            </il>
-            <il className={validPassword ? "hide" : "show"}>
-              The password must contain one or more lowercase characters
-            </il>
-            <il className={validPassword ? "hide" : "show"}>
-              The password must contain one or more numeric values
-            </il>
-            <il className={validPassword ? "hide" : "show"}>
-              The password must contain one or more special characters.
-            </il>
+          <div className={validPassword ? "hide" : "show"}>
+            The password length must be greater than or equal to 8
+          </div>
+          <div className={validPassword ? "hide" : "show"}>
+            The password must contain one or more uppercase characters
+          </div>
+          <div className={validPassword ? "hide" : "show"}>
+            The password must contain one or more lowercase characters
+          </div>
+          <div className={validPassword ? "hide" : "show"}>
+            The password must contain one or more numeric values
+          </div>
+          <div className={validPassword ? "hide" : "show"}>
+            The password must contain one or more special characters.
+          </div>
           <input
             name="confirmPassword"
             className="confirm-password"
