@@ -48,7 +48,7 @@ const Signup = () => {
     }
     if (
       password.match(confirmPassword) &&
-      password.length === confirmPassword.length
+      password === confirmPassword
     ) {
       setValidConfirmation(true);
     }
