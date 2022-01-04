@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import Dashboard from "../components/Dashboard";
+import Profile from "./Profile";
 import HomeNull from "../components/Home/HomeNull";
 import { AuthContext } from "../context/AuthState";
 import OnLoadSpinner from "../components/OnLoadSpinner";
@@ -10,7 +10,7 @@ const Home = () => {
   return isLoading ? (
     <OnLoadSpinner />
   ) : currentUser ? (
-    <Dashboard />
+    <Profile />
   ) : (
     <HomeNull />
   );

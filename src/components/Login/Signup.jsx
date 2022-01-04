@@ -4,10 +4,12 @@ import { registerWithEmail, updateAuthProfile } from "../../firebase/auth";
 import { addUserDoc } from "../../firebase/db";
 
 const Signup = () => {
-  const [userName, setUserName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [values, setValues] = useState({
+    userName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
   const [validUserName, setValidUserName] = useState(true);
   const [validEmail, setValidEmail] = useState(true);
   const [validPassword, setValidPassword] = useState(true);
@@ -16,13 +18,17 @@ const Signup = () => {
   let navigate = useNavigate();
 
   const CreateUser = async (e) => {
-    const user = await registerWithEmail(email, password);
-    updateAuthProfile({ displayName: userName });
-    const data = { displayName: userName, email: email, uid: user.uid };
-    console.log(user.uid);
+    const user = await registerWithEmail(values.email, values.password);
+    updateAuthProfile({ displayName: values.userName });
+    const data = {
+      displayName: values.userName,
+      email: values.email,
+      uid: user.uid,
+    };
     await addUserDoc(user.uid, data);
     navigate("/");
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     let validEmail =
@@ -30,39 +36,48 @@ const Signup = () => {
     let validPassword =
       /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=]).{8,}$/;
     if (
-      email.match(validEmail) &&
-      password.match(validPassword) &&
-      password === confirmPassword &&
-      userName.length >= 6
+      values.email.match(validEmail) &&
+      values.password.match(validPassword) &&
+      values.password === values.confirmPassword &&
+      values.userName.length >= 6
     ) {
       console.log("Valid email address!");
       CreateUser();
     }
-    if (!email.match(validEmail)) {
+    if (!values.email.match(validEmail)) {
       setValidEmail(false);
     }
-    if (email.match(validEmail)) {
+    if (values.email.match(validEmail)) {
       setValidEmail(true);
     }
-    if (confirmPassword !== password) {
+    if (values.confirmPassword !== values.password) {
       setValidConfirmation(false);
     }
-    if (password === confirmPassword) {
+    if (values.password === values.confirmPassword) {
       setValidConfirmation(true);
     }
-    if (!password.match(validPassword)) {
+    if (!values.password.match(validPassword)) {
       setValidPassword(false);
     }
-    if (password.match(validPassword)) {
+    if (values.password.match(validPassword)) {
       setValidPassword(true);
     }
-    if (userName.length < 6) {
+    if (values.userName.length < 6) {
       setValidUserName(false);
     }
-    if (userName.length >= 6) {
+    if (values.userName.length >= 6) {
       setValidUserName(true);
     }
   };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setValues({
+      ...values,
+      [name]: value,
+    });
+  };
+
   return (
     <>
       <div className="signup-container">
@@ -73,8 +88,8 @@ const Signup = () => {
             className="signup-input"
             name="userName"
             placeholder="User Name"
-            value={userName}
-            onChange={(e) => setUserName(e.target.value)}
+            value={values.userName}
+            onChange={handleInputChange}
             required
           />
           <div className={validUserName ? "hide" : "show"}>
@@ -84,8 +99,8 @@ const Signup = () => {
             className="signup-email"
             name="email"
             placeholder="E-mail"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={values.email}
+            onChange={handleInputChange}
             required
           />
           <div className={validEmail ? "hide" : "show"}>
@@ -97,8 +112,8 @@ const Signup = () => {
             name="password"
             className="signup-password"
             placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={values.password}
+            onChange={handleInputChange}
             required
           />
           <div className={validPassword ? "hide" : "show"}>
@@ -111,8 +126,8 @@ const Signup = () => {
             name="confirmPassword"
             className="confirm-password"
             placeholder="Confirm Password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
+            value={values.confirmPassword}
+            onChange={handleInputChange}
           />
           <div className={validConfirmation ? "hide" : "show"}>
             Passwords do not match

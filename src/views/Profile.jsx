@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import "../css/Profile.css";
 import { AuthContext } from "../context/AuthState";
 import { getMyTrades } from "../firebase/db";
+import { Link } from "react-router-dom";
 
 const Profile = () => {
   const { currentUser } = useContext(AuthContext);
@@ -62,8 +63,9 @@ const Profile = () => {
           <span>Total Invested: ${sumOfDollarAmount}</span>
         </div>
         <div>
-          <button>Edit Profile</button>
-          <button>Make a trade</button>
+          <Link to="/dashboard">
+            <button>Make a trade</button>
+          </Link>
         </div>
       </div>
 
