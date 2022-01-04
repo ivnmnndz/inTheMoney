@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { registerWithEmail, updateAuthProfile } from "../../firebase/auth";
 import { addUserDoc } from "../../firebase/db";
+import FormInput from "../FormInput";
 
 const Signup = () => {
   const [values, setValues] = useState({
@@ -78,60 +79,63 @@ const Signup = () => {
     });
   };
 
+  const inputs = [
+    {
+      id: 1,
+      type: "text",
+      name: "userName",
+      label: "User Name",
+      placeholder: "User Name",
+      value: values.userName,
+      className: validUserName ? "hide" : "show",
+      errorMessage: "The username must be at least 6 characters",
+      required: true,
+    },
+    {
+      id: 2,
+      type: "email",
+      name: "email",
+      label: "Email",
+      placeholder: "Email",
+      value: values.email,
+      className: validEmail ? "hide" : "show",
+      errorMessage: "The email you have entered is invaild",
+      required: true,
+    },
+    {
+      id: 3,
+      type: "password",
+      name: "password",
+      label: "Password",
+      placeholder: "Password",
+      value: values.password,
+      className: validPassword ? "hide" : "show",
+      errorMessage:
+        "The password length must be at least 8 characters, must contain at least 1 uppercase and lowercase character, one or more numeric values, and one or more special characters.",
+      required: true,
+    },
+    {
+      id: 4,
+      type: "password",
+      name: "confirmPassword",
+      label: "Confirm Password",
+      placeholder: "Confirm Password",
+      value: values.confirmPassword,
+      className: validConfirmation ? "hide" : "show",
+      errorMessage: "Passwords do not match",
+      required: true,
+    },
+  ];
+
   return (
     <>
       <div className="signup-container">
         <div className="blockchain"></div>
         <form onSubmit={handleSubmit} className="signup-form">
           <h1>Create an Account</h1>
-          <input
-            className="signup-input"
-            name="userName"
-            placeholder="User Name"
-            value={values.userName}
-            onChange={handleInputChange}
-            required
-          />
-          <div className={validUserName ? "hide" : "show"}>
-            The username length must be at least 6 characters
-          </div>
-          <input
-            className="signup-email"
-            name="email"
-            placeholder="E-mail"
-            value={values.email}
-            onChange={handleInputChange}
-            required
-          />
-          <div className={validEmail ? "hide" : "show"}>
-            The email you have entered is invaild
-          </div>
-
-          <input
-            // type="password"
-            name="password"
-            className="signup-password"
-            placeholder="Password"
-            value={values.password}
-            onChange={handleInputChange}
-            required
-          />
-          <div className={validPassword ? "hide" : "show"}>
-            The password length must be at least 8 characters, must contain at
-            least 1 uppercase and lowercase characters, must contain one or more
-            numeric values, and must contain one or more special characters.
-          </div>
-          <input
-            // type="password"
-            name="confirmPassword"
-            className="confirm-password"
-            placeholder="Confirm Password"
-            value={values.confirmPassword}
-            onChange={handleInputChange}
-          />
-          <div className={validConfirmation ? "hide" : "show"}>
-            Passwords do not match
-          </div>
+          {inputs.map((input) => (
+            <FormInput key={input.id} {...input} onChange={handleInputChange} />
+          ))}
           <button type="submit">Submit</button>
         </form>
       </div>

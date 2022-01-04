@@ -24,17 +24,26 @@
   display: flex;
   flex-direction: column;
   border-radius: 10px;
-  width: 90%;
+  width: 50%;
   height: 50%;
   color: rgb(254, 254, 254);
   align-items: center;
 }
+.signup-form label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: flex-start;
+  width: 100%;
+  padding: 10px;
+}
 
 .signup-form input {
+  align-self: center;
   border: 2px solid var(--color-teal);
   background-color: transparent;
   border-radius: 5px;
-  width: 50%;
+  width: 95%;
   color: rgb(215, 81, 121);
   transition: 0.3s;
 }
@@ -78,10 +87,10 @@
 }
 
 .show {
-  display:flex;
+  display: flex;
   justify-content: center;
   color: red;
-  font-size: small;
-  width:50%;
+  font-size: 10px;
+  width: 90%;
   text-align: center;
 }
