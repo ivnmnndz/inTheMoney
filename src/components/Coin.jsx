@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthState";
 import "../css/coin.css";
 import { addTradeDoc } from "../firebase/db";
@@ -13,10 +14,16 @@ const Coin = ({
   marketcap,
 }) => {
   const { currentUser } = useContext(AuthContext);
+  //type of currency used in the trade (USD or BTC)
   const [currency, setCurrency] = useState(false);
+  //open or close trade modal
   const [tradeModal, setTradeModal] = useState(false);
+  //buy or sell state
   const [sellCoin, setSellCoin] = useState(false);
+  //input state
   const [quantity, setQuantity] = useState(0);
+
+  let navigate = useNavigate();
 
   const handleChange = async (e) => {
     setQuantity(e.target.value);
@@ -60,12 +67,17 @@ const Coin = ({
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    sellCoin
-      ? await addTradeDoc(sellOrderData)
-      : await addTradeDoc(buyOrderData);
-    setQuantity(0);
-    setTradeModal(false);
-    alert("Purchased some coin!");
+    if (quantity !== 0) {
+      sellCoin
+        ? await addTradeDoc(sellOrderData)
+        : await addTradeDoc(buyOrderData);
+      setQuantity(0);
+      setTradeModal(false);
+      alert("Purchased some coin!");
+      navigate("/profile");
+    } else {
+      alert("amount can not be 0");
+    }
   };
 
   return (
@@ -74,12 +86,12 @@ const Coin = ({
         <img src={image} alt="crypto" />
         <h1>{name}</h1>
         <p className="coin-symbol">{symbol}</p>
-        <p className="coin-price">${price}</p>
-        <p className="coin-volume">Vol. ${volume}</p>
+        <p className="coin-price">${price.toLocaleString()}</p>
+        <p className="coin-volume">Vol. ${volume.toLocaleString()}</p>
         <p className={`coin-percent ${priceChange < 0 ? "red" : "green"}`}>
           {priceChange}%
         </p>
-        <p className="coin-marketcap">Mkt Cap: ${marketcap}</p>
+        <p className="coin-marketcap">Mkt Cap: ${marketcap.toLocaleString()}</p>
       </div>
 
       {tradeModal && (
