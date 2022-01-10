@@ -60,7 +60,7 @@ const Profile = () => {
           <span>Email: {currentUser.email}</span>
         </div>
         <div>
-          <span>Total Invested: ${sumOfDollarAmount}</span>
+          <span>Total Invested: ${sumOfDollarAmount.toLocaleString()}</span>
         </div>
         <div>
           <Link to="/dashboard">
@@ -69,20 +69,22 @@ const Profile = () => {
         </div>
       </div>
 
-      <div className="user-stats">
-        <div className="user-stats-header">
-          <span>Current Holdings</span>
-        </div>
-        <div className="user-stats-body">
-          {sumOfSameCrypto.map((trade, i) => (
-            <div className="user-stats-container" key={i}>
-              <div className="user-stats-content">
-                <span>{trade[0]}</span>
-                <span>{`Total Equity: $${trade[1].dollar_amount}`}</span>
-                <span>{`Qty: ${trade[1].quantity}`}</span>
+      <div className="user-stats-header">
+        <span>Current Holdings</span>
+        <div className="user-stats">
+          <div className="user-stats-body">
+            {sumOfSameCrypto.map((trade, i) => (
+              <div className="user-stats-container" key={i}>
+                <div className="user-stats-content">
+                  <span>{trade[0]}</span>
+                  <span>{`Total Equity: $${trade[1].dollar_amount.toFixed(
+                    2
+                  )}`}</span>
+                  <span>{`Qty: ${trade[1].quantity.toFixed(3)}`}</span>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </div>

@@ -3,10 +3,8 @@
   align-items: center;
   top: 100px;
   position: relative;
-
-  color: white;
   z-index: 1;
-  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
 }
 
@@ -46,16 +44,36 @@
 
 .sort-menu {
   display: flex;
-  gap: 20px;
-  width: 100%;
-  justify-content: center;
+
+  justify-content: space-around;
+  align-items: center;
 }
 
-.sort-name,
-.sort-symbol,
-.sort-price,
-.sort-vol,
-.sort-mktCap,
-.sort-percent {
+.sort-menu > * {
   cursor: pointer;
+  border: 1px solid grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 115px;
+}
+
+@media only screen and (max-width: 700px) {
+  .coin-app {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .sort-menu {
+    justify-content: center;
+    width: 95%;
+    align-items: center;
+  }
+
+  .sort-menu > * {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+  }
 }

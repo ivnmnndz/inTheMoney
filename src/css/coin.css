@@ -2,26 +2,28 @@
   align-items: center;
   cursor: pointer;
   display: flex;
-  margin: 10px 30px;
-  width: 85vw;
-  height: 100px;
-  border-radius: 5px;
-  border: 1px solid rgb(160, 160, 160);
+  font-size: 12px;
+}
+.coin-row > * {
+  border: 1px solid gray;
+}
+.coin-row-container {
+  width: 105px;
+  height: 50px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 5px;
+}
+.coin-row-container:first-child {
   justify-content: space-around;
 }
 
 .coin-row img {
-  width: 40px;
+  width: 30px;
 }
-
-.coin-row h1 {
-  font-size: 16px;
-}
-
-.coin-symbol {
-  text-transform: uppercase;
-}
-
 /* modal css */
 .modal {
   width: 100%;
@@ -55,13 +57,13 @@ body.trade-modal {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: rgb(16, 10, 31);
+  background: var(--color-purple);
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  width: 40%;
-  justify-content: center;
-  padding: 40px;
+  width: 400px;
+  padding: 30px;
+  margin: 15px;
   line-height: 40px;
   z-index: 5;
 }
@@ -90,7 +92,7 @@ body.trade-modal {
   height: 46px;
 }
 .border {
-  border-bottom: 1px solid greenyellow;
+  border-bottom: 1px solid var(--color-teal);
 }
 
 .trade-modal-btn:first-child {
@@ -133,17 +135,17 @@ body.trade-modal {
   width: 50px;
   border-radius: 5px;
   background-color: transparent;
-  border: 0.5px solid rgb(207, 207, 207);
+  border: 0.5px solid gray;
 }
 .trade-form-btn {
-  background-color: rgb(12, 231, 168);
-  color: black;
+  background-color: var(--color-teal);
   border: none;
   border-radius: 5px;
   margin: auto;
   margin-bottom: 10px;
   padding: 10px 35px;
   transition: 0.3s;
+  color: black;
 }
 
 .trade-form-btn:hover {
@@ -152,35 +154,39 @@ body.trade-modal {
 }
 
 /* mobile Coin */
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 700px) {
   .coin-row {
-    height: 150px;
-    width: 150px;
     border-radius: 10px;
-    padding: 15px;
-    background-color: rgb(39, 8, 97);
+    background-color: var(--color-mobile-purple);
     display: flex;
+    margin: 10px;
     flex-direction: column;
-    align-items: flex-start;
+    justify-content: center;
+    width: 175px;
+    height: 175px;
+    padding: 25px;
   }
 
   .coin-row > * {
-    margin: 0;
+    border: none;
+    width: 100%;
+    justify-content: flex-start;
+    padding: 2px;
   }
 
-  .coin-volume {
+  .mobile {
     display: none;
   }
 
-  .coin-marketcap {
-    display: none;
+  .img-container {
+    display: flex;
+    width: 100%;
   }
-
-  .coin-row h1 {
-    display: none;
-  }
-
   .coin-percent {
     font-size: 25px;
+    margin: 0;
+  }
+  .chart-container {
+    width: 100%;
   }
 }
