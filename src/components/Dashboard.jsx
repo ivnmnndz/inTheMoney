@@ -79,7 +79,7 @@ const Dashboard = () => {
       </div>
       <div className="sort-menu">
         <label>Sort by: </label>
-        <li
+        <div
           className="sort-name"
           onClick={SortByName}
           onClickCapture={(e) =>
@@ -89,8 +89,8 @@ const Dashboard = () => {
           }
         >
           Coin<i className="fas fa-sort"></i>
-        </li>
-        <li
+        </div>
+        <div
           className="sort-symbol"
           onClick={SortByName}
           onClickCapture={(e) =>
@@ -100,8 +100,8 @@ const Dashboard = () => {
           }
         >
           Symbol<i className="fas fa-sort"></i>
-        </li>
-        <li
+        </div>
+        <div
           className="sort-price"
           onClick={SortByValue}
           onClickCapture={(e) =>
@@ -111,8 +111,8 @@ const Dashboard = () => {
           }
         >
           Price<i className="fas fa-sort"></i>
-        </li>
-        <li
+        </div>
+        <div
           className="sort-vol"
           onClick={SortByValue}
           onClickCapture={(e) =>
@@ -122,8 +122,8 @@ const Dashboard = () => {
           }
         >
           Vol.<i className="fas fa-sort"></i>
-        </li>
-        <li
+        </div>
+        <div
           className="sort-percent"
           onClick={SortByValue}
           onClickCapture={(e) =>
@@ -133,8 +133,8 @@ const Dashboard = () => {
           }
         >
           %<i className="fas fa-sort"></i>
-        </li>
-        <li
+        </div>
+        <div
           className="sort-mktCap"
           onClick={SortByValue}
           onClickCapture={(e) =>
@@ -144,11 +144,12 @@ const Dashboard = () => {
           }
         >
           Mkt Cap<i className="fas fa-sort"></i>
-        </li>
+        </div>
       </div>
       {filteredCoins.map((coin) => {
         return (
           <Coin
+            coin={coin}
             key={coin.id}
             name={coin.name}
             image={coin.image}

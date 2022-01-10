@@ -1,8 +1,8 @@
-import React, { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../context/AuthState";
 import "../css/coin.css";
 import { addTradeDoc } from "../firebase/db";
+import Chart from "./Chart";
 
 const Coin = ({
   image,
@@ -12,7 +12,9 @@ const Coin = ({
   volume,
   priceChange,
   marketcap,
+  coin,
 }) => {
+  console.log(coin);
   const { currentUser } = useContext(AuthContext);
   //type of currency used in the trade (USD or BTC)
   const [currency, setCurrency] = useState(false);
@@ -80,20 +82,46 @@ const Coin = ({
     }
   };
 
+  const numFormat = (num) => {
+    if (num > 1000000000) {
+      return (num / 1000000000).toFixed(1) + "B";
+    } else if (num > 1000000) {
+      return (num / 1000000).toFixed(1) + "M";
+    } else if (num < 1000000) {
+      return num;
+    }
+  };
+
+  const formatVolume = numFormat(volume);
+  const formatMarketCap = numFormat(marketcap);
+
   return (
     <>
       <div onClick={handleTradeModal} className="coin-row">
-        <img src={image} alt="crypto" />
-        <h1>{name}</h1>
-        <p className="coin-symbol">{symbol}</p>
-        <p className="coin-price">${price.toLocaleString()}</p>
-        <p className="coin-volume">Vol. ${volume.toLocaleString()}</p>
-        <p className={`coin-percent ${priceChange < 0 ? "red" : "green"}`}>
-          {priceChange}%
-        </p>
-        <p className="coin-marketcap">Mkt Cap: ${marketcap.toLocaleString()}</p>
-      </div>
 
+        <div className="coin-row-container">
+          <div className="img-container">
+            <img src={image} alt="crypto" />
+          </div>
+          <p className="mobile">{name}</p>
+        </div>
+        <div className="coin-row-container">{symbol.toUpperCase()}</div>
+        <div className="coin-row-container">
+          Price ${price.toLocaleString()}
+        </div>
+        <div className="coin-row-container mobile">Vol. ${formatVolume}</div>
+        <div className="coin-row-container">
+          <p className={`coin-percent ${priceChange < 0 ? "red" : "green"}`}>
+            {priceChange.toFixed(2)}%
+          </p>
+        </div>
+        <div className="coin-row-container mobile">
+          Mcap: ${formatMarketCap}
+        </div>
+        <div className="chart-container">
+          <Chart coin={coin} />
+        </div>
+      </div>
       {tradeModal && (
         <div className="modal">
           <div onClick={handleTradeModal} className="trade-overlay"></div>
