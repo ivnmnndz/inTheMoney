@@ -16,10 +16,16 @@ const Coin = ({
 }) => {
   console.log(coin);
   const { currentUser } = useContext(AuthContext);
+  //type of currency used in the trade (USD or BTC)
   const [currency, setCurrency] = useState(false);
+  //open or close trade modal
   const [tradeModal, setTradeModal] = useState(false);
+  //buy or sell state
   const [sellCoin, setSellCoin] = useState(false);
+  //input state
   const [quantity, setQuantity] = useState(0);
+
+  let navigate = useNavigate();
 
   const handleChange = async (e) => {
     setQuantity(e.target.value);
@@ -63,12 +69,17 @@ const Coin = ({
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    sellCoin
-      ? await addTradeDoc(sellOrderData)
-      : await addTradeDoc(buyOrderData);
-    setQuantity(0);
-    setTradeModal(false);
-    alert("Purchased some coin!");
+    if (quantity !== 0) {
+      sellCoin
+        ? await addTradeDoc(sellOrderData)
+        : await addTradeDoc(buyOrderData);
+      setQuantity(0);
+      setTradeModal(false);
+      alert("Purchased some coin!");
+      navigate("/profile");
+    } else {
+      alert("amount can not be 0");
+    }
   };
 
   const numFormat = (num) => {
@@ -87,11 +98,11 @@ const Coin = ({
   return (
     <>
       <div onClick={handleTradeModal} className="coin-row">
+
         <div className="coin-row-container">
           <div className="img-container">
             <img src={image} alt="crypto" />
           </div>
-
           <p className="mobile">{name}</p>
         </div>
         <div className="coin-row-container">{symbol.toUpperCase()}</div>

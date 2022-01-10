@@ -3,12 +3,11 @@ import "../css/Profile.css";
 import { AuthContext } from "../context/AuthState";
 import { getMyTrades } from "../firebase/db";
 import { Link } from "react-router-dom";
+import OnLoadSpinner from "../components/OnLoadSpinner";
 
 const Profile = () => {
   const { currentUser } = useContext(AuthContext);
   const [myTrades, setMyTrades] = useState([]);
-  const [profileElipseModal, setProfileElipseModal] = useState(false);
-  const [totalDollarAmount, setTotalDollarAmount] = useState([]);
 
   useEffect(() => {
     async function fetchTrades() {
@@ -21,15 +20,12 @@ const Profile = () => {
     }
     fetchTrades();
   }, [currentUser]);
-  console.log({ myTrades });
 
-  const profileElipse = () => {
-    setProfileElipseModal(!profileElipse);
-  };
-
-  const sumOfDollarAmount = myTrades.reduce((sum, currentValue) => {
-    return sum + currentValue.dollar_amount;
-  }, 0);
+  const sumOfDollarAmount = myTrades
+    .reduce((sum, currentValue) => {
+      return sum + currentValue.dollar_amount;
+    }, 0)
+    .toFixed(2);
 
   let totals = {};
   myTrades.forEach((element) => {
@@ -68,7 +64,6 @@ const Profile = () => {
           </Link>
         </div>
       </div>
-
       <div className="user-stats-header">
         <span>Current Holdings</span>
         <div className="user-stats">
@@ -82,6 +77,7 @@ const Profile = () => {
                   )}`}</span>
                   <span>{`Qty: ${trade[1].quantity.toFixed(3)}`}</span>
                 </div>
+
               </div>
             ))}
           </div>
@@ -89,7 +85,7 @@ const Profile = () => {
       </div>
     </div>
   ) : (
-    <div>Loading</div>
+    <OnLoadSpinner />
   );
 };
 
