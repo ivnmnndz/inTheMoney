@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
+import { CoinContext } from "../context/CoinState";
 import "../css/dashboard.css";
 import Coin from "./Coin";
 
 const Dashboard = () => {
-  const [coins, setCoins] = useState([]);
   const [search, setSearch] = useState("");
   const [sortType, setSortType] = useState("market_cap");
   const [sortOrder, setSortOrder] = useState(true);
@@ -14,18 +15,7 @@ const Dashboard = () => {
   const [sortPriceChangeOrder, setSortPriceChangeOrder] = useState(true);
   const [sortMktCapOrder, setSortMktCapOrder] = useState(true);
 
-  useEffect(() => {
-    fetch(
-      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false`
-    )
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error("error");
-        }
-        return res.json();
-      })
-      .then((data) => setCoins(data));
-  }, []);
+  const { coins, setCoins } = useContext(CoinContext);
 
   const handleChange = (e) => {
     setSearch(e.target.value);
@@ -37,8 +27,8 @@ const Dashboard = () => {
       coin.symbol.toLowerCase().includes(search.toLowerCase())
   );
 
-  const SortByName = () => {
-    const sortedCoins = coins.sort(function (a, b) {
+  const SortByName = (coinsToSort) => {
+    const sortedCoins = coins.sort((a, b) => {
       let nameA = sortOrder
         ? a[sortType].toUpperCase()
         : b[sortType].toUpperCase();
@@ -146,20 +136,10 @@ const Dashboard = () => {
           Mkt Cap<i className="fas fa-sort"></i>
         </div>
       </div>
-      {filteredCoins.map((coin) => {
-        return (
-          <Coin
-            coin={coin}
-            key={coin.id}
-            name={coin.name}
-            image={coin.image}
-            symbol={coin.symbol}
-            marketcap={coin.market_cap}
-            price={coin.current_price}
-            priceChange={coin.price_change_percentage_24h}
-            volume={coin.total_volume}
-          />
-        );
+
+      {filteredCoins.map((coin, index) => {
+        return <Coin key={index} coin={coin} />;
+
       })}
     </div>
   );
