@@ -11,12 +11,18 @@ import "../css/chart.css";
 
 ChartJS.register(CategoryScale, LinearScale, LineElement, PointElement);
 
-const Chart = ({ coin }) => {
-  const [coins, setCoins] = useState({});
+const Chart = ({ coin, className }) => {
+  const [chartData, setChartData] = useState({});
+  const dates = {
+    /* weekday: "short", */
+    month: "short",
+    day: "numeric",
+    /*  year: "2-digit", */
+  };
 
   useEffect(() => {
     fetch(
-      `https://api.coingecko.com/api/v3/coins/${coin.id}/market_chart?vs_currency=usd&days=7`
+      `https://api.coingecko.com/api/v3/coins/${coin.id}/market_chart?vs_currency=usd&days=1`
     )
       .then((res) => {
         if (!res.ok) {
@@ -24,23 +30,20 @@ const Chart = ({ coin }) => {
         }
         return res.json();
       })
-      .then((data) => setCoins(data));
+      .then((data) => setChartData(data));
   }, []);
-  console.log({ coin });
 
   var data = {
     /* converts api json number into shorthand time */
-    labels: coins.prices
-      ? coins.prices.map((x) =>
-          new Date(x[0]).toLocaleString("en-us", {
-            month: "short",
-          })
+    labels: chartData.prices
+      ? chartData.prices.map((x) =>
+          new Date(x[0]).toLocaleDateString(undefined, dates)
         )
       : [],
     datasets: [
       {
         label: "Price",
-        data: coins.prices ? coins.prices.map((x) => x[1]) : [],
+        data: chartData.prices ? chartData.prices.map((x) => x[1]) : [],
 
         pointRadius: 0,
         backgroundColor: [
@@ -51,7 +54,8 @@ const Chart = ({ coin }) => {
           "rgba(153, 102, 255, .8)",
           "rgba(255, 159, 64, .8)",
         ],
-        borderColor: coin.price_change_percentage_24h > 0 ? "green" : "red",
+        borderColor:
+          chartData.price_change_percentage_24h > 0 ? "green" : "red",
         borderWidth: 1,
         fill: false,
       },
@@ -76,16 +80,16 @@ const Chart = ({ coin }) => {
 
       y: {
         beginAtZero: false,
-        display: false,
+        display: true,
       },
       x: {
-        /* hiding x-axis labels */ display: false,
+        /* hiding x-axis labels */ display: true,
       },
     },
   };
 
   return (
-    <div className="chart-container">
+    <div className={className}>
       <Line data={data} options={options} />
     </div>
   );
