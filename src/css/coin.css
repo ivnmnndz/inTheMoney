@@ -4,12 +4,14 @@
   display: flex;
   font-size: 12px;
 
+
   border-radius: 5px;
 }
 
 .coin-row:nth-child(odd) {
   background-color: purple;
 }
+
 
 
 .coin-row-container {
@@ -42,6 +44,7 @@
   align-items: center;
   text-align: center;
 
+
   background-color: var(--color-mobile-purple);
   border-radius: 10px;
   display: flex;
@@ -49,6 +52,7 @@
   width: 100%;
   padding: 25px;
   margin: 20px;
+
 
   line-height: 40px;
 }
