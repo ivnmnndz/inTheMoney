@@ -3,6 +3,7 @@
   cursor: pointer;
   display: flex;
   font-size: 12px;
+
   border-radius: 5px;
 }
 
@@ -10,10 +11,13 @@
   background-color: purple;
 }
 
+
 .coin-row-container {
   width: 105px;
   height: 50px;
   margin: auto;
+
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -37,6 +41,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+
   background-color: var(--color-mobile-purple);
   border-radius: 10px;
   display: flex;
@@ -44,6 +49,7 @@
   width: 100%;
   padding: 25px;
   margin: 20px;
+
   line-height: 40px;
 }
 

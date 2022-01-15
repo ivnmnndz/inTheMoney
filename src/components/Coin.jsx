@@ -1,5 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
+
 import { Link } from "react-router-dom";
+
 
 import "../css/coin.css";
 
@@ -28,17 +30,24 @@ const Coin = ({ coin }) => {
     }
   };
 
+
   const formatVolume = numFormat(total_volume);
   const formatMarketCap = numFormat(market_cap);
 
+
+  const formatVolume = numFormat(volume);
+  const formatMarketCap = numFormat(marketcap);
+
   return (
     <>
+
       <div className="coin-row">
         <div className="coin-row-container">
           <div className="img-container">
             <Link to={`/${id}`}>
               <img src={image} alt="crypto" />
             </Link>
+
           </div>
 
           <p className="mobile">{name}</p>
