@@ -11,6 +11,8 @@ import "../css/chart.css";
 
 ChartJS.register(CategoryScale, LinearScale, LineElement, PointElement);
 
+
+
 const Chart = ({ coin, className }) => {
   const [chartData, setChartData] = useState({});
   const dates = {
@@ -23,6 +25,8 @@ const Chart = ({ coin, className }) => {
   useEffect(() => {
     fetch(
       `https://api.coingecko.com/api/v3/coins/${coin.id}/market_chart?vs_currency=usd&days=1`
+
+
     )
       .then((res) => {
         if (!res.ok) {
@@ -30,6 +34,8 @@ const Chart = ({ coin, className }) => {
         }
         return res.json();
       })
+
+
       .then((data) => setChartData(data));
   }, []);
 
@@ -38,12 +44,16 @@ const Chart = ({ coin, className }) => {
     labels: chartData.prices
       ? chartData.prices.map((x) =>
           new Date(x[0]).toLocaleDateString(undefined, dates)
+
+
         )
       : [],
     datasets: [
       {
         label: "Price",
+
         data: chartData.prices ? chartData.prices.map((x) => x[1]) : [],
+
 
         pointRadius: 0,
         backgroundColor: [
@@ -54,8 +64,10 @@ const Chart = ({ coin, className }) => {
           "rgba(153, 102, 255, .8)",
           "rgba(255, 159, 64, .8)",
         ],
+
         borderColor:
           chartData.price_change_percentage_24h > 0 ? "green" : "red",
+
         borderWidth: 1,
         fill: false,
       },
@@ -80,6 +92,8 @@ const Chart = ({ coin, className }) => {
 
       y: {
         beginAtZero: false,
+
+
         display: true,
       },
       x: {
@@ -89,7 +103,9 @@ const Chart = ({ coin, className }) => {
   };
 
   return (
+
     <div className={className}>
+
       <Line data={data} options={options} />
     </div>
   );

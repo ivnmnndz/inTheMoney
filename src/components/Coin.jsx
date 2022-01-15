@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
+
 import { Link } from "react-router-dom";
 
 import "../css/coin.css";
@@ -33,12 +34,15 @@ const Coin = ({ coin }) => {
 
   return (
     <>
+
       <div className="coin-row">
         <div className="coin-row-container">
           <div className="img-container">
             <Link to={`/${id}`}>
               <img src={image} alt="crypto" />
             </Link>
+
+
           </div>
 
           <p className="mobile">{name}</p>
@@ -46,6 +50,7 @@ const Coin = ({ coin }) => {
         <div className="coin-row-container">{symbol.toUpperCase()}</div>
         <div className="coin-row-container">
           Price ${current_price.toLocaleString()}
+
         </div>
         <div className="coin-row-container mobile">Vol. ${formatVolume}</div>
         <div className="coin-row-container">
@@ -57,6 +62,7 @@ const Coin = ({ coin }) => {
             {price_change_percentage_24h.toFixed(2)}%
           </p>
         </div>
+
         <div className="coin-row-container mobile">
           Mcap: ${formatMarketCap}
         </div>

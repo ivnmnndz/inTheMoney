@@ -136,8 +136,10 @@ const Dashboard = () => {
           Mkt Cap<i className="fas fa-sort"></i>
         </div>
       </div>
+
       {filteredCoins.map((coin, index) => {
         return <Coin key={index} coin={coin} />;
+
       })}
     </div>
   );
