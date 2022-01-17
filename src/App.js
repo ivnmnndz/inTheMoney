@@ -9,6 +9,7 @@ import Signin from "./components/Login/Signin";
 import Signup from "./components/Login/Signup";
 import Dashboard from "./components/Dashboard";
 import Coin from "./components/Coin";
+import FAQ from "./views/FAQ";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
         <Route path="login" element={<Signin />} />
         <Route path="signup" element={<Signup />} />
         <Route path="profile" element={<Profile />} />
+        <Route path="FAQ" element={<FAQ />} />
         <Route path="dashboard" element={<Dashboard />} />
         <Route path=":coin" element={<Coin />} />
       </Route>
