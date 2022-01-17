@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import { addTradeDoc } from "../firebase/db";
 import { AuthContext } from "../context/AuthState";
-import Coin from "./Coin";
 
 const TradeModal = ({ coin }) => {
   const { currentUser } = useContext(AuthContext);
@@ -9,9 +8,6 @@ const TradeModal = ({ coin }) => {
   const [tradeModal, setTradeModal] = useState(false);
   const [sellCoin, setSellCoin] = useState(false);
   const [quantity, setQuantity] = useState(0);
-
-  console.log({ coin });
-
 
   const handleChange = async (e) => {
     setQuantity(e.target.value);
@@ -35,23 +31,19 @@ const TradeModal = ({ coin }) => {
     setCurrency(!currency);
   };
 
-
   const dollarResult = coin.market_data.current_price.usd * quantity;
   const cryptoQuantity = quantity / coin.market_data.current_price.usd;
 
   const buyOrderData = {
     asset: coin.name,
     market_value: coin.market_data.current_price.usd,
-
     quantity: currency ? Number(cryptoQuantity) : Number(quantity),
     dollar_amount: currency ? Number(quantity) : Number(dollarResult),
     user_id: currentUser && currentUser.uid,
   };
   const sellOrderData = {
-
     asset: coin.name,
     market_value: coin.market_data.current_price.usd,
-
     quantity: currency ? Number(-cryptoQuantity) : Number(-quantity),
     dollar_amount: currency ? Number(-quantity) : Number(-dollarResult),
     user_id: currentUser && currentUser.uid,
@@ -78,9 +70,7 @@ const TradeModal = ({ coin }) => {
                 }
                 onClick={buyCrypto}
               >
-
                 Buy {coin.symbol}
-
               </button>
               <button
                 className={
@@ -88,9 +78,7 @@ const TradeModal = ({ coin }) => {
                 }
                 onClick={sellCrypto}
               >
-
                 Sell {coin.symbol}
-
               </button>
             </div>
 
@@ -103,7 +91,6 @@ const TradeModal = ({ coin }) => {
             <div>
               <span>Buy in</span>
               <select onChange={handleCurrencyExchange}>
-
                 <option>{coin.symbol}</option>
 
                 <option>USD</option>
@@ -133,10 +120,8 @@ const TradeModal = ({ coin }) => {
               )}
             </label>
             <div>
-
               <span>Current</span>
               <span>${coin.market_data.current_price.usd}</span>
-
             </div>
 
             {currency ? (
@@ -144,9 +129,7 @@ const TradeModal = ({ coin }) => {
                 {sellCoin ? (
                   <span>Est Credit</span>
                 ) : (
-
                   <span>{`Est ${coin.symbol}`}</span>
-
                 )}
                 <span>{cryptoQuantity.toFixed(5)}</span>
               </div>

@@ -1,11 +1,7 @@
-import React, { useContext, useState, useEffect } from "react";
-
+import React from "react";
 import { Link } from "react-router-dom";
-
 import "../css/coin.css";
-
 import Chart from "./Chart";
-import TradeModal from "./TradeModal";
 
 const Coin = ({ coin }) => {
   const {
