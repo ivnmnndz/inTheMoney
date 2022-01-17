@@ -8,8 +8,8 @@ import ForgotPassword from "./views/ForgotPassword";
 import Signin from "./components/Login/Signin";
 import Signup from "./components/Login/Signup";
 import Dashboard from "./components/Dashboard";
-import Coin from "./components/Coin";
 import FAQ from "./views/FAQ";
+import CoinPage from "./components/CoinPage";
 
 const App = () => {
   return (
@@ -21,7 +21,7 @@ const App = () => {
         <Route path="profile" element={<Profile />} />
         <Route path="FAQ" element={<FAQ />} />
         <Route path="dashboard" element={<Dashboard />} />
-        <Route path=":coin" element={<Coin />} />
+        <Route path=":id" element={<CoinPage />} />
       </Route>
       <Route path="/forgot_password" element={<ForgotPassword />} />
       <Route path="*" element={<NotFound />} />
