@@ -8,6 +8,7 @@ import ForgotPassword from "./views/ForgotPassword";
 import Signin from "./components/Login/Signin";
 import Signup from "./components/Login/Signup";
 import Dashboard from "./components/Dashboard";
+import FAQ from "./views/FAQ";
 import CoinPage from "./components/CoinPage";
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
         <Route path="login" element={<Signin />} />
         <Route path="signup" element={<Signup />} />
         <Route path="profile" element={<Profile />} />
+        <Route path="FAQ" element={<FAQ />} />
         <Route path="dashboard" element={<Dashboard />} />
         <Route path=":id" element={<CoinPage />} />
       </Route>
