@@ -9,8 +9,8 @@ const Layout = () => {
       <Navbar />
       <main>
       <Outlet />
-      <Footer />
       </main>
+      <Footer />
     </>
   );
 };

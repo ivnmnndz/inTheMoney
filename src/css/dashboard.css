@@ -1,11 +1,9 @@
 .coin-app {
   display: flex;
-  align-items: center;
-  top: 100px;
-  position: relative;
-  z-index: 1;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  margin: 50px 0;
 }
 
 .coin-search {
@@ -44,7 +42,6 @@
 
 .sort-menu {
   display: flex;
-
   justify-content: space-around;
   align-items: center;
 }
