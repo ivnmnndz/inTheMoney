@@ -1,10 +1,9 @@
-import React, { useContext, useState, useEffect } from "react";
+
+import React from "react";
 import { Link } from "react-router-dom";
-
 import "../css/coin.css";
-
 import Chart from "./Chart";
-import TradeModal from "./TradeModal";
+
 
 const Coin = ({ coin }) => {
   const {
@@ -33,6 +32,9 @@ const Coin = ({ coin }) => {
 
   return (
     <>
+
+
+
       <div className="coin-row">
         <div className="coin-row-container">
           <div className="img-container">
@@ -40,7 +42,6 @@ const Coin = ({ coin }) => {
               <img src={image} alt="crypto" />
             </Link>
           </div>
-
           <p className="mobile">{name}</p>
         </div>
         <div className="coin-row-container">{symbol.toUpperCase()}</div>
@@ -60,7 +61,6 @@ const Coin = ({ coin }) => {
         <div className="coin-row-container mobile">
           Mcap: ${formatMarketCap}
         </div>
-
         <Chart coin={coin} className={"coin-row-chart"} />
       </div>
     </>

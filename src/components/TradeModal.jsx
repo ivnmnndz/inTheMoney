@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import { addTradeDoc } from "../firebase/db";
 import { AuthContext } from "../context/AuthState";
-import Coin from "./Coin";
 
 const TradeModal = ({ coin }) => {
   const { currentUser } = useContext(AuthContext);
@@ -9,7 +8,6 @@ const TradeModal = ({ coin }) => {
   const [tradeModal, setTradeModal] = useState(false);
   const [sellCoin, setSellCoin] = useState(false);
   const [quantity, setQuantity] = useState(0);
-  console.log({ coin });
 
   const handleChange = async (e) => {
     setQuantity(e.target.value);

@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
+
+import React, { useState, useContext } from "react";
 import { CoinContext } from "../context/CoinState";
 import "../css/dashboard.css";
 import Coin from "./Coin";
