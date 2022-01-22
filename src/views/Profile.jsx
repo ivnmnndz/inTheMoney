@@ -3,12 +3,12 @@ import "../css/Profile.css";
 import { AuthContext } from "../context/AuthState";
 import { getMyTrades } from "../firebase/db";
 import { Link } from "react-router-dom";
+import OnLoadSpinner from "../components/OnLoadSpinner";
+import ProfileChart from "../components/ProfileChart";
 
 const Profile = () => {
   const { currentUser } = useContext(AuthContext);
   const [myTrades, setMyTrades] = useState([]);
-  const [profileElipseModal, setProfileElipseModal] = useState(false);
-  const [totalDollarAmount, setTotalDollarAmount] = useState([]);
 
   useEffect(() => {
     async function fetchTrades() {
@@ -21,15 +21,12 @@ const Profile = () => {
     }
     fetchTrades();
   }, [currentUser]);
-  console.log({ myTrades });
 
-  const profileElipse = () => {
-    setProfileElipseModal(!profileElipse);
-  };
-
-  const sumOfDollarAmount = myTrades.reduce((sum, currentValue) => {
-    return sum + currentValue.dollar_amount;
-  }, 0);
+  const sumOfDollarAmount = myTrades
+    .reduce((sum, currentValue) => {
+      return sum + currentValue.dollar_amount;
+    }, 0)
+    .toLocaleString();
 
   let totals = {};
   myTrades.forEach((element) => {
@@ -46,7 +43,6 @@ const Profile = () => {
       };
     }
   });
-  console.log({ totals });
 
   const sumOfSameCrypto = Object.entries(totals);
 
@@ -60,7 +56,7 @@ const Profile = () => {
           <span>Email: {currentUser.email}</span>
         </div>
         <div>
-          <span>Total Invested: ${sumOfDollarAmount.toLocaleString()}</span>
+          <span>Total Invested: ${sumOfDollarAmount}</span>
         </div>
         <div>
           <Link to="/dashboard">
@@ -68,7 +64,7 @@ const Profile = () => {
           </Link>
         </div>
       </div>
-
+      <ProfileChart myTrades={myTrades} sumOfSameCrypto={sumOfSameCrypto} />
       <div className="user-stats-header">
         <span>Current Holdings</span>
         <div className="user-stats">
@@ -89,7 +85,7 @@ const Profile = () => {
       </div>
     </div>
   ) : (
-    <div>Loading</div>
+    <OnLoadSpinner />
   );
 };
 

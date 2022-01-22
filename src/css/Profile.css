@@ -11,7 +11,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 50%;
+  width: 20%;
   border: 1px solid rgba(62, 71, 77, 255);
   border-radius: 5px;
   background-color: rgba(30, 33, 35, 255);
@@ -29,7 +29,9 @@
   flex-direction: column;
   justify-content: center;
   overflow: scroll;
+
   max-height: 500px;
+
   border: 1px solid rgba(62, 71, 77, 255);
   border-radius: 5px;
   background-color: rgba(30, 33, 35, 255);

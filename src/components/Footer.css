@@ -1,0 +1,23 @@
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: rgb(42, 124, 218);
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-content a {
+  padding: 2px;
+}
+
+.footer-content a:hover {
+  color: var(--color-purple);
+  text-decoration: underline;
+  font-weight: 800;
+}

@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import { addTradeDoc } from "../firebase/db";
 import { AuthContext } from "../context/AuthState";
-import Coin from "./Coin";
 
 const TradeModal = ({ coin }) => {
   const { currentUser } = useContext(AuthContext);
@@ -9,16 +8,9 @@ const TradeModal = ({ coin }) => {
   const [tradeModal, setTradeModal] = useState(false);
   const [sellCoin, setSellCoin] = useState(false);
   const [quantity, setQuantity] = useState(0);
-  console.log({ coin });
 
   const handleChange = async (e) => {
     setQuantity(e.target.value);
-  };
-
-  const handleTradeModal = () => {
-    setTradeModal(!tradeModal);
-    setCurrency(false);
-    setSellCoin(false);
   };
 
   const sellCrypto = () => {
@@ -35,16 +27,19 @@ const TradeModal = ({ coin }) => {
 
   const dollarResult = coin.market_data.current_price.usd * quantity;
   const cryptoQuantity = quantity / coin.market_data.current_price.usd;
+  const transactionDate = new Date().getTime();
 
   const buyOrderData = {
-    asset: coin.name,
+    createdAt: transactionDate,
+    asset: coin.id,
     market_value: coin.market_data.current_price.usd,
     quantity: currency ? Number(cryptoQuantity) : Number(quantity),
     dollar_amount: currency ? Number(quantity) : Number(dollarResult),
     user_id: currentUser && currentUser.uid,
   };
   const sellOrderData = {
-    asset: coin.name,
+    createdAt: transactionDate,
+    asset: coin.id,
     market_value: coin.market_data.current_price.usd,
     quantity: currency ? Number(-cryptoQuantity) : Number(-quantity),
     dollar_amount: currency ? Number(-quantity) : Number(-dollarResult),
@@ -83,10 +78,6 @@ const TradeModal = ({ coin }) => {
                 Sell {coin.symbol}
               </button>
             </div>
-
-            <button className="close-modal" onClick={handleTradeModal}>
-              X
-            </button>
           </div>
 
           <form onSubmit={handleSubmit} className="trade-form">

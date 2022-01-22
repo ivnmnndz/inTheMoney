@@ -1,10 +1,7 @@
-import React, { useContext, useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-
 import "../css/coin.css";
-
 import Chart from "./Chart";
-import TradeModal from "./TradeModal";
 
 const Coin = ({ coin }) => {
   const {
@@ -57,6 +54,7 @@ const Coin = ({ coin }) => {
             {price_change_percentage_24h.toFixed(2)}%
           </p>
         </div>
+
         <div className="coin-row-container mobile">
           Mcap: ${formatMarketCap}
         </div>
