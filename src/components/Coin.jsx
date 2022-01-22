@@ -32,9 +32,6 @@ const Coin = ({ coin }) => {
 
   return (
     <>
-
-
-
       <div className="coin-row">
         <div className="coin-row-container">
           <div className="img-container">

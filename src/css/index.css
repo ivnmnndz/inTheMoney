@@ -62,7 +62,7 @@ body {
 }
 
 main {
-  min-height: 93vh;
+  min-height: 100vh;
 }
 
 input::-webkit-outer-spin-button,
