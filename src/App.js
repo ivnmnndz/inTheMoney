@@ -8,7 +8,10 @@ import ForgotPassword from "./views/ForgotPassword";
 import Signin from "./components/Login/Signin";
 import Signup from "./components/Login/Signup";
 import Dashboard from "./components/Dashboard";
+
+
 import FAQ from "./views/FAQ";
+
 import CoinPage from "./components/CoinPage";
 
 const App = () => {
