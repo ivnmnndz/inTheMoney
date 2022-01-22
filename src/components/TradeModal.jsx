@@ -92,7 +92,6 @@ const TradeModal = ({ coin }) => {
               <span>Buy in</span>
               <select onChange={handleCurrencyExchange}>
                 <option>{coin.symbol}</option>
-
                 <option>USD</option>
               </select>
             </div>

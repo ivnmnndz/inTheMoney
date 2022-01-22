@@ -1,20 +1,16 @@
 
 .coin-row-chart {
-
   display: flex;
   align-items: center;
   justify-content: center;
   width: 115px;
- 
-
   padding: 2px 10px;
 }
+
 .coin-page-chart {
   padding: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
   border: 2px solid grey;
-
-
 }
