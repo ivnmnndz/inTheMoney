@@ -13,7 +13,6 @@ import { CoinContext } from "../context/CoinState";
 ChartJS.register(CategoryScale, LinearScale, LineElement, PointElement);
 
 const ProfileChart = ({ className, myTrades, sumOfSameCrypto }) => {
-  /*   const [liveData, setLiveData] = useState([final, new Date().getTime()]); */
 
   const [chartData, setChartData] = useState({});
 
@@ -40,6 +39,7 @@ const ProfileChart = ({ className, myTrades, sumOfSameCrypto }) => {
 
   let coinName = coins.map((x) => x.id);
   let myTradesName = myTrades.map((x) => x.asset);
+
 
   // commented out below because it needs to return with optional chaining or else it crashes.
   //const livePrice = product of coin amount and current coin market value
