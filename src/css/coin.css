@@ -10,7 +10,6 @@
   background-color: purple;
 }
 
-
 .coin-row:nth-child(even) {
   background-color: var(--color-mobile-purple);
 }

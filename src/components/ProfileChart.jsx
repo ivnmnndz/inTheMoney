@@ -13,7 +13,9 @@ import { CoinContext } from "../context/CoinState";
 ChartJS.register(CategoryScale, LinearScale, LineElement, PointElement);
 
 const ProfileChart = ({ className, myTrades, sumOfSameCrypto }) => {
+
   const [chartData, setChartData] = useState({});
+
   const { coins } = useContext(CoinContext);
 
   // we need below api to get X and Y axis on chart. X-axis = transactionTime , Y-axis = prices
@@ -38,32 +40,46 @@ const ProfileChart = ({ className, myTrades, sumOfSameCrypto }) => {
   let coinName = coins.map((x) => x.id);
   let myTradesName = myTrades.map((x) => x.asset);
 
-  // commented out below because it needs to return with optional chaining or else it crashes. link below explains optional chaining.
-  //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining
+
+  // commented out below because it needs to return with optional chaining or else it crashes.
   //const livePrice = product of coin amount and current coin market value
 
-  /*  const livePrice = sumOfSameCrypto[0][1].quantity * coinsCurrentPrice[0]; */
+  const updatedPrice = () => {
+    try {
+      const livePrice = sumOfSameCrypto[0][1].quantity * coins[0].current_price;
+      const profitAndLoss = livePrice - sumOfSameCrypto[0][1].dollar_amount;
+      const liveTotal = profitAndLoss + sumOfSameCrypto[0][1].dollar_amount;
+      return liveTotal;
+    } catch (err) {
+      console.log("PNL not working");
+    }
+  };
+  console.log(updatedPrice());
 
+  const matchedNames = () => {
+    if ((coinName = myTradesName)) {
+      return;
+    }
+  };
+
+  console.log(coinName);
+  console.log(myTradesName);
+  console.log(matchedNames());
+
+  const final = updatedPrice();
+
+  const nf = new Intl.NumberFormat("en-US");
+  console.log(final);
   //commented out below because it needs to return with optional chaining or else it crashes
   // const profitAndLoss = sum of purchase price and current price
 
-  /*  const profitAndLoss = livePrice - sumOfSameCrypto[0][1].dollar_amount; */
-
   const data = {
     /* converts api json number into shorthand time */
-    labels: chartData.prices
-      ? chartData.prices.map((x) =>
-          new Date(x[0]).toLocaleTimeString([], {
-            hour: "2-digit",
-            minute: "2-digit",
-          })
-        )
-      : [],
-
+    /*  labels: liveData[1], */
     datasets: [
       {
         labels: "price",
-        data: { sumOfDollarAmount },
+        data: { final },
         backgroundColor: [
           "rgba(255, 99, 132, .8)",
           "rgba(54, 162, 235, .8)",
@@ -111,7 +127,8 @@ const ProfileChart = ({ className, myTrades, sumOfSameCrypto }) => {
 
   return (
     <div>
-      <Line data={data} options={options} width={"200"} height={"300"} />
+      <div>Current Portfolio Balance {nf.format(final)}</div>
+      <Line data={data} options={options} width={"500"} height={"300"} />
     </div>
   );
 };
