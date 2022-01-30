@@ -85,6 +85,7 @@ const Chart = ({ coin, className }) => {
           display: false,
         },
         beginAtZero: false,
+
         display: true,
       },
       x: {

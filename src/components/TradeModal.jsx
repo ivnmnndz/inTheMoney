@@ -32,6 +32,7 @@ const TradeModal = ({ coin }) => {
   const buyOrderData = {
     createdAt: transactionDate,
     asset: coin.id,
+    name: coin.name,
     market_value: coin.market_data.current_price.usd,
     quantity: currency ? Number(cryptoQuantity) : Number(quantity),
     dollar_amount: currency ? Number(quantity) : Number(dollarResult),
@@ -40,6 +41,7 @@ const TradeModal = ({ coin }) => {
   const sellOrderData = {
     createdAt: transactionDate,
     asset: coin.id,
+    name: coin.name,
     market_value: coin.market_data.current_price.usd,
     quantity: currency ? Number(-cryptoQuantity) : Number(-quantity),
     dollar_amount: currency ? Number(-quantity) : Number(-dollarResult),

@@ -32,12 +32,14 @@ const Profile = () => {
   myTrades.forEach((element) => {
     if (totals[element.asset] !== undefined) {
       totals[element.asset] = {
+        name: element.name,
         quantity: element.quantity + totals[element.asset].quantity,
         dollar_amount:
           element.dollar_amount + totals[element.asset].dollar_amount,
       };
     } else {
       totals[element.asset] = {
+        name: element.name,
         quantity: element.quantity,
         dollar_amount: element.dollar_amount,
       };
