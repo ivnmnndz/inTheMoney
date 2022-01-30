@@ -39,9 +39,6 @@ const ProfileChart = ({ myTrades, sumOfSameCrypto }) => {
     return sum + currentValue.dollar_amount;
   }, 0);
 
-  // commented out below because it needs to return with optional chaining or else it crashes.
-  //const livePrice = product of coin amount and current coin market value
-
   const updatedPrice = () => {
     try {
       const livePrice = sumOfSameCrypto[0][1].quantity * coins[0].current_price;
@@ -76,6 +73,7 @@ const ProfileChart = ({ myTrades, sumOfSameCrypto }) => {
   const final = updatedPrice();
 
   const nf = new Intl.NumberFormat("en-US");
+
 
   //commented out below because it needs to return with optional chaining or else it crashes
   // const profitAndLoss = sum of purchase price and current price
