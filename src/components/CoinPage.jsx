@@ -9,10 +9,6 @@ const CoinPage = () => {
   const [singleCoin, setSingleCoin] = useState(null);
   let { id } = useParams();
 
-  /* useEffect(() => {
-    getSingleCoin(id).then((data) => setSingleCoin(data));
-  }, []); */
-
   useEffect(() => {
     fetch(`https://api.coingecko.com/api/v3/coins/${id}?localization=false`)
       .then((res) => {
@@ -62,9 +58,6 @@ const CoinPage = () => {
               <span>quantity</span>
               <span>portfolio percentage</span>
             </div>
-          </section>
-          <section>
-            <h3>About</h3>
           </section>
         </div>
         <div className="coin-page-right">
