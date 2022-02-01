@@ -9,12 +9,12 @@ import { Line } from "react-chartjs-2";
 import React, { useState, useEffect, useContext } from "react";
 import "../css/chart.css";
 import { CoinContext } from "../context/CoinState";
+import { log } from "@craco/craco/lib/logger";
 
 ChartJS.register(CategoryScale, LinearScale, LineElement, PointElement);
 
 const ProfileChart = ({ myTrades, sumOfSameCrypto }) => {
   const [chartData, setChartData] = useState({});
-
   const { coins } = useContext(CoinContext);
 
   // we need below api to get X and Y axis on chart. X-axis = transactionTime , Y-axis = prices
