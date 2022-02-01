@@ -1,3 +1,4 @@
+
 import React, { useState, useContext } from "react";
 import { CoinContext } from "../context/CoinState";
 import "../css/dashboard.css";
@@ -135,7 +136,6 @@ const Dashboard = () => {
           Mkt Cap<i className="fas fa-sort"></i>
         </div>
       </div>
-
       {filteredCoins.map((coin, index) => {
         return <Coin key={index} coin={coin} />;
       })}

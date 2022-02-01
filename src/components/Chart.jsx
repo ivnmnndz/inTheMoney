@@ -11,6 +11,7 @@ import "../css/chart.css";
 
 ChartJS.register(CategoryScale, LinearScale, LineElement, PointElement);
 
+
 const Chart = ({ coin, className }) => {
   const [chartData, setChartData] = useState({});
 
