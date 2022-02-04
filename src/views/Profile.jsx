@@ -5,10 +5,12 @@ import { getMyTrades } from "../firebase/db";
 import { Link } from "react-router-dom";
 import OnLoadSpinner from "../components/OnLoadSpinner";
 import ProfileChart from "../components/ProfileChart";
+import { CoinContext } from "../context/CoinState";
 
 const Profile = () => {
   const { currentUser } = useContext(AuthContext);
   const [myTrades, setMyTrades] = useState([]);
+  const { coins } = useContext(CoinContext);
 
   useEffect(() => {
     async function fetchTrades() {
@@ -46,7 +48,57 @@ const Profile = () => {
     }
   });
 
-  const sumOfSameCrypto = Object.entries(totals);
+  /* im sure there is an easier and shorter way to do this but this is the best i could do so far */
+
+  /* totalQuantity gets total quantity from every coin i buy and adds it all up */
+  const totalQuantiy = Array.from(
+    myTrades.reduce(
+      (m, { name, quantity }) => m.set(name, (m.get(name) || 0) + quantity),
+      new Map()
+    ),
+    ([name, quantity]) => ({ name, quantity })
+  );
+  /* totalDollarAmount gets total dollar_amount from every coin i buy and adds it all up */
+  const totalDollarAmount = Array.from(
+    myTrades.reduce(
+      (m, { name, dollar_amount }) =>
+        m.set(name, (m.get(name) || 0) + dollar_amount),
+      new Map()
+    ),
+    ([name, dollar_amount]) => ({ name, dollar_amount })
+  );
+
+  /*sumOfEachCoin merges the above objects together  */
+  let sumOfEachCoin = totalQuantiy.map((item, i) =>
+    Object.assign({}, item, totalDollarAmount[i])
+  );
+
+  /* the for loop below adds coin gecko api to  sumOfEachCoin if names match*/
+  let sumOfSameCoin = [];
+  for (let i = 0; i < sumOfEachCoin.length; i++) {
+    sumOfSameCoin.push({
+      ...sumOfEachCoin[i],
+      ...coins.find((name) => name.name === sumOfEachCoin[i].name),
+    });
+  }
+
+  /* livePrice gets sumOfSameCoin array and multiplies each coins currrent price to what our quantity is */
+  const livePrice = sumOfSameCoin.map(
+    (trade) => trade.quantity * trade.current_price
+  );
+
+  const boughtAtSum = sumOfSameCoin.reduce((sum, x) => {
+    return sum + x.dollar_amount;
+  }, 0);
+
+  /* liveTotalSum  adds everything in array together to get your live Total */
+  let liveTotalSum = livePrice.reduce((sum, x) => {
+    return sum + x;
+  }, 0);
+  /*   let timeInSeconds = new Date().getTime();
+  let myChartData = [{ currentTime: timeInSeconds, currentPrice: liveTotalSum }]; */
+
+  /* const sumOfSameCrypto = Object.entries(totals); */
 
   return currentUser ? (
     <div className="container">
@@ -66,19 +118,19 @@ const Profile = () => {
           </Link>
         </div>
       </div>
-      <ProfileChart myTrades={myTrades} sumOfSameCrypto={sumOfSameCrypto} />
+      <ProfileChart liveTotalSum={liveTotalSum} boughtAtSum={boughtAtSum} />
       <div className="user-stats-header">
         <span>Current Holdings</span>
         <div className="user-stats">
           <div className="user-stats-body">
-            {sumOfSameCrypto.map((trade, i) => (
+            {sumOfSameCoin.map((trade, i) => (
               <div className="user-stats-container" key={i}>
                 <div className="user-stats-content">
-                  <span>{trade[0]}</span>
-                  <span>{`Total Equity: $${trade[1].dollar_amount.toFixed(
+                  <span>{trade.name}</span>
+                  <span>{`Total Equity: $${trade.dollar_amount.toFixed(
                     2
                   )}`}</span>
-                  <span>{`Qty: ${trade[1].quantity.toFixed(3)}`}</span>
+                  <span>{`Qty: ${trade.quantity.toFixed(3)}`}</span>
                 </div>
               </div>
             ))}
