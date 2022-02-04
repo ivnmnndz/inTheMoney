@@ -9,6 +9,7 @@ import { Line } from "react-chartjs-2";
 import React, { useContext } from "react";
 import "../css/chart.css";
 import { CoinContext } from "../context/CoinState";
+import { log } from "@craco/craco/lib/logger";
 
 ChartJS.register(CategoryScale, LinearScale, LineElement, PointElement);
 
