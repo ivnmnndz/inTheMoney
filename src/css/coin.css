@@ -46,7 +46,7 @@
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 80%;
   padding: 25px;
   margin: 20px;
   line-height: 40px;
@@ -137,7 +137,7 @@
 }
 
 /* mobile Coin */
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 600px) {
   .coin-row {
     border-radius: 10px;
     background-color: var(--color-mobile-purple);
@@ -171,5 +171,17 @@
   }
   .chart-container {
     width: 100%;
+  }
+  .modal {
+    position: relative;
+    width: 100%;
+  }
+  .modal-content {
+    margin: 20px auto;
+    width: 250px;
+    line-height: 25px;
+  }
+  .trade-modal-header {
+    justify-content: center;
   }
 }

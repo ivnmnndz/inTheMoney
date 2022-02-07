@@ -11,7 +11,6 @@ import "../css/chart.css";
 
 ChartJS.register(CategoryScale, LinearScale, LineElement, PointElement);
 
-
 const Chart = ({ coin, className }) => {
   const [chartData, setChartData] = useState({});
 
@@ -55,8 +54,13 @@ const Chart = ({ coin, className }) => {
           "rgba(255, 159, 64, .8)",
         ],
 
-        borderColor:
-          chartData.price_change_percentage_24h > 0 ? "green" : "red",
+        borderColor: coin.price_change_percentage_24h
+          ? coin.price_change_percentage_24h > 0
+            ? "green"
+            : "red"
+          : coin.market_data.price_change_percentage_24h > 0
+          ? "green"
+          : "red",
 
         borderWidth: 1,
         fill: false,
@@ -86,13 +90,15 @@ const Chart = ({ coin, className }) => {
         },
         beginAtZero: false,
 
-        display: true,
+        display: coin.price_change_percentage_24h ? false : true,
       },
       x: {
         grid: {
           display: false,
         },
-        /* hiding x-axis labels */ display: true,
+        /* hiding x-axis labels */ display: coin.price_change_percentage_24h
+          ? false
+          : true,
       },
     },
   };

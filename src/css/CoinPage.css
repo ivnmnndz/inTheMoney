@@ -39,31 +39,21 @@
 .coin-page-box-info-1 {
   display: flex;
   border: 1px solid grey;
-  padding: 20px;
+  padding: 15px;
   flex-direction: column;
   border-radius: 5px;
-  width: 50%;
+
   margin: 5px;
 }
 
 .coin-page-box-info-2 {
   display: flex;
   border: 1px solid grey;
-  padding: 20px;
+  padding: 15px;
   flex-direction: column;
-  width: 50%;
+
   border-radius: 5px;
   margin: 5px;
-}
-
-.coin-page-about {
-  line-height: 30px;
-  font-size: 15px;
-  max-height: 200px;
-  overflow-y: scroll;
-  border: 1px solid grey;
-  border-radius: 5px;
-  padding: 20px;
 }
 
 .coin-page-right {
@@ -72,5 +62,20 @@
   justify-content: center;
 }
 
-.coin-page-modal {
+@media screen and (max-width: 600px) {
+  .coin-page-main {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+  }
+
+  .coin-page-left {
+    width: 85%;
+  }
+  .coin-page-right {
+    width: 100%;
+  }
 }

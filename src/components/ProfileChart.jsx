@@ -9,14 +9,15 @@ import { Line } from "react-chartjs-2";
 import React, { useContext } from "react";
 import "../css/chart.css";
 import { CoinContext } from "../context/CoinState";
-import { log } from "@craco/craco/lib/logger";
 
 ChartJS.register(CategoryScale, LinearScale, LineElement, PointElement);
 
-const ProfileChart = ({ liveTotalSum, boughtAtSum }) => {
-  const { chartData } = useContext(CoinContext);
+const ProfileChart = ({ liveTotalSum }) => {
+  const { chartData, coins } = useContext(CoinContext);
+
   /* liveDifference is the difference between the sum of the current value of coins we bought  - the sum of coins value at which we bought at  */
-  const liveDifference = liveTotalSum - boughtAtSum;
+
+  const percentage = coins.map((x) => x.price_change_percentage_24h);
 
   const data = {
     labels: chartData.prices
@@ -24,7 +25,6 @@ const ProfileChart = ({ liveTotalSum, boughtAtSum }) => {
           new Date(x[0]).toLocaleTimeString([], {
             hour: "numeric",
             minute: "numeric",
-            /*  day: "numeric", */
           })
         )
       : [],
@@ -32,7 +32,7 @@ const ProfileChart = ({ liveTotalSum, boughtAtSum }) => {
       {
         labels: "price",
         data: chartData.prices
-          ? chartData.prices.map((x) => liveDifference)
+          ? chartData.prices.map((x) => x[1] / percentage[0])
           : [],
 
         pointRadius: 0,
@@ -44,7 +44,7 @@ const ProfileChart = ({ liveTotalSum, boughtAtSum }) => {
           "rgba(153, 102, 255, .8)",
           "rgba(255, 159, 64, .8)",
         ],
-        borderColor: "green",
+        borderColor: coins[0].price_change_percentage_24h > 0 ? "green" : "red",
         borderWidth: 1,
         fill: true,
       },
@@ -83,8 +83,10 @@ const ProfileChart = ({ liveTotalSum, boughtAtSum }) => {
 
   return (
     <div>
-      <div>Current Portfolio Balance {liveTotalSum}</div>
-      <Line data={data} options={options} width={"500"} height={"300"} />
+      <div className="profile-Chart-Header">
+        Current Portfolio Balance {liveTotalSum.toLocaleString("en-US")}
+      </div>
+      <Line data={data} options={options} />
     </div>
   );
 };

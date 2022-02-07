@@ -95,45 +95,54 @@ const Profile = () => {
   let liveTotalSum = livePrice.reduce((sum, x) => {
     return sum + x;
   }, 0);
-  /*   let timeInSeconds = new Date().getTime();
-  let myChartData = [{ currentTime: timeInSeconds, currentPrice: liveTotalSum }]; */
 
-  /* const sumOfSameCrypto = Object.entries(totals); */
+  const liveDifference = liveTotalSum - boughtAtSum;
 
   return currentUser ? (
-    <div className="container">
-      <div className="user-data">
-        <div>
-          <span>Name: {currentUser.displayName}</span>
-        </div>
-        <div>
-          <span>Email: {currentUser.email}</span>
-        </div>
-        <div>
-          <span>Total Invested: ${sumOfDollarAmount}</span>
-        </div>
-        <div>
-          <Link to="/dashboard">
-            <button>Make a trade</button>
-          </Link>
-        </div>
+    <div>
+      <div className="profile-chart">
+        <ProfileChart liveTotalSum={liveTotalSum} boughtAtSum={boughtAtSum} />
       </div>
-      <ProfileChart liveTotalSum={liveTotalSum} boughtAtSum={boughtAtSum} />
-      <div className="user-stats-header">
-        <span>Current Holdings</span>
-        <div className="user-stats">
-          <div className="user-stats-body">
-            {sumOfSameCoin.map((trade, i) => (
-              <div className="user-stats-container" key={i}>
-                <div className="user-stats-content">
-                  <span>{trade.name}</span>
-                  <span>{`Total Equity: $${trade.dollar_amount.toFixed(
-                    2
-                  )}`}</span>
-                  <span>{`Qty: ${trade.quantity.toFixed(3)}`}</span>
+
+      <div className="container">
+        <div className="user-data">
+          <div>
+            <span>Name: {currentUser.displayName}</span>
+          </div>
+          <div>
+            <span>Email: {currentUser.email}</span>
+          </div>
+          <div>
+            <span>Total Invested: ${sumOfDollarAmount}</span>
+          </div>
+          <div>
+            <span>
+              Current Profit or Loss: ${liveDifference.toLocaleString("en-US")}
+            </span>
+          </div>
+          <div>
+            <Link to="/dashboard">
+              <button>Make a trade</button>
+            </Link>
+          </div>
+        </div>
+
+        <div className="user-stats-header">
+          <span>Current Holdings</span>
+          <div className="user-stats">
+            <div className="user-stats-body">
+              {sumOfSameCoin.map((trade, i) => (
+                <div className="user-stats-container" key={i}>
+                  <div className="user-stats-content">
+                    <span>{trade.name}</span>
+                    <span>{`Total Equity: $${trade.dollar_amount.toLocaleString(
+                      "en-US"
+                    )}`}</span>
+                    <span>{`Qty: ${trade.quantity.toFixed(2)}`}</span>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>
