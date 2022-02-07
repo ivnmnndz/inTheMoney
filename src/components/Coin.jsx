@@ -1,9 +1,7 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 import "../css/coin.css";
 import Chart from "./Chart";
-
 
 const Coin = ({ coin }) => {
   const {

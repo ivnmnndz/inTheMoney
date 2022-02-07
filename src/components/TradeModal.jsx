@@ -5,7 +5,6 @@ import { AuthContext } from "../context/AuthState";
 const TradeModal = ({ coin }) => {
   const { currentUser } = useContext(AuthContext);
   const [currency, setCurrency] = useState(false);
-  const [tradeModal, setTradeModal] = useState(false);
   const [sellCoin, setSellCoin] = useState(false);
   const [quantity, setQuantity] = useState(0);
 
@@ -54,7 +53,7 @@ const TradeModal = ({ coin }) => {
       ? await addTradeDoc(sellOrderData)
       : await addTradeDoc(buyOrderData);
     setQuantity(0);
-    setTradeModal(false);
+
     alert("Purchased some coin!");
   };
   return (
@@ -115,7 +114,9 @@ const TradeModal = ({ coin }) => {
             </label>
             <div>
               <span>Current</span>
-              <span>${coin.market_data.current_price.usd}</span>
+              <span>
+                ${coin.market_data.current_price.usd.toLocaleString("en-US")}
+              </span>
             </div>
 
             {currency ? (

@@ -3,7 +3,7 @@
   flex-direction: row;
   justify-content: space-evenly;
   padding: 1rem;
-  background-color: var(--color-teal);
+  background-color: rgb(25, 150, 179);
 }
 
 .footer-content {

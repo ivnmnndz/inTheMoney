@@ -27,11 +27,13 @@ const CoinPage = () => {
           <h1>{singleCoin.name}</h1>
           <div className="coin-page-current-stats">
             <h2>
-              ${singleCoin.market_data.current_price.usd.toLocaleString()}
+              $
+              {singleCoin.market_data.current_price.usd.toLocaleString("en-US")}
             </h2>
 
             <div>
-              ${singleCoin.market_data.price_change_24h.toFixed(2)} Today
+              ${singleCoin.market_data.price_change_24h.toLocaleString("en-US")}{" "}
+              Today
             </div>
             <div>
               %{singleCoin.market_data.price_change_percentage_24h.toFixed(2)}{" "}
@@ -46,10 +48,23 @@ const CoinPage = () => {
           <section className="coin-page-box-info">
             <div className="coin-page-box-info-1">
               <span>Your Market Value</span>
-              <span>${singleCoin.market_data.current_price.usd}</span>
-              <span>${singleCoin.market_data.price_change_24h.toFixed(2)}</span>
               <span>
-                %{singleCoin.market_data.price_change_percentage_24h.toFixed(2)}
+                $
+                {singleCoin.market_data.current_price.usd.toLocaleString(
+                  "en-US"
+                )}
+              </span>
+              <span>
+                $
+                {singleCoin.market_data.price_change_24h.toLocaleString(
+                  "en-US"
+                )}
+              </span>
+              <span>
+                %
+                {singleCoin.market_data.price_change_percentage_24h.toLocaleString(
+                  "en-US"
+                )}
               </span>
             </div>
             <div className="coin-page-box-info-2">
