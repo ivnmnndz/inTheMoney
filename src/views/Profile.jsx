@@ -103,7 +103,6 @@ const Profile = () => {
       <div className="profile-chart">
         <ProfileChart liveTotalSum={liveTotalSum} boughtAtSum={boughtAtSum} />
       </div>
-
       <div className="container">
         <div className="user-data">
           <div>
@@ -126,7 +125,6 @@ const Profile = () => {
             </Link>
           </div>
         </div>
-
         <div className="user-stats-header">
           <span>Current Holdings</span>
           <div className="user-stats">
