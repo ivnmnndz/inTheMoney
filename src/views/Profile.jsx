@@ -101,7 +101,11 @@ const Profile = () => {
   return currentUser ? (
     <div>
       <div className="profile-chart">
-        <ProfileChart liveTotalSum={liveTotalSum} boughtAtSum={boughtAtSum} />
+        <ProfileChart
+          liveTotalSum={liveTotalSum}
+          liveDifference={liveDifference}
+          boughtAtSum={boughtAtSum}
+        />
       </div>
 
       <div className="container">
@@ -117,7 +121,9 @@ const Profile = () => {
           </div>
           <div>
             <span>
-              Current Profit or Loss: ${liveDifference.toLocaleString("en-US")}
+              {liveDifference >= 0
+                ? `Current Profit ${liveDifference.toLocaleString("en-US")}`
+                : `Current Loss ${liveDifference.toLocaleString("en-US")}`}
             </span>
           </div>
           <div>

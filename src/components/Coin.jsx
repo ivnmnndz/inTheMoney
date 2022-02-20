@@ -41,9 +41,10 @@ const Coin = ({ coin }) => {
         </div>
         <div className="coin-row-container">{symbol.toUpperCase()}</div>
         <div className="coin-row-container">
-          Price ${current_price.toLocaleString()}
+          ${current_price.toLocaleString()}
         </div>
-        <div className="coin-row-container mobile">Vol. ${formatVolume}</div>
+        <div className="coin-row-container mobile"> ${formatVolume}</div>
+        <div className="coin-row-container mobile">${formatMarketCap}</div>
         <div className="coin-row-container">
           <p
             className={`coin-percent ${
@@ -52,9 +53,6 @@ const Coin = ({ coin }) => {
           >
             {price_change_percentage_24h.toFixed(2)}%
           </p>
-        </div>
-        <div className="coin-row-container mobile">
-          Mcap: ${formatMarketCap}
         </div>
         <Chart coin={coin} className={"coin-row-chart"} />
       </div>

@@ -4,7 +4,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 50px 0;
+  margin: 50px auto;
+  width: 80%;
 }
 
 .coin-search {
@@ -13,7 +14,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
 }
 
 .coin-text {
@@ -29,12 +29,12 @@
   border: none;
   background-image: linear-gradient(
     -225deg,
-    rgb(38, 173, 161) 0%,
-    var(--color-teal) 100%
+    rgb(0, 111, 253) 20%,
+    rgb(113, 0, 218) 100%
   );
-  color: rgb(215, 81, 121);
   font-weight: 600;
   letter-spacing: 0.75px;
+  color: var(--color-teal);
 }
 
 .coin-input::placeholder {
@@ -43,17 +43,27 @@
 
 .sort-menu {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
+  width: 700px;
+  height: 40px;
+  background-color: rgb(1, 25, 74);
+  border-radius: 4px;
+  margin-bottom: 5px;
 }
 
 .sort-menu > * {
   cursor: pointer;
-  border: 1px solid grey;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 115px;
+  width: 100%;
+}
+.sort-name {
+  margin-left: 10px;
+}
+.sort-chart {
+  margin-right: 20px;
 }
 
 @media only screen and (max-width: 700px) {
@@ -64,7 +74,7 @@
 
   .sort-menu {
     justify-content: center;
-    width: 95%;
+
     align-items: center;
   }
 
@@ -72,6 +82,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 10px;
+    font-size: 12px;
+  }
+  .sort-chart {
+    display: none;
   }
 }

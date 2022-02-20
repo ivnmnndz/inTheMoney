@@ -12,12 +12,15 @@ import { CoinContext } from "../context/CoinState";
 
 ChartJS.register(CategoryScale, LinearScale, LineElement, PointElement);
 
-const ProfileChart = ({ liveTotalSum }) => {
+const ProfileChart = ({ liveTotalSum, liveDifference }) => {
   const { chartData, coins } = useContext(CoinContext);
+  console.log({ liveTotalSum });
 
   /* liveDifference is the difference between the sum of the current value of coins we bought  - the sum of coins value at which we bought at  */
 
   const percentage = coins.map((x) => x.price_change_percentage_24h);
+  console.log(percentage);
+  console.log(coins);
 
   const data = {
     labels: chartData.prices
@@ -31,9 +34,7 @@ const ProfileChart = ({ liveTotalSum }) => {
     datasets: [
       {
         labels: "price",
-        data: chartData.prices
-          ? chartData.prices.map((x) => x[1] / percentage[0])
-          : [],
+        data: liveTotalSum ? chartData.prices.map((x) => x[1]) : [],
 
         pointRadius: 0,
         backgroundColor: [
@@ -44,7 +45,10 @@ const ProfileChart = ({ liveTotalSum }) => {
           "rgba(153, 102, 255, .8)",
           "rgba(255, 159, 64, .8)",
         ],
-        borderColor: coins[0].price_change_percentage_24h > 0 ? "green" : "red",
+        borderColor:
+          coins[0].price_change_percentage_24h > 0
+            ? "rgb(38, 173, 161)"
+            : "rgb(215, 81, 121)",
         borderWidth: 1,
         fill: true,
       },
