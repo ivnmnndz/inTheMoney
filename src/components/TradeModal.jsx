@@ -49,13 +49,18 @@ const TradeModal = ({ coin }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    sellCoin
-      ? await addTradeDoc(sellOrderData)
-      : await addTradeDoc(buyOrderData);
+    if (sellCoin) {
+      await addTradeDoc(sellOrderData);
+      alert(`Sold some ${coin.name}`);
+    } else {
+      await addTradeDoc(buyOrderData);
+      alert(`Purchased some ${coin.name}`);
+    }
     setQuantity(0);
-
     alert("Purchased some coin!");
+
   };
+
   return (
     <>
       <div className="modal">
@@ -131,7 +136,7 @@ const TradeModal = ({ coin }) => {
             ) : (
               <div>
                 {sellCoin ? <span>Est Credit</span> : <span>Est Cost</span>}
-                <span>${dollarResult.toFixed(2)}</span>
+                <span>${dollarResult.toLocaleString("en-US")}</span>
               </div>
             )}
 

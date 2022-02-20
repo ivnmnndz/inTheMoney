@@ -32,19 +32,18 @@
 
 /* My Trades Modal */
 .user-stats {
-  display: block;
+  display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   overflow: scroll;
-  max-height: 500px;
-
+  width: 200px;
   border: 1px solid rgba(62, 71, 77, 255);
   border-radius: 5px;
   background-color: rgba(30, 33, 35, 255);
+  padding: 10px;
 }
 .user-stats-header {
-  display: block;
-  justify-content: space-around;
   border-bottom: 1px solid rgba(62, 71, 77, 255);
   padding: 10px;
   background-color: rgb(73, 73, 73);
@@ -82,7 +81,7 @@
   margin-bottom: 5px;
 }
 .profile-chart {
-  width: 80%;
+  width: 70%;
   margin: 0 auto;
   border: 1px solid grey;
   padding: 10px;

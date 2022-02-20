@@ -1,10 +1,12 @@
 .blockchain {
-  background-image: url("../images/blockchain.svg");
-  width: 150px;
-  height: 150px;
+  background-image: url("../images/itm.jpg");
+  height: 200px;
+  width: 275px;
+  justify-content: center;
+  align-items: center;
   display: flex;
   flex-direction: column;
-  margin-top: 20px;
+
   background-size: cover;
 }
 

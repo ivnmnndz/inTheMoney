@@ -1,4 +1,3 @@
-
 import React, { useState, useContext } from "react";
 import { CoinContext } from "../context/CoinState";
 import "../css/dashboard.css";
@@ -68,7 +67,6 @@ const Dashboard = () => {
         </form>
       </div>
       <div className="sort-menu">
-        <label>Sort by: </label>
         <div
           className="sort-name"
           onClick={SortByName}
@@ -78,7 +76,7 @@ const Dashboard = () => {
             setSortOrder(sortCoinOrder)
           }
         >
-          Coin<i className="fas fa-sort"></i>
+          <i className="fas fa-sort"> </i>&nbsp;Coin
         </div>
         <div
           className="sort-symbol"
@@ -89,7 +87,7 @@ const Dashboard = () => {
             setSortOrder(sortSymbolOrder)
           }
         >
-          Symbol<i className="fas fa-sort"></i>
+          <i className="fas fa-sort"> </i>&nbsp;Symbol
         </div>
         <div
           className="sort-price"
@@ -100,7 +98,7 @@ const Dashboard = () => {
             setSortOrder(sortPriceOrder)
           }
         >
-          Price<i className="fas fa-sort"></i>
+          <i className="fas fa-sort"> </i>&nbsp;Price
         </div>
         <div
           className="sort-vol"
@@ -111,18 +109,7 @@ const Dashboard = () => {
             setSortOrder(sortVolOrder)
           }
         >
-          Vol.<i className="fas fa-sort"></i>
-        </div>
-        <div
-          className="sort-percent"
-          onClick={SortByValue}
-          onClickCapture={(e) =>
-            setSortType("price_change_percentage_24h") +
-            setSortPriceChangeOrder(!sortPriceChangeOrder) +
-            setSortOrder(sortPriceChangeOrder)
-          }
-        >
-          %<i className="fas fa-sort"></i>
+          <i className="fas fa-sort"></i>&nbsp;Vol.
         </div>
         <div
           className="sort-mktCap"
@@ -133,9 +120,24 @@ const Dashboard = () => {
             setSortOrder(sortMktCapOrder)
           }
         >
-          Mkt Cap<i className="fas fa-sort"></i>
+          <i className="fas fa-sort"></i>&nbsp;M Cap
+        </div>
+        <div
+          className="sort-percent"
+          onClick={SortByValue}
+          onClickCapture={(e) =>
+            setSortType("price_change_percentage_24h") +
+            setSortPriceChangeOrder(!sortPriceChangeOrder) +
+            setSortOrder(sortPriceChangeOrder)
+          }
+        >
+          <i className="fas fa-sort"></i>&nbsp;%
+        </div>
+        <div className="sort-chart">
+          <i></i>Chart
         </div>
       </div>
+
       {filteredCoins.map((coin, index) => {
         return <Coin key={index} coin={coin} />;
       })}
