@@ -132,7 +132,6 @@ const Profile = () => {
             </Link>
           </div>
         </div>
-
         <div className="user-stats-header">
           <span>Current Holdings</span>
           <div className="user-stats">

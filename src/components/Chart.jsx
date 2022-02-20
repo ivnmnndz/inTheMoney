@@ -56,11 +56,13 @@ const Chart = ({ coin, className }) => {
 
         borderColor: coin.price_change_percentage_24h
           ? coin.price_change_percentage_24h > 0
+
             ? "rgb(38, 173, 161)"
             : "rgb(215, 81, 121)"
           : coin.market_data.price_change_percentage_24h > 0
           ? "rgb(38, 173, 161)"
           : "rgb(215, 81, 121)",
+
 
         borderWidth: 1,
         fill: false,
