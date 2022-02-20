@@ -12,7 +12,7 @@ import { CoinContext } from "../context/CoinState";
 
 ChartJS.register(CategoryScale, LinearScale, LineElement, PointElement);
 
-const ProfileChart = ({ liveTotalSum, liveDifference }) => {
+const ProfileChart = ({ liveTotalSum }) => {
   const { chartData, coins } = useContext(CoinContext);
   console.log({ liveTotalSum });
 
@@ -34,7 +34,10 @@ const ProfileChart = ({ liveTotalSum, liveDifference }) => {
     datasets: [
       {
         labels: "price",
-        data: liveTotalSum ? chartData.prices.map((x) => x[1]) : [],
+
+        data: chartData.prices
+          ? chartData.prices.map((x) => x[1] / percentage[0])
+          : [],
 
         pointRadius: 0,
         backgroundColor: [
