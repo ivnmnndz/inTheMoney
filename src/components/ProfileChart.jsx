@@ -34,10 +34,7 @@ const ProfileChart = ({ liveTotalSum }) => {
     datasets: [
       {
         labels: "price",
-
-        data: chartData.prices
-          ? chartData.prices.map((x) => x[1] / percentage[0])
-          : [],
+        data: chartData.prices ? chartData.prices.map((x) => x[1]) : [],
 
         pointRadius: 0,
         backgroundColor: [
