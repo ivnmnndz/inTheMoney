@@ -57,8 +57,6 @@ const TradeModal = ({ coin }) => {
       alert(`Purchased some ${coin.name}`);
     }
     setQuantity(0);
-    alert("Purchased some coin!");
-
   };
 
   return (
